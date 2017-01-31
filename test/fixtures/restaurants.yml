@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  address: MyString
+  phone: MyString
+  fax: MyString
+  website: MyString
+  active: false
+  minimum_order: 9.99
+  latitude: 1.5
+  longitude: 1.5
+  commission_percentage: 9.99
+  resto_type_id: 1
+
+two:
+  name: MyString
+  address: MyString
+  phone: MyString
+  fax: MyString
+  website: MyString
+  active: false
+  minimum_order: 9.99
+  latitude: 1.5
+  longitude: 1.5
+  commission_percentage: 9.99
+  resto_type_id: 1
