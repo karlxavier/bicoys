@@ -1,2 +1,0 @@
-class RestoType < ApplicationRecord
-end
