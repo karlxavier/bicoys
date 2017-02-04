@@ -11,7 +11,11 @@
   </head>
 
   <body>
-  		<header class="top-header navbar navbar-default header-transparent navbar-fixed-top yamm">
+  		<% if current_page?(root_path) %>
+  			<header class="top-header navbar navbar-default header-transparent navbar-fixed-top yamm shirnk">
+  		<% else %>
+  			<header class="navbar-default-white">
+  		<% end %>
   			<div class="container">
 			  	<div class="navbar-header">
 		            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -25,8 +29,21 @@
 		        <div id="navbar" class="navbar-collapse collapse">
 		        	<ul class="nav navbar-nav navbar-right">
 		        		<li>
-		        			<a href="#home">Welcome</a>
+		        			<a href="#home">All Restaurants</a>
 		        		</li>
+		        		<li>
+		        			<a href="#home">Most Selling</a>
+		        		</li>
+		        		<% if user_signed_in? %>
+			        		<li>
+			        			<a href="#home">My Account</a>
+			        		</li>
+			        	<% else %>
+			        		<li>
+			        			<%= link_to 'Login', new_user_session_path %>
+			        		</li>
+			        	<% end %>
+			        	
 		        	</ul>
 		        </div>
 	  		</div>
