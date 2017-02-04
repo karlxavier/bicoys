@@ -34,16 +34,27 @@
 		        		<li>
 		        			<a href="#home">Most Selling</a>
 		        		</li>
-		        		<% if user_signed_in? %>
-			        		<li>
-			        			<a href="#home">My Account</a>
-			        		</li>
-			        	<% else %>
-			        		<li>
-			        			<%= link_to 'Login', new_user_session_path %>
-			        		</li>
+		        		<% if controller.class.name.split("::").first=="Admins" %>
+			        		<% if admin_signed_in? %>
+				        		<li>
+				        			<a href="#home">My Account</a>
+				        		</li>
+				        	<% else %>
+				        		<li>
+				        			<%= link_to 'Login', new_admin_session_path %>
+				        		</li>
+				        	<% end %>
+				        <% else %>
+				        	<% if user_signed_in? %>
+				        		<li>
+				        			<a href="#home">My Account</a>
+				        		</li>
+				        	<% else %>
+				        		<li>
+				        			<%= link_to 'Login', new_user_session_path %>
+				        		</li>
+				        	<% end %>
 			        	<% end %>
-			        	
 		        	</ul>
 		        </div>
 	  		</div>

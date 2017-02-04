@@ -1,19 +1,26 @@
 Rails.application.routes.draw do
 
-  # devise_for :users
+  	devise_for :admins, controllers: { 
+			  		registrations: "admins/registrations",
+			  		sessions: "admins/sessions"
+			  	} do
+		get '/admins/sign_out' => 'admins/sessions#destroy'
+	end
+
 	root 'restaurant_types#index'
-	get 'admin' => 'admin#my_dashboard'
 
 	devise_for :users, controllers: {
         sessions: 'users/sessions'
     }
+
 
 	resources :restaurants, only: [:index, :show] do
 		resources :menus, only: [:index, :show]
 	end
 
 
-	namespace :admin do
+	namespace :admins do
+		get '/', to: 'restaurants#dashboard', as: ''
 		resources :restaurants, only: [:new, :create, :edit, :update] do
 			resources :menus, only: [:new, :create, :edit, :update]
 			resources :orders do
