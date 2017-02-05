@@ -2,6 +2,7 @@ class Admins::RestaurantsController < ApplicationController
 	before_action :authenticate_admin!
 
 	def index
+		@restaurants = Restaurant.all
 	end
 
 	def new
@@ -9,11 +10,13 @@ class Admins::RestaurantsController < ApplicationController
 	end
 
 	def create
-		@restaurant = Restaurant.create(restaurant_params)
+		@restaurant = Restaurant.new(restaurant_params)
 
 		respond_to do |format|
 			if @restaurant.save
-				format.html {  }
+				format.html { redirect_to admins_restaurants_path }
+			else
+				format.html { render 'new' }
 			end
 		end
 	end
@@ -27,6 +30,6 @@ class Admins::RestaurantsController < ApplicationController
 	private
 
 		def restaurant_params
-			require(:restaraunt).permit(:name, :address, :phone, :fax, :website, :active, :latitude, :longitude)
+			params.require(:restaurant).permit(:name, :address, :phone, :fax, :website, :active, :latitude, :longitude)
 		end
 end

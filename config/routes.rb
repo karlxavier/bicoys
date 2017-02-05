@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
 	namespace :admins do
 		get '/', to: 'restaurants#dashboard', as: ''
-		resources :restaurants, only: [:new, :create, :edit, :update] do
+		resources :restaurants, only: [:index, :new, :create, :edit, :update] do
 			resources :menus, only: [:new, :create, :edit, :update]
 			resources :orders do
 				resources :order_items

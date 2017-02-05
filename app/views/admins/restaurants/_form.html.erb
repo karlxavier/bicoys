@@ -1,51 +1,78 @@
 <div class="wrapper wrapper-content animated fadeInRight ecommerce">
-	<div class="row">
-		<div class="col-lg-12">
-			<div class="tabs-container">
-				<ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true"> Resto info</a></li>
-                    <li class=""><a data-toggle="tab" href="#tab-2"> Location Map</a></li>
-                    <li class=""><a data-toggle="tab" href="#tab-3"> Images</a></li>
-                </ul>
-                <div class="tab-content">
-                	<div id="tab-1" class="tab-pane active">
-                		<div class="panel-body">
-                			<fieldset class="form-horizontal">
-                				<div class="form-group"><label class="col-sm-2 control-label">Name:</label>
-                                    <div class="col-sm-10"><input type="text" class="form-control" placeholder="Restaurant's name"></div>
-                                </div>
-                                <div class="form-group"><label class="col-sm-2 control-label">Address:</label>
-                                    <div class="col-sm-10"><input type="text" class="form-control" placeholder="Full Address"></div>
-                                </div>
-                                <div class="form-group"><label class="col-sm-2 control-label">Phone:</label>
-                                    <div class="col-sm-10"><input type="text" class="form-control" placeholder="Phone"></div>
-                                </div>
-                                <div class="form-group"><label class="col-sm-2 control-label">Fax:</label>
-                                    <div class="col-sm-10"><input type="text" class="form-control" placeholder="Fax"></div>
-                                </div>
-                                <div class="form-group"><label class="col-sm-2 control-label">Website:</label>
-                                    <div class="col-sm-10"><input type="text" class="form-control" placeholder="Website if any"></div>
-                                </div>
-                                <div class="form-group"><label class="col-sm-2 control-label">Price:</label>
-                                    <div class="col-sm-10"><input type="text" class="form-control" placeholder="$160.00"></div>
-                                </div>
-                			</fieldset>
-                		</div>
-                	</div>
-                	<div id="tab-2" class="tab-pane">
-                		<div class="panel-body">
-                			<fieldset class="form-horizontal">
-                				<div class="form-group"><label class="col-sm-2 control-label">Latitude:</label>
-                                    <div class="col-sm-10"><input type="text" class="form-control" placeholder="Latitude"></div>
-                                </div>
-                                <div class="form-group"><label class="col-sm-2 control-label">Longitude:</label>
-                                    <div class="col-sm-10"><input type="text" class="form-control" placeholder="Longitude"></div>
-                                </div>
-                			</fieldset>
-                		</div>
-                	</div>
-                </div>
+	<%= form_for [:admins, @restaurant] do |f| %>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="tabs-container">
+					<ul class="nav nav-tabs">
+	                    <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true"> Resto info</a></li>
+	                    <li class=""><a data-toggle="tab" href="#tab-2"> Location Map</a></li>
+	                    <li class=""><a data-toggle="tab" href="#tab-3"> Images</a></li>
+	                </ul>
+	                <div class="tab-content">
+	                	<div id="tab-1" class="tab-pane active">
+	                		<div class="panel-body">
+	                			<div class="col-lg-"></div>
+	                	
+	                			<fieldset class="form-horizontal">
+	                				<div class="form-group"><label class="col-sm-2 control-label">Name:</label>
+	                                    <div class="col-sm-10">
+	                                    	<%= f.text_field :name, class: "form-control", placeholder: "Restaurant's Name" %>
+	                                    </div>
+	                                </div>
+	                                <div class="form-group"><label class="col-sm-2 control-label">Address:</label>
+	                                    <div class="col-sm-10">
+	                                    	<%= f.text_field :address, class: "form-control", placeholder: "Full Address" %>
+	                                    </div>
+	                                </div>
+	                                <div class="form-group"><label class="col-sm-2 control-label">Phone:</label>
+	                                    <div class="col-sm-10">
+	                                    	<%= f.text_field :phone, class: "form-control", placeholder: "Phone" %>
+	                                    </div>
+	                                </div>
+	                                <div class="form-group"><label class="col-sm-2 control-label">Fax:</label>
+	                                    <div class="col-sm-10">
+	                                    	<%= f.text_field :fax, class: "form-control", placeholder: "Fax" %>
+	                                    </div>
+	                                </div>
+	                                <div class="form-group"><label class="col-sm-2 control-label">Website:</label>
+	                                    <div class="col-sm-10">
+	                                    	<%= f.text_field :website, class: "form-control", placeholder: "Website (if any)" %>
+	                                    </div>
+	                                </div>
+	                                <div class="form-group"><label class="col-sm-2 control-label">Commission %:</label>
+	                                    <div class="col-sm-10">
+	                                    	<%= f.text_field :commission_percentage, class: "form-control", placeholder: "12%" %>
+	                                    </div>
+	                                </div>
+	                                <div class="form-group"><label class="col-sm-2 control-label">Active:</label>
+	                                    <div class="col-sm-1">
+	                                    	<%= f.check_box :active, class: "form-control", placeholder: "12%" %>
+	                                    </div>
+	                                </div>
+	                			</fieldset>
+	                		</div>
+	                	</div>
+	                	<div id="tab-2" class="tab-pane">
+	                		<div class="panel-body">
+	                			<fieldset class="form-horizontal">
+	                				<div class="form-group"><label class="col-sm-2 control-label">Latitude:</label>
+	                                    <div class="col-sm-10"><input type="text" class="form-control" placeholder="Latitude"></div>
+	                                </div>
+	                                <div class="form-group"><label class="col-sm-2 control-label">Longitude:</label>
+	                                    <div class="col-sm-10"><input type="text" class="form-control" placeholder="Longitude"></div>
+	                                </div>
+	                			</fieldset>
+	                		</div>
+	                	</div>
+	                </div>
+	                <br>
+	                <%= button_tag(type: 'Submit', class: "col-lg-3 btn btn-primary") do %>
+				        <i class="icon-ok icon-white"></i> Save
+				    <% end %> 
+				    <%= link_to 'Cancel', admins_restaurants_path, class: 'col-lg-3 btn btn-default', style: 'margin-left: 10px;' %>
+
+				</div>
 			</div>
 		</div>
-	</div>
+	<% end %>
 </div>

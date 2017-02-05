@@ -54,11 +54,12 @@
                 	<li>
 	                    <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Restaurants</span> <span class="fa arrow"></span></a>
 	                    <ul class="nav nav-second-level collapse">
-	                        <li><a href="index.html">All Restaurants</a></li>
+	                        <li>
+	                        	<%= link_to 'All Restaurants', admins_restaurants_path %>
+	                        </li>
 	                        <li>
 	                        	<%= link_to 'Add New Restaurant', new_admins_restaurant_path %>
 	                        </li>
-	                        <li><a href="dashboard_3.html">Update Resturant</a></li>
 	                    </ul>
 	                </li>
                 <% end %>
