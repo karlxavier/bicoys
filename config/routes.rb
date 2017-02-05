@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 			  		registrations: "admins/registrations",
 			  		sessions: "admins/sessions"
 			  	} do
-		get '/admins/sign_out' => 'admins/sessions#destroy'
+		# get '/admins/sign_out' => 'admins/sessions#destroy'
 	end
 
 	root 'restaurant_types#index'

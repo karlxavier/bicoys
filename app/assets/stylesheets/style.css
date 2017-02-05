@@ -49,11 +49,11 @@ h5 {
 .nav > li.active > a {
   color: #ffffff;
 }
-/*.navbar-default .nav > li > a:hover,
-.navbar-default .nav > li > a:focus {
+.navbar-default-style .nav > li > a:hover,
+.navbar-default-style .nav > li > a:focus {
   background-color: #293846;
   color: white;
-}*/
+}
 .nav .open > a,
 .nav .open > a:hover,
 .nav .open > a:focus {
@@ -69,8 +69,8 @@ h5 {
 .navbar {
   border: 0;
 }
-.navbar-default {
-  background-color: transparent;
+.navbar-default-style {
+  background-color: #2f4050;
   border-color: #2f4050;
 }
 .navbar-top-links li {

@@ -2140,8 +2140,8 @@ Team style
 Form elements
 */
 /**from inputs**/
-input[type="text"],
-input[type="password"], input[type="email"], select.form-control {
+
+input[type="password"], input[type="email"] {
   height: 50px;
 }
 

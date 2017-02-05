@@ -11,6 +11,7 @@
   </head>
 
   <body>
+  	<% if !(controller.class.name.split("::").first=="Admins") %>
   		<% if current_page?(root_path) %>
   			<header class="top-header navbar navbar-default header-transparent navbar-fixed-top yamm shirnk">
   		<% else %>
@@ -26,40 +27,29 @@
 		            </button>
 		            <a class="navbar-brand" href="index.html">Logo</a>
 		        </div>
-		        <div id="navbar" class="navbar-collapse collapse">
-		        	<ul class="nav navbar-nav navbar-right">
-		        		<li>
-		        			<a href="#home">All Restaurants</a>
-		        		</li>
-		        		<li>
-		        			<a href="#home">Most Selling</a>
-		        		</li>
-		        		<% if controller.class.name.split("::").first=="Admins" %>
-			        		<% if admin_signed_in? %>
-				        		<li>
-				        			<a href="#home">My Account</a>
-				        		</li>
-				        	<% else %>
-				        		<li>
-				        			<%= link_to 'Login', new_admin_session_path %>
-				        		</li>
-				        	<% end %>
-				        <% else %>
-				        	<% if user_signed_in? %>
-				        		<li>
-				        			<a href="#home">My Account</a>
-				        		</li>
-				        	<% else %>
-				        		<li>
-				        			<%= link_to 'Login', new_user_session_path %>
-				        		</li>
-				        	<% end %>
-			        	<% end %>
-		        	</ul>
-		        </div>
+			        <div id="navbar" class="navbar-collapse collapse">
+			        	<ul class="nav navbar-nav navbar-right">
+			        		<li>
+			        			<a href="#home">All Restaurants</a>
+			        		</li>
+			        		<li>
+			        			<a href="#home">Most Selling</a>
+			        		</li>
+				        		<% if user_signed_in? %>
+					        		<li>
+					        			<a href="#home">My Account</a>
+					        		</li>
+					        	<% else %>
+					        		<li>
+					        			<%= link_to 'Login', new_user_session_path %>
+					        		</li>
+					        	<% end %>
+			        	</ul>
+			        </div>
+		        
 	  		</div>
   		</header>
-	  	
+	<% end %>
     <%= yield %>
   </body>
 </html>
