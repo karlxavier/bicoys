@@ -1,8 +1,12 @@
 class Admins::RestaurantsController < ApplicationController
 	before_action :authenticate_admin!
+	before_action :set_restaurant, only:[:edit, :update, :show]
 
 	def index
 		@restaurants = Restaurant.all
+	end
+
+	def show
 	end
 
 	def new
@@ -22,14 +26,26 @@ class Admins::RestaurantsController < ApplicationController
 	end
 
 	def edit
+		@restaurant = Restaurant.find(params[:id])
 	end
 
 	def update
+		respond_to do |format|
+			if @restaurant.update_attributes(restaurant_params)
+				format.html { redirect_to admins_restaurants_path }
+			else
+				format.html { render 'edit' }
+			end
+		end
 	end
 
 	private
 
 		def restaurant_params
-			params.require(:restaurant).permit(:name, :address, :phone, :fax, :website, :active, :latitude, :longitude)
+			params.require(:restaurant).permit(:name, :address, :phone, :fax, :website, :commission_percentage, :active, :latitude, :longitude, {images: []})
+		end
+
+		def set_restaurant
+			@restaurant = Restaurant.find(params[:id])
 		end
 end
