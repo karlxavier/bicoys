@@ -5715,6 +5715,8 @@ body.body-small .vote-icon {
 }
 .lightBoxGallery img {
   margin: 5px;
+  height: 100px;
+  width: 100px;
 }
 #small-chat {
   position: fixed;
