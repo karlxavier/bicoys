@@ -8,7 +8,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
  
   storage :fog
-  # storage :fog
+
+  
+  configure do |config|
+    config.remove_previously_stored_files_after_update = false
+  end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -21,6 +25,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     version :preview  { process :resize_to_fit => [128, 128] }
     version :full     { process :resize_to_fit => [1024, 768] }
   end
+
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url

@@ -31,10 +31,16 @@ class Admins::RestaurantsController < ApplicationController
 
 	def update
 		respond_to do |format|
+
 			if @restaurant.update_attributes(restaurant_params)
+				  if params[:images]
+		        params[:images].each { |image|
+		          puts image
+		        }
+		      end
 				format.html { redirect_to admins_restaurants_path }
 			else
-				format.html { render 'edit' }
+				format.html { render 'edit' } 
 			end
 		end
 	end
@@ -48,4 +54,5 @@ class Admins::RestaurantsController < ApplicationController
 		def set_restaurant
 			@restaurant = Restaurant.find(params[:id])
 		end
+
 end
