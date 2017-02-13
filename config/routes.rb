@@ -23,11 +23,11 @@ Rails.application.routes.draw do
 		get '/', to: 'restaurants#dashboard', as: ''
 		resources :restaurants, only: [:index, :new, :create, :edit, :update] do
 			resources :menus, only: [:new, :create, :edit, :update]
-			resources :images, only: [:create]
 			resources :orders do
 				resources :order_items
 			end
 		end
+		resources :restaurant_images, only: [:create, :destroy]
 	end
 
 end

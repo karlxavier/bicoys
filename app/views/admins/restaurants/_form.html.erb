@@ -1,5 +1,5 @@
 <div class="wrapper wrapper-content animated fadeInRight ecommerce">
-	<%= form_for [:admins, @restaurant] do |f| %>
+	<%= form_for [:admins, @restaurant], html: { multiple: true } do |f| %>
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="tabs-container">
@@ -16,11 +16,11 @@
 	                				<div class="form-group">
 	                					<div class="col-sm-2"></div>
 		                				<div class="col-sm-2">
-			                				<% @restaurant.profile_image.each do |pimage, i| %>
-		            							<%= image_tag pimage.url(:web, :full), style: "width: 220px; height: 220px; border-radius: 3px;" %>
-		            						<% end %>
+			               
+		            							<%= image_tag @restaurant.profile_image.url(:web, :full), style: "width: 220px; height: 190px; border-radius: 3px;" %>
+		            			
 			                				<br>
-			                				<%= f.file_field :profile_image, multiple: true, class: "form-control", style: "margin-bottom: 2px; margin-top: 10px;" %>
+			                				<%= f.file_field :profile_image, class: "form-control", style: "margin-bottom: 2px; margin-top: 10px;" %>
 			                			</div>
 			                
 			                		</div>
@@ -79,7 +79,8 @@
 	                			<fieldset class="form-horizontal">
 	                	
 		                				<div class="form-group">	
-		                                    <%= f.file_field :images, multiple: true, class: "form-control" %>
+		                                    
+		                                    <%= file_field_tag "images[]", type: :file, multiple: true %>
 		                                </div>
 	                  
 	                			</fieldset>
@@ -89,8 +90,8 @@
 		                				<div class="ibox-content" style="border: none;">
 		                					<h2>Restaurants Gallery</h2>
 		                					<div class="lightBoxGallery">
-		                						<% @restaurant.images.each do |image| %>
-		                							<%= image_tag image.url(:web, :preview) %>
+		                						<% @restaurant.restaurant_images.each do |images| %>
+		                							<%= image_tag images.image.url(:web, :full) %>
 		                						<% end %>
 		                					</div>
 		                				</div>
