@@ -16,9 +16,7 @@
 	                				<div class="form-group">
 	                					<div class="col-sm-2"></div>
 		                				<div class="col-sm-2">
-			               
 		            							<%= image_tag @restaurant.profile_image.url(:web, :full), style: "width: 220px; height: 190px; border-radius: 3px;" %>
-		            			
 			                				<br>
 			                				<%= f.file_field :profile_image, class: "form-control", style: "margin-bottom: 2px; margin-top: 10px;" %>
 			                			</div>
@@ -66,23 +64,39 @@
 	                		<div class="panel-body">
 	                			<fieldset class="form-horizontal">
 	                				<div class="form-group"><label class="col-sm-2 control-label">Latitude:</label>
-	                                    <div class="col-sm-10"><input type="text" class="form-control" placeholder="Latitude"></div>
+	                                    <div class="col-sm-6">
+	                                    	<%= f.text_field :latitude, class: "form-control", placeholder: "Latitude" %>
+	                                    </div>
 	                                </div>
 	                                <div class="form-group"><label class="col-sm-2 control-label">Longitude:</label>
-	                                    <div class="col-sm-10"><input type="text" class="form-control" placeholder="Longitude"></div>
+	                                    <div class="col-sm-6">
+	                                    	<%= f.text_field :longitude, class: "form-control", placeholder: "Longitude" %>
+	                                    </div>
 	                                </div>
 	                			</fieldset>
+	                			<div class="row">
+	                				<div class="ibox">
+	                					<div class="ibox-title">
+	                						<h5>Google Map</h5>
+	                					</div>
+	                					<div class="ibox-content">
+	                						<p>
+				                                Locate the restaurant's location, then I will handle the rest hehe.
+				                            </p>
+				                            <div id="g-spot" style="height: 500px;">
+				                            	
+				                            </div>
+	                					</div>
+	                				</div>
+	                			</div>
 	                		</div>
 	                	</div>
 	                	<div id="tab-3" class="tab-pane">
 	                		<div class="panel-body">
 	                			<fieldset class="form-horizontal">
-	                	
-		                				<div class="form-group">	
-		                                    
+		                				<div class="form-group">
 		                                    <%= file_field_tag "images[]", type: :file, multiple: true %>
 		                                </div>
-	                  
 	                			</fieldset>
 	                			<br>
 		                		<div class="col-lg-12">
@@ -98,7 +112,6 @@
 		                			</div>
 		                		</div>
 	                		</div>
-	                		
 	                	</div>
 	                </div>
 	                <br>
@@ -106,9 +119,68 @@
 				        <i class="icon-ok icon-white"></i> Save
 				    <% end %> 
 				    <%= link_to 'Cancel', admins_restaurants_path, class: 'col-lg-3 btn btn-default', style: 'margin-left: 10px;' %>
-
 				</div>
 			</div>
 		</div>
 	<% end %>
 </div>
+	<script type="text/javascript">
+		$(function() {
+
+			$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+			  var target = $(e.target).attr("href")
+			  if (target == '#tab-2') {
+				  var map;
+				  var myLatlng = new google.maps.LatLng(7.065547, 125.608295); // DAVAO CITY HALL AS DEFAULT LOCATION
+				  var myOptions = {
+				    zoom: 14,
+				    center: myLatlng,
+				    mapTypeId: google.maps.MapTypeId.HYBRID
+				  }
+				  map = new google.maps.Map(document.getElementById("g-spot"), myOptions);
+
+				  	var vlat = <%= @restaurant.latitude %>
+				  	var vlng = <%= @restaurant.longitude %>
+
+				  	if (vlat != '') {
+        				var myLatLng = {lat: vlat, lng: vlng};
+
+				        var map = new google.maps.Map(document.getElementById('g-spot'), {
+				          	zoom: 14,
+				          	center: myLatLng,
+				    		mapTypeId: google.maps.MapTypeId.HYBRID
+				        });
+
+				        var marker = new google.maps.Marker({
+				          position: myLatLng,
+				          map: map,
+				          title: 'Nia ko diri!'
+				        });
+				  	}
+
+					var marker;
+
+					function placeMarker(location) {
+					  if ( marker ) {
+					    marker.setPosition(location);
+					  } else {
+					    marker = new google.maps.Marker({
+					      position: location,
+					      map: map,
+					      title: "sure ka diri ila resto?"
+					    });
+					  }
+					}
+
+					google.maps.event.addListener(map, 'click', function(event) {
+					  placeMarker(event.latLng);
+					  var myLatLng = event.latLng;
+					  document.getElementById("restaurant_latitude").value = myLatLng.lat();
+					  document.getElementById("restaurant_longitude").value = myLatLng.lng();
+					});
+
+				}
+			});
+  		});
+
+	</script>
