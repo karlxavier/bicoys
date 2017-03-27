@@ -1,0 +1,2 @@
+module Restos::RestaurantsHelper
+end

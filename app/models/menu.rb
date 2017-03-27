@@ -1,6 +1,6 @@
 class Menu < ApplicationRecord
 	belongs_to :restaurant
-	belongs_to :dish_type
+	belongs_to :menu_category
 
 	validates :name, :price, presence: true
 end
