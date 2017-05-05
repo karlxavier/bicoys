@@ -1,0 +1,2 @@
+module Restos::MenuAddOnsHelper
+end
