@@ -26,8 +26,10 @@ Rails.application.routes.draw do
 
 	namespace :restos do
 		get '/', to: 'restaurants#dashboard', as: ''
-		# get '/sign_up', to: '/sign_in', as: ''
-		resources :restaurants, only: [:index, :edit, :update]
+		resources :restaurants, only: [:index, :edit, :update] do
+			resources :menus
+			resources :menu_categories
+		end
 	end
 
 

@@ -1,10 +1,29 @@
-<div class="middle-box text-center loginscreen   animated fadeInDown">
-  <div>
-      <h3>Register to <span style="color: #1ab394;">habhub.ph</span> as Admin</h3>
-      <p>Create an account for Restaurant Admins.</p>
-      <br>
-      <div class="clearfix"></div>
+<% content_for :dashboard do %>
+  <div id="right_menu">Right menu items here</div>
+  <%= content_for?(:new_dashboard) ? yield(:new_dashboard) : yield %>
+<% end %>
+<%= render template: "admins/restaurants/dashboard" %>
 
+<div id="page-wrapper" class="gray-bg">
+  <div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+          <h2 style="margin-top: 20px;">Add New Restaurant Admin</h2>
+          <ol class="breadcrumb">
+              <li>
+                  <a href="index.html">Dashboard</a>
+              </li>
+              <li>
+                  <a>Resto Admins</a>
+              </li>
+              <li class="active">
+                  <strong>New Admin</strong>
+              </li>
+          </ol>
+      </div>
+  </div>
+
+  <div class="middle-box text-center loginscreen animated fadeInDown" style="padding-top: 10px;">
+  <div>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'm-t'} )do |f| %>
           <div class="form-group">
             <%= f.text_field :fullname, autofocus: true, class: 'form-control', placeholder: 'Fullname' %>
@@ -14,6 +33,10 @@
           </div>
           <div class="form-group">
             <%= f.text_field :mobile_no, class: 'form-control', placeholder: 'Mobile number' %>
+          </div>
+          <p><small>This admin will be assign into which restaurant?</small></p>
+          <div class="form-group">
+            <%= f.collection_select :restaurant_id, Restaurant.all, :id, :name, class: 'form-control', style: "width: 300px;" %>
           </div>
           <div class="form-group">
             <% if @minimum_password_length %>
@@ -34,5 +57,9 @@
       <% end %>
   </div>
 </div>
+
+
+</div>
+
 
 

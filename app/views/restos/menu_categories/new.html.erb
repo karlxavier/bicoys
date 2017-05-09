@@ -1,0 +1,25 @@
+<% content_for :dashboard do %>
+  <div id="right_menu">Right menu items here</div>
+  <%= content_for?(:new_dashboard) ? yield(:new_dashboard) : yield %>
+<% end %>
+<%= render template: "restos/restaurants/dashboard" %>
+
+<div id="page-wrapper" class="gray-bg">
+	<div class="row wrapper border-bottom white-bg page-heading">
+		<div class="col-lg-10">
+	        <h2 style="margin-top: 20px;">Add New Category</h2>
+	        <ol class="breadcrumb">
+	            <li>
+	                <a href="index.html">Dashboard</a>
+	            </li>
+	            <li>
+	                <a>Categories</a>
+	            </li>
+	            <li class="active">
+	                <strong>New Category</strong>
+	            </li>
+	        </ol>
+	    </div>
+	</div>
+	<%= render 'form' %>
+</div>

@@ -1,0 +1,18 @@
+<div class="middle-box text-center loginscreen   animated fadeInDown">
+  <div>
+      <h3>Login to <span style="color: #1ab394;">habhub.ph</span> as Resto Admin</h3>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'm-t'} )do |f| %>
+          <div class="form-group">
+            <%= f.email_field :email, class: 'form-control', placeholder: 'Email' %>
+          </div>
+          <div class="form-group">
+            <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password' %>
+          </div>
+          <div class="form-group">
+            <%= f.submit "Login", class: 'btn btn-primary block full-width m-b' %>
+          </div>
+          <p class="m-t"> <small>GG Technologies Copyright © 2016</small> </p>
+      <% end %>
+  </div>
+</div>
