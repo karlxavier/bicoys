@@ -8,6 +8,8 @@ class Menu < ApplicationRecord
 	validates :name, presence: true
 	validates :price, presence: true, numericality: true
 
+	mount_uploader :image, MenuImageUploader
+
 	private
 
 		def compute_total_price

@@ -42,7 +42,7 @@ class Restos::MenusController < ApplicationController
 		end
 
 		def menu_params
-			params.require(:menu).permit(:name, :description, :price, :active, :menu_category_id)
+			params.require(:menu).permit(:name, :description, :price, :active, :menu_category_id, :image)
 		end
 
 end
