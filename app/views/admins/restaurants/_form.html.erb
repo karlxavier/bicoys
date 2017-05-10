@@ -1,5 +1,5 @@
 <div class="wrapper wrapper-content animated fadeInRight ecommerce">
-	<%= form_for [:admins, @restaurant], html: { multiple: true } do |f| %>
+	<%= form_for [:admins, @restaurant] do |f| %>
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="tabs-container">
@@ -16,9 +16,15 @@
 	                				<div class="form-group">
 	                					<div class="col-sm-2"></div>
 		                				<div class="col-sm-2">
-		            							<%= image_tag @restaurant.profile_image.url(:web, :full), style: "width: 220px; height: 190px; border-radius: 3px;" %>
+		                					<% if @restaurant.profile_image.present? %>
+		                						<%= image_tag @restaurant.profile_image.url(:web, :full), style: "width: 220px; height: 190px; border-radius: 3px;" %>
+		                					<% else %>
+		                						<%= image_tag 'default_profile_resto.png', style: "width: 220px; height: 190px; border-radius: 3px;" %>
+		                					<% end %>
+		            							
 			                				<br>
 			                				<%= f.file_field :profile_image, class: "form-control", style: "margin-bottom: 2px; margin-top: 10px;" %>
+			                		
 			                			</div>
 			                
 			                		</div>

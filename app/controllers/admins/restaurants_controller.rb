@@ -36,7 +36,9 @@ class Admins::RestaurantsController < ApplicationController
 	end
 
 	def update
-
+		# puts '***********************'
+		# puts params[:profile_image]
+		# @restaurant.profile_image = params[:pimage]
 		respond_to do |format|
 			if @restaurant.update_attributes(restaurant_params)
 				if params[:images]
