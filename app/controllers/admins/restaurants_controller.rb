@@ -12,7 +12,8 @@ class Admins::RestaurantsController < ApplicationController
 
 	def new
 		@restaurant = Restaurant.new
-		# @restaurant.restaurant_images.build
+		@lat = '7.065547'
+		@lng = '125.608295'
 	end
 
 	def create
@@ -33,12 +34,16 @@ class Admins::RestaurantsController < ApplicationController
 	end
 
 	def edit
+		if @restaurant.latitude.present?
+			@lat = @restaurant.latitude
+			@lng = @restaurant.longitude
+		else
+			@lat = '7.065547'
+			@lng = '125.608295'
+		end
 	end
 
 	def update
-		# puts '***********************'
-		# puts params[:profile_image]
-		# @restaurant.profile_image = params[:pimage]
 		respond_to do |format|
 			if @restaurant.update_attributes(restaurant_params)
 				if params[:images]
@@ -58,7 +63,7 @@ class Admins::RestaurantsController < ApplicationController
 
 		def restaurant_params
 			# params.require(:restaurant).permit(:name, :address, :phone, :fax, :website, :commission_percentage, :active, :latitude, :longitude, restaurant_images_attributes: [:id, :restaurant_id, :image])
-			params.require(:restaurant).permit(:name, :address, :phone, :fax, :website, :commission_percentage, :active, :latitude, :longitude, :profile_image)
+			params.require(:restaurant).permit(:name, :address, :phone, :fax, :website, :commission_percentage, :active, :latitude, :longitude, :profile_image, :restaurant_type_id)
 		end
 
 		def set_restaurant

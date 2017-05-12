@@ -2,8 +2,8 @@
 <section class="fullscreen-cover parallax intro-bg-1" id="home" data-stellar-background-ratio="0.5" style="background-position: 0px 0px;">
     <div style="background-color: rgba(0,0,0,0.4); height: 100%; width: 100%;">
         <div class="container v-align-transform text-center">
-            <h1 class="text-uppercase margin-b-10">Welcome to versa</h1>
-            <p class="lead">Subtitle goes here</p>
+            <h1 class="text-uppercase margin-b-10">Welcome to habhub</h1>
+            <p class="lead">ayaw ka pasmo ky maka BUANG!</p>
             <a href="javascript:void(0)" class="btn btn-lg btn-border btn-hvr btn-rounded hvr-sweep-to-top">Know more</a>              
         </div><!--end-container-->
     </div>
@@ -24,97 +24,37 @@
                     <div id="menu1" class="tab-pane fade active in">
                         <h3 class="font-bold m-b-xs">Restaurants</h3>
                         <div class="row">
-                            <div class="col-sm-3 col-xs-12">
-                                <div class="imageBox">
-                                    <a href="single-product.html">
-                                        <div class="productImage clearfix" style="background-image: url('<%= image_path 'restos/resto1.jpg' %>');"></div>
-                                    </a>
-                                    <div class="productCaption clearfix">
-                                        <h5><a href="single-product.html">Dencios Restaurant</a></h5>
-                                        <p><small>Ilustre St. Davao City</small></p>
+                            <% @resto_recent.each do |resto| %>
+                                <div class="col-sm-3 col-xs-12">
+                                    <div class="imageBox">
+                                        <%= link_to restaurant_path(resto) do %>
+                                            <div class="productImage clearfix" style="background-image: url('<%= image_path resto.profile_image.url(:web, :full) %>');"></div>
+                                        <% end %>
+                                        <div class="productCaption clearfix">
+                                            <h5>
+                                                <%= link_to resto.name, restaurant_path(resto) %>
+                                            </h5>
+                                            <p><small><%= resto.address %></small></p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-3 col-xs-12">
-                                <div class="imageBox">
-                                    <a href="single-product.html">
-                                        <div class="productImage clearfix" style="background-image: url('<%= image_path 'restos/resto2.jpg' %>');"></div>
-                                    </a>
-                                    <div class="productCaption clearfix">
-                                        <h5><a href="single-product.html">Luz Kinilaw</a></h5>
-                                        <p><small>Boulivard St. Duol Baryo Pogi. Davao City</small></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 col-xs-12">
-                                <div class="imageBox">
-                                    <a href="single-product.html">
-                                        <div class="productImage clearfix" style="background-image: url('<%= image_path 'restos/resto3.jpg' %>');"></div>
-                                    </a>
-                                    <div class="productCaption clearfix">
-                                        <h5><a href="single-product.html">Rhea's Resto</a></h5>
-                                        <p><small>Saturn St. GSIS, Matina, Davao City</small></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 col-xs-12">
-                                <div class="imageBox">
-                                    <a href="single-product.html">
-                                        <div class="productImage clearfix" style="background-image: url('<%= image_path 'restos/resto4.jpg' %>');"></div>
-                                    </a>
-                                    <div class="productCaption clearfix">
-                                        <h5><a href="single-product.html">Silver Bucket</a></h5>
-                                        <p><small>Sulod sa SM Ecoland Davao City</small></p>
-                                    </div>
-                                </div>
-                            </div>
+                            <% end %>
                         </div>
                         <h3 class="font-bold m-b-xs">Bakeries</h3>
                         <div class="row">
-                            <div class="col-sm-3 col-xs-12">
-                                <div class="imageBox">
-                                    <a href="single-product.html">
-                                        <div class="productImage clearfix" style="background-image: url('<%= image_path 'restos/bake1.jpeg' %>');"></div>
-                                    </a>
-                                    <div class="productCaption clearfix">
-                                        <h5><a href="single-product.html">Dencios Restaurant</a></h5>
-                                        <p><small>Ilustre St. Davao City</small></p>
+                            <% @bake_recent.each do |resto| %>
+                                <div class="col-sm-3 col-xs-12">
+                                    <div class="imageBox">
+                                        <a href="single-product.html">
+                                            <div class="productImage clearfix" style="background-image: url('<%= image_path resto.profile_image.url(:web, :full) %>');"></div>
+                                        </a>
+                                        <div class="productCaption clearfix">
+                                            <h5><a href="single-product.html"><%= resto.name %></a></h5>
+                                            <p><small><%= resto.address %></small></p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-3 col-xs-12">
-                                <div class="imageBox">
-                                    <a href="single-product.html">
-                                        <div class="productImage clearfix" style="background-image: url('<%= image_path 'restos/bake2.jpeg' %>');"></div>
-                                    </a>
-                                    <div class="productCaption clearfix">
-                                        <h5><a href="single-product.html">Luz Kinilaw</a></h5>
-                                        <p><small>Boulivard St. Duol Baryo Pogi. Davao City</small></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 col-xs-12">
-                                <div class="imageBox">
-                                    <a href="single-product.html">
-                                        <div class="productImage clearfix" style="background-image: url('<%= image_path 'restos/bake3.jpeg' %>');"></div>
-                                    </a>
-                                    <div class="productCaption clearfix">
-                                        <h5><a href="single-product.html">Rhea's Resto</a></h5>
-                                        <p><small>Saturn St. GSIS, Matina, Davao City</small></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 col-xs-12">
-                                <div class="imageBox">
-                                    <a href="single-product.html">
-                                        <div class="productImage clearfix" style="background-image: url('<%= image_path 'restos/bake4.jpeg' %>');"></div>
-                                    </a>
-                                    <div class="productCaption clearfix">
-                                        <h5><a href="single-product.html">Silver Bucket</a></h5>
-                                        <p><small>Sulod sa SM Ecoland Davao City</small></p>
-                                    </div>
-                                </div>
-                            </div>
+                            <% end %>
                         </div>
                     </div>
                     <div id="menu2" class="tab-pane fade">
