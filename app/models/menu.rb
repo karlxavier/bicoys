@@ -10,6 +10,8 @@ class Menu < ApplicationRecord
 
 	mount_uploader :image, MenuImageUploader
 
+	scope :resto_menus, -> (resto_id) { joins(:menu_category).where( restaurant_id: resto_id, active: true ) }
+
 	private
 
 		def compute_total_price

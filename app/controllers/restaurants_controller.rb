@@ -2,7 +2,8 @@ class RestaurantsController < ApplicationController
 
 	def show
 		@restaurant = Restaurant.find(params[:id])
-		@mymenus = @restaurant.menus.all
+		@menus = Menu.resto_menus(params[:id])
+		@menu_cats = MenuCategory.menu_cats(params[:id])
 	end
 
 end

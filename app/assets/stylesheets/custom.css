@@ -3573,7 +3573,9 @@ ul li {
 
 .menu-image {
   height: 80px; 
+  width: 80px;
   background-size: cover; 
   background-repeat: no-repeat; 
   background-position: center center;
 }
+
