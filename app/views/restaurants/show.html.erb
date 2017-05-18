@@ -80,7 +80,7 @@
 					                        <div class="ibox-title" style="border-style: none;">
 					                            <h5>Categories</h5>
 					                        </div>
-					                        <div class="menu-cat ibox-content" style="padding: 15px 0 20px 0;">
+					                        <div style="width: 150px;">
 					     
 						                        	<% @menu_cats.each do |menu_cat| %>
           											
@@ -123,22 +123,33 @@
                         </div>
                         <div id="tab-5" class="tab-pane">
                             <div class="panel-body">
-                                <strong>Donec quam felis</strong>
-
-                                <p>Thousand unknown plants are noticed by me: when I hear the buzz of the little world among the stalks, and grow familiar with the countless indescribable forms of the insects
-                                    and flies, then I feel the presence of the Almighty, who formed us in his own image, and the breath </p>
-
-                                <p>I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite
-                                    sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet.</p>
+                                <strong>Image Gallery</strong>
+                                <p>Discoverer the photos we had shared to our happy customers.</p>
+                                <div class="lightBoxGallery">
+                                    <% @restaurant.restaurant_images.each do |image| %>
+                                        <a href="<%= image_path image.image.url(:web, :full) %>" title="Image from Unsplash" data-gallery="">
+                                            <%= image_tag image.image.url(:web, :full), style: "width: 100px; height: 100px;" %>
+                                        </a>
+                                    <% end %>
+                                    <div id="blueimp-gallery" class="blueimp-gallery" style="display: none;">
+                                        <div class="slides" style="width: 96552px;"></div>
+                                        <h3 class="title">GG</h3>
+                                        <a class="prev">‹</a>
+                                        <a class="next">›</a>
+                                        <a class="close">×</a>
+                                        <a class="play-pause"></a>
+                                        <ol class="indicator"></ol>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div id="tab-6" class="tab-pane">
                             <div class="panel-body">
-                                <strong>This is we are located</strong>
-
-                                <p>Thousand unknown plants are noticed by me: when I hear the buzz of the little world among the stalks, and grow familiar with the countless indescribable forms of the insects
-                                    and flies, then I feel the presence of the Almighty, who formed us in his own image, and the breath </p>
-
+                                <strong>Locate and Visit Us!</strong>
+                                <p><%= @restaurant.address %></p>
+                                <div id="g-spot" style="height: 500px;">
+                                                
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -169,16 +180,52 @@
     </div>
 </section>
 <script type="text/javascript">
-$('[data-clampedwidth]').each(function () {
-    var elem = $(this);
-    var parentPanel = elem.data('clampedwidth');
-    var resizeFn = function () {
-        var sideBarNavWidth = $(parentPanel).width() - parseInt(elem.css('paddingLeft')) - parseInt(elem.css('paddingRight')) - parseInt(elem.css('marginLeft')) - parseInt(elem.css('marginRight')) - parseInt(elem.css('borderLeftWidth')) - parseInt(elem.css('borderRightWidth'));
-        elem.css('width', sideBarNavWidth);
-    };
+    $('[data-clampedwidth]').each(function () {
+        var elem = $(this);
+        var parentPanel = elem.data('clampedwidth');
+        var resizeFn = function () {
+            var sideBarNavWidth = $(parentPanel).width() - parseInt(elem.css('paddingLeft')) - parseInt(elem.css('paddingRight')) - parseInt(elem.css('marginLeft')) - parseInt(elem.css('marginRight')) - parseInt(elem.css('borderLeftWidth')) - parseInt(elem.css('borderRightWidth'));
+            elem.css('width', sideBarNavWidth);
+        };
 
-    resizeFn();
-    $(window).resize(resizeFn);
-});
-
+        resizeFn();
+        $(window).resize(resizeFn);
+    });
 </script>
+<script type="text/javascript">
+        $(function() {
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+              var target = $(e.target).attr("href")
+              if (target == '#tab-6') {
+                  var map;
+                  var myLatlng = new google.maps.LatLng(7.065547, 125.608295); // DAVAO CITY HALL AS DEFAULT LOCATION
+                  var myOptions = {
+                    zoom: 14,
+                    center: myLatlng,
+                    mapTypeId: google.maps.MapTypeId.HYBRID
+                  }
+                  map = new google.maps.Map(document.getElementById("g-spot"), myOptions);
+
+                    var vlat = <%= @restaurant.latitude %>
+                    var vlng = <%= @restaurant.longitude %>
+
+                    if (vlat != '') {
+                        var myLatLng = {lat: vlat, lng: vlng};
+
+                        var map = new google.maps.Map(document.getElementById('g-spot'), {
+                            zoom: 14,
+                            center: myLatLng,
+                            mapTypeId: google.maps.MapTypeId.HYBRID
+                        });
+
+                        var marker = new google.maps.Marker({
+                          position: myLatLng,
+                          map: map,
+                          title: 'Nia ko diri!'
+                        });
+                    }
+                }
+            });
+        });
+
+    </script>

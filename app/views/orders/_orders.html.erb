@@ -1,13 +1,21 @@
 <% if order.order_items.exists? %>
 
-	<% order.order_items.each do |myorder| %>
-		<div class="alert alert-info alert-dismissable" style="margin-bottom: 5px;">
-		    <%= link_to myorder, { method: :delete, remote: true } do %>
-		    	<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-		    <% end %>
-		    <%= myorder.menu.name %>
+		<div class="scroll_content" style="overflow: hidden; width: auto; max-height: 50vh;">
+			<% order.order_items.each do |myorder| %>
+				<div class="alert alert-info alert-dismissable" style="margin-bottom: 5px; ">
+				    <%= link_to myorder, { method: :delete, remote: true } do %>
+				    	<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+				    <% end %>
+		    		<span><%= myorder.menu.name %></span>
+		    		<div style="float: right;">
+		    			<span class="small">
+		    				₱ <%= number_with_precision(myorder.unit_price, :precision => 0, :delimiter => ',') %> x <%= myorder.quantity %>
+		    			</span>
+		    		</div>
+				</div>
+			<% end %>
 		</div>
-	<% end %>
+
 
     <div class="ibox-footer textContainer" style="margin-top: 15px;">
     	<div class="row">
@@ -17,7 +25,7 @@
     		<div class="col-lg-6">
     			<div class="text-right">
     				<h5>
-    				₱ <%= number_with_precision(order.subtotal, :precision => 2, :delimiter => ',') %>
+    				₱ <%= number_with_precision(order.subtotal, :precision => 0, :delimiter => ',') %>
     				</h5>
     			</div>
     		</div>
@@ -26,7 +34,7 @@
     		</div>
     		<div class="col-lg-6">
     			<div class="text-right">
-    				<h5>50</h5>
+    				<h5>₱ 50</h5>
     			</div>
     		</div>
     		<div class="col-lg-6">
@@ -34,7 +42,7 @@
     		</div>
     		<div class="col-lg-6">
     			<div class="text-right">
-    				<h4>₱ <%= number_with_precision(order.total, :precision => 2, :delimiter => ',') %></h4>
+    				<h4>₱ <%= number_with_precision(order.total, :precision => 0, :delimiter => ',') %></h4>
     			</div>
     		</div>
     	</div>
@@ -53,3 +61,14 @@
 	</p>
 	<h3 class="text-center" style="color: #999c9e;">You dont have orders yet.</h3>
 <% end %>
+<script>
+
+    $(document).ready(function () {
+
+        $('.scroll_content').slimscroll({
+            height: '50%'
+        })
+
+    });
+
+</script>
