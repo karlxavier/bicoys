@@ -1578,7 +1578,7 @@ Intro sections
   height: 2px;
 }
 .progress .progress-bar {
-  background-color: #09c4f2;
+  /*background-color: #09c4f2;*/
   line-height: 2px;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -3582,3 +3582,10 @@ ul li {
 .affix {
       top: 70px !important;
   }
+
+.restaurant-primary-image {
+    width: 100%;
+    height: 320px;
+    background-size: cover !important;
+    background-position: 50% !important;
+}

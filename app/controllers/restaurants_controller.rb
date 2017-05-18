@@ -1,6 +1,10 @@
 class RestaurantsController < ApplicationController
-	before_action :set_resto
-	before_action :set_order
+	before_action :set_resto, except: [:index]
+	before_action :set_order, except: [:index]
+
+	def index
+		@restaurants = Restaurant.all
+	end
 
 	def show
 		@menus = Menu.resto_menus(params[:id])

@@ -1,0 +1,40 @@
+<section class="container">
+    <div class="space-70"></div>
+        <div class="row">
+        	<div class="col-xs-12" id="resto_banner">
+        		<div class="wrapper wrapper-content" style="padding-bottom: 0;">
+	        		<div class="row">
+	        			<% @restaurants.each do |restaurant| %>
+	        				
+			        			<div class="col-md-4">
+				                    <div class="ibox float-e-margins">
+				                    	<%= link_to restaurant_path(restaurant) do %>
+				                        <div class="ibox product-box">
+				                            <div class="ibox-content no-padding border-left-right">
+				                            	<div class="product-imitation restaurant-primary-image" style="background: url('<%= restaurant.profile_image.url(:web) %>'); height: 170px;">
+				                            	</div>
+				                            </div>
+				                            <div class="ibox-content profile-content product-desc" style="padding-bottom: 20px;">
+				                            	<% if restaurant.created_at > 8.days.ago %>
+			                                    	<span class="product-new">
+					                    				NEW
+					                    			</span>
+					                    		<% end %>
+				                            	<h3 style="margin-bottom: 3px;"><%= restaurant.name %></h3>
+				                                <p class="text-muted"><%= restaurant.address %></p>
+				                        <% end %>
+				                                <span class="label label-primary">Open</span>
+				                                <span class="pull-right small text-muted">
+				                                	<i class="fa fa-thumbs-up"> </i> 100 / <i class="fa fa-thumbs-down"> </i> 30
+				                                </span>
+				                            </div>
+					                    </div>
+					                </div>
+		                    	</div>
+		                    
+	                    <% end %>
+	        		</div>
+        		</div>
+        	</div>
+        </div>
+</section>

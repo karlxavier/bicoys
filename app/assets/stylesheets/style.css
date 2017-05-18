@@ -4096,6 +4096,7 @@ table.table-mail tr td {
 }
 .progress-bar {
   background-color: #1ab394;
+  /*background-color: #1c84c6;*/
 }
 .progress-small,
 .progress-small .progress-bar {
@@ -5545,11 +5546,11 @@ table.shoping-cart-table tr td:last-child {
 .product-name:focus {
   color: #1ab394;
 }
-.product-price {
+.product-new {
   font-size: 14px;
   font-weight: 600;
   color: #ffffff;
-  background-color: #1ab394;
+  background-color: #f8ac59;
   padding: 6px 12px;
   position: absolute;
   top: -32px;
