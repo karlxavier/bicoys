@@ -2,6 +2,7 @@ class Menu < ApplicationRecord
 	belongs_to :restaurant
 	belongs_to :menu_category
 	has_many :menu_add_ons
+	has_many :order_items
 
 	before_save :compute_total_price
 

@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     	registrations: 'restos/registrations'
     }
 
+    resources :order_items
+    resources :orders
 
 	resources :restaurants, only: [:index, :show] do
 		resources :menus, only: [:index, :show]

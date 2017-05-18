@@ -1,0 +1,55 @@
+<% if order.order_items.exists? %>
+
+	<% order.order_items.each do |myorder| %>
+		<div class="alert alert-info alert-dismissable" style="margin-bottom: 5px;">
+		    <%= link_to myorder, { method: :delete, remote: true } do %>
+		    	<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+		    <% end %>
+		    <%= myorder.menu.name %>
+		</div>
+	<% end %>
+
+    <div class="ibox-footer textContainer" style="margin-top: 15px;">
+    	<div class="row">
+    		<div class="col-lg-6">
+    			<h5>Subtotal</h5>
+    		</div>
+    		<div class="col-lg-6">
+    			<div class="text-right">
+    				<h5>
+    				₱ <%= number_with_precision(order.subtotal, :precision => 2, :delimiter => ',') %>
+    				</h5>
+    			</div>
+    		</div>
+    		<div class="col-lg-6">
+    			<h5>Service Charge</h5>
+    		</div>
+    		<div class="col-lg-6">
+    			<div class="text-right">
+    				<h5>50</h5>
+    			</div>
+    		</div>
+    		<div class="col-lg-6">
+    			<h4>Total</h4>
+    		</div>
+    		<div class="col-lg-6">
+    			<div class="text-right">
+    				<h4>₱ <%= number_with_precision(order.total, :precision => 2, :delimiter => ',') %></h4>
+    			</div>
+    		</div>
+    	</div>
+        <span class="text-muted small" style="margin-top: 20px;">
+            * Minimum order depends in your location and the resto.
+        </span>
+        <div class="m-t-sm">
+            <a href="#" class="btn btn-block btn-primary">
+                <i class="fa fa-shopping-cart"></i> Checkout
+            </a>
+        </div>
+    </div>
+<% else %>
+	<p class="text-center" style="color: #999c9e;">
+		<i class="fa fa-shopping-basket fa-5x"></i> 
+	</p>
+	<h3 class="text-center" style="color: #999c9e;">You dont have orders yet.</h3>
+<% end %>

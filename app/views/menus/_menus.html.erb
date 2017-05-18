@@ -1,0 +1,44 @@
+<div class="ibox-content" style="display: block; padding: 15px 0 0 0;">
+    <div class="table-responsive">
+        <table class="table shoping-cart-table">
+            <tbody>
+            	<% menu_cat.menus.each do |menu| %>
+                    <tr>
+                        <td width="80">
+                        	<% if menu.image.present? %>
+                            	<div class="productImage menu-image" style="background-image: url('<%= image_path menu.image.url(:web, :full) %>'); "></div>
+                            <% else %>
+                            	<%= image_tag 'default_menu.png', class: 'productImage', style: 'width: 80px; height: 80px;' %>
+                            <% end %>
+                        </td>
+                        <td class="desc">
+                            <h3>
+                                <a href="#" class="text-navy">
+                                    <%= menu.name %>
+                                </a>
+                            </h3>
+                            <h4>
+                                ₱ <%= number_with_precision(menu.price, :precision => 2, :delimiter => ',') %>
+                            </h4>
+                            <p class="small">
+                                <%= menu.description %>
+                            </p>
+                        </td>
+                        <td>
+                            <%= form_for order_item, remote: true do |f| %>      
+                                <div class="input-group">
+                                  <%= f.hidden_field :quantity, value: 1, min: 1 %>
+                                  <div class="input-group-btn">
+                                    <%= f.hidden_field :menu_id, value: menu.id %>
+                                    <%= f.submit "Add", class: "btn btn-outline btn-primary" %>            
+                                  </div>
+                                </div>
+                            <% end %>   
+                        </td>
+                    </tr>
+                <% end %>
+
+            </tbody>
+        </table>
+    </div>
+</div>

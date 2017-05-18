@@ -11,7 +11,8 @@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdwDvT6t-YSMvflvkPYEfPo4N-g-FPDEY" type="text/javascript"></script>
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target=".menu-cat" data-offset="50">
+
   	<% if ["Admins","Restos"].exclude? controller.class.name.split("::").first %>
   		<% if current_page?(root_path) %>
   			<header class="top-header navbar navbar-default header-transparent navbar-fixed-top yamm shirnk">
