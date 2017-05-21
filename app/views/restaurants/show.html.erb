@@ -180,10 +180,9 @@
     </div>
 </section>
 <script type="text/javascript">
-    document.addEventListener("turbolinks:load", function() {
-        
+    $(document).on("turbolinks:load", function () { 
         $('[data-clampedwidth]').each(function () {
-            // alert("x");
+            
             var elem = $(this);
             var parentPanel = elem.data('clampedwidth');
             var resizeFn = function () {
@@ -194,10 +193,15 @@
             resizeFn();
             $(window).resize(resizeFn);
         });
+            
+    });
+
+    $(document).on('turbolinks:before-cache', function() {
+      // $('[data-clampedwidth]')
     });
 </script>
 <script type="text/javascript">
-        $(function() {
+        $(document).on("turbolinks:load", function () { // subscription to the "turbolinks:load" event
             $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
               var target = $(e.target).attr("href")
               if (target == '#tab-6') {

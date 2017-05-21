@@ -1,10 +1,42 @@
 <div class="clearfix"></div>
-<section class="fullscreen-cover parallax intro-bg-1" id="home" data-stellar-background-ratio="0.5" style="background-position: 0px 0px;">
+<section class="fullscreen-cover parallax intro-bg-1" id="home" data-stellar-background-ratio="0.5" style="overflow: visible; background-position: 0px 0px;">
     <div style="background-color: rgba(0,0,0,0.4); height: 100%; width: 100%;">
         <div class="container v-align-transform text-center">
-            <h1 class="text-uppercase margin-b-10">Welcome to habhub</h1>
-            <p class="lead">ayaw ka pasmo ky maka BUANG!</p>
-            <a href="javascript:void(0)" class="btn btn-lg btn-border btn-hvr btn-rounded hvr-sweep-to-top">Know more</a>              
+            <h1 class="text-uppercase margin-b-10">habhub na!</h1>
+            <p class="lead">We deliver your favourite food in Davao City online.</p>
+            <br>
+            <div class='row'>
+                <div class="col-lg-6 col-lg-offset-3">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        </span>
+                        <select id="select-location" data-placeholder="Where's your location?" style="width: 100%; border-radius: 0;">
+                            <option></option>
+                            <optgroup label="Poblacion">
+                                <option>Bajada</option>
+                                <option>Ilustre</option>
+                            </optgroup>
+                            <optgroup label="Matina">
+                                <option>Matina Aplaya</option>
+                                <option>Ma-a</option>
+                                <option>Catalunan Grande</option>
+                            </optgroup>
+                        </select>
+                            <div class="input-group-btn">
+                                <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button" aria-expanded="false">Categories <span class="caret"></span></button>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="#">Restaurants</a></li>
+                                    <li><a href="#">Bakeries</a></li>
+                                    <li><a href="#">Caterings</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">All</a></li>
+                                </ul>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
         </div><!--end-container-->
     </div>
  
@@ -201,3 +233,12 @@
                 </div><!--row end-->
             </div>
 </section>
+<script type="text/javascript">
+    $(document).ready(function() {
+      $("#select-location").select2({
+            placeholder: "Where's your location?",
+            allowClear: true
+      });
+      // $('#select-location').select2("val", "");
+    });
+</script>

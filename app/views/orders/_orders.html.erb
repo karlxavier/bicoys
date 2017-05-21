@@ -50,9 +50,9 @@
             * Minimum order depends in your location and the resto.
         </span>
         <div class="m-t-sm">
-            <a href="#" class="btn btn-block btn-primary">
-                <i class="fa fa-shopping-cart"></i> Checkout
-            </a>
+            <%= link_to checkout_order_path(order), class: "btn btn-block btn-primary" do %>
+				<i class="fa fa-shopping-cart"></i> Checkout
+            <% end %>
         </div>
     </div>
 <% else %>

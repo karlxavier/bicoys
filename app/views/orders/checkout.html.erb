@@ -1,0 +1,111 @@
+<section class="container">
+    <div class="space-70"></div>
+    <div class="row">
+        <div class="col-xs-12" id="resto_banner">
+        	<div class="wrapper wrapper-content animated fadeInUp" style="padding-bottom: 0;">
+	        	<div class="row">
+	        		<div class="col-lg-12">
+	        			<div class="ibox">
+	        				<div class="ibox-content">
+	        					<h2>
+	        						Complete checkout process
+	        					</h2>
+	        					<div id="wizard" role="application" class="wizard clearfix">
+	        						<h1>Order Summary</h1>
+								    <div>
+								    	<div class="row">
+								    		<div class="col-lg-6">
+								    			<h3>
+										    		<i class="fa fa-shopping-basket"></i> Order Summary
+										    	</h3>
+								    		</div>
+								    		<div class="col-lg-6">
+								    			<span class="pull-right" style="margin-bottom: 10px;">
+										    		<button class="btn btn-default">
+										    			<i class="fa fa-mail-reply"></i>
+										    			Modify my Order
+										    		</button>
+										    	</span>
+								    		</div>
+								    	</div>
+								    	
+								    	
+								    	<div class="row">
+								    		<div class="col-lg-12">
+								    			<div class="wrapper wrapper-content animated fadeInRight" style="padding: 0 10px 0 10px;">
+								    				<div class="ibox-content p-xl" style="background-color: transparent; padding: 15px;">
+								    					<div class="table-responsive m-t">
+							                                <table class="table invoice-table">
+							                                    <thead>
+							                                    <tr>
+							                                        <th>Order Items</th>
+							                                        <th>Quantity</th>
+							                                        <th>Unit Price</th>
+							                                        <th>Total Price</th>
+							                                    </tr>
+							                                    </thead>
+							                                    <tbody>
+							                                    	<% @order.order_items.each do |item| %>
+									                                    <tr>
+									                                        <td>
+									                                        	<div><strong><%= item.menu.name %></strong></div>
+									                                            <small><%= item.menu.description %></small>
+									                                        </td>
+									                                        <td><%= item.quantity %></td>
+									                                        <td>₱ <%= number_with_precision(item.unit_price, :precision => 0, :delimiter => ',') %></td>
+									                                        <td>₱ <%= number_with_precision(item.total_price, :precision => 0, :delimiter => ',') %></td>
+									                                    </tr>
+								                                    <% end %>
+							                                    </tbody>
+							                                </table>
+							                                <table class="table invoice-total">
+								                                <tbody>
+								                                <tr>
+								                                    <td><strong>Sub Total :</strong></td>
+								                                    <td>₱ <%= number_with_precision(@order.subtotal, :precision => 0, :delimiter => ',') %></td>
+								                                </tr>
+								                                <tr>
+								                                    <td><strong>Service Charge :</strong></td>
+								                                    <td>₱ 50</td>
+								                                </tr>
+								                                <tr>
+								                                    <td><strong>TOTAL :</strong></td>
+								                                    <td>
+								                                    	<h3 style="margin-bottom: 2px;">
+								                                    		₱ <%= number_with_precision(@order.total, :precision => 0, :delimiter => ',') %>
+								                                    	</h3>
+								                                    </td>
+								                                </tr>
+								                                </tbody>
+								                            </table>
+														</div>
+								    				</div>
+								    			</div>
+								    		</div>
+								    	</div>
+								    </div>
+								 
+								    <h1>Delivery Address</h1>
+								    <div>
+								    	<h3><i class="fa fa-motorcycle"></i> Delivery Address</h3>
+								    </div>
+
+								    <h1>Payment</h1>
+								    <div>Second Content</div>
+
+								    <h1>Finish</h1>
+								    <div>habhub na!</div>
+                        		</div>
+	        				</div>
+	        			</div>
+	        		</div>
+	        	</div>
+        	</div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+	$(document).on("turbolinks:load", function () { // subscription to the "turbolinks:load" event
+		$("#wizard").steps();
+});
+</script>

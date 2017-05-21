@@ -20,7 +20,11 @@ Rails.application.routes.draw do
     }
 
     resources :order_items
-    resources :orders
+    resources :orders, only: [:index] do
+    	member do
+    		get 'checkout'
+    	end
+    end
 
 	resources :restaurants, only: [:index, :show] do
 		resources :menus, only: [:index, :show]
