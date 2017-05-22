@@ -1,0 +1,8 @@
+$('#restaurant_show_details').replaceWith('<%= j render partial: "restaurants/restaurant_show_details" %>');
+$('#modal-shows').replaceWith('<%= j render partial: "restaurants/error_location", distance: @distance %>');
+$('#modal-shows').modal('show');
+$(function(){
+	// var save = document.querySelector("#btn-save");
+	// save.classList.remove("disabled");
+	document.getElementById('user-location').value = "";
+});

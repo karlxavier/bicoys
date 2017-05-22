@@ -5031,8 +5031,8 @@ a.compose-mail {
   margin-right: 10px;
 }
 .profile-image {
-  width: 120px;
-  float: left;
+  /*width: 120px;*/
+  /*float: left;*/
 }
 .profile-image img {
   width: 96px;

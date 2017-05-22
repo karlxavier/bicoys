@@ -11,20 +11,10 @@
                         <span class="input-group-addon">
                             <i class="fa fa-map-marker" aria-hidden="true"></i>
                         </span>
-                        <select id="select-location" data-placeholder="Where's your location?" style="width: 100%; border-radius: 0;">
-                            <option></option>
-                            <optgroup label="Poblacion">
-                                <option>Bajada</option>
-                                <option>Ilustre</option>
-                            </optgroup>
-                            <optgroup label="Matina">
-                                <option>Matina Aplaya</option>
-                                <option>Ma-a</option>
-                                <option>Catalunan Grande</option>
-                            </optgroup>
-                        </select>
+
+                        <input id="user-location" autocomplete="off" type="" placeholder="Where's your location?" class="form-control" name="">
                             <div class="input-group-btn">
-                                <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button" aria-expanded="false">Categories <span class="caret"></span></button>
+                                <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button" aria-expanded="false">I want <span class="caret"></span></button>
                                 <ul class="dropdown-menu pull-right">
                                     <li><a href="#">Restaurants</a></li>
                                     <li><a href="#">Bakeries</a></li>
@@ -185,60 +175,15 @@
             <div class="space-40"></div>
             <div class="container-fluid no-padd">
 
-                <div class="row no-margin">
-                    <div class="col-sm-3 no-padd text-center">
-                        <div class="team-style-2">
-                            <img src="images/team-1.jpg" alt="" class="img-responsive full-img">
-                            <div class="team-overlay">
-                                <p>
-                                    <span>John Doe</span>
-                                    <em>Developer</em>
-                                </p>
-                            </div><!--team overlay end-->
-                        </div><!--team style  end-->
-                    </div><!--col end-->
-                    <div class="col-sm-3 no-padd text-center">
-                        <div class="team-style-2">
-                            <img src="images/team-2.jpg" alt="" class="img-responsive full-img">
-                            <div class="team-overlay">
-                                <p>
-                                    <span>John Doe</span>
-                                    <em>Developer</em>
-                                </p>
-                            </div><!--team overlay end-->
-                        </div><!--team style  end-->
-                    </div><!--col end-->
-                    <div class="col-sm-3 no-padd text-center">
-                        <div class="team-style-2">
-                            <img src="images/team-3.jpg" alt="" class="img-responsive full-img">
-                            <div class="team-overlay">
-                                <p>
-                                    <span>John Doe</span>
-                                    <em>Developer</em>
-                                </p>
-                            </div><!--team overlay end-->
-                        </div><!--team style  end-->
-                    </div><!--col end-->
-                    <div class="col-sm-3 no-padd text-center">
-                        <div class="team-style-2">
-                            <img src="images/team-4.jpg" alt="" class="img-responsive">
-                            <div class="team-overlay">
-                                <p>
-                                    <span>John Doe</span>
-                                    <em>Developer</em>
-                                </p>
-                            </div><!--team overlay end-->
-                        </div><!--team style  end-->
-                    </div><!--col end-->
-                </div><!--row end-->
             </div>
 </section>
 <script type="text/javascript">
     $(document).ready(function() {
-      $("#select-location").select2({
-            placeholder: "Where's your location?",
-            allowClear: true
-      });
-      // $('#select-location').select2("val", "");
+        $("#user-location").geocomplete({     
+            details: ".field",
+            types: ["geocode", "establishment"],
+            componentRestrictions: {country: "ph"},
+        });
     });
 </script>
+

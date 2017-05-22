@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  min_km: 9.99
+  max_km: 9.99
+  min_order: 1
+  service_charge: 1
+  eta_delivery: MyString
+
+two:
+  min_km: 9.99
+  max_km: 9.99
+  min_order: 1
+  service_charge: 1
+  eta_delivery: MyString

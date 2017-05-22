@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 	helper_method :current_order
+  helper_method :current_location
 
   def current_order
     if !session[:order_id].nil? && !session[:restaurant_id].nil?      
@@ -12,6 +13,28 @@ class ApplicationController < ActionController::Base
       end
     else
       Order.new
+    end
+  end
+
+  def current_location
+    if session[:user_address_id].nil?
+        if user_signed_in?
+            if current_user.user_addresses.present?
+              puts '**********USER ADD PRESENT**********'
+              current_user.user_addresses.first
+            else
+              puts '**********ADD NOT PRESENT**********'
+              UserAddress.new
+            end
+        else
+            UserAddress.new
+        end
+    else
+        if UserAddress.exists?(id: session[:user_address_id])
+            UserAddress.where(id: session[:user_address_id]).first
+        else
+            UserAddress.new
+        end
     end
   end
 

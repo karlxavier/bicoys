@@ -1,0 +1,62 @@
+<div id="restaurant_show_details">
+<% if @resto_rate.present? %>
+    
+    	<div class="col-lg-12">
+    		<div class="row">
+    			<div class="col-lg-3">
+                    <div class="widget style1 navy-bg">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <i class="fa fa-clock-o fa-5x"></i>
+                            </div>
+                            <div class="col-xs-8 text-right">
+                                <span> Store Status </span>
+                                <h2 class="font-bold">Open</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="widget style1 navy-bg">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <i class="fa fa-money fa-5x"></i>
+                            </div>
+                            <div class="col-xs-8 text-right">
+                                <span> Minimum Order </span>
+                                <h2 class="font-bold">₱ <%= number_with_precision(@resto_rate.min_order, :precision => 0, :delimiter => ',') %></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="widget style1 navy-bg">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <i class="fa fa-motorcycle fa-5x"></i>
+                            </div>
+                            <div class="col-xs-8 text-right">
+                                <span> Delivery Time </span>
+                                <h2 class="font-bold"><%= @resto_rate.eta_delivery %></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="widget style1 navy-bg">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <i class="fa fa-street-view fa-5x"></i>
+                            </div>
+                            <div class="col-xs-8 text-right">
+                                <span> Your distance </span>
+                                <h2 class="font-bold"><%= number_with_precision(@distance, :precision => 2, :delimiter => ',') %>km</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    		</div>
+    	</div>
+    
+<% end %>
+</div>

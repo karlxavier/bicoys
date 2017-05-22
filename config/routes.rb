@@ -28,7 +28,12 @@ Rails.application.routes.draw do
 
 	resources :restaurants, only: [:index, :show] do
 		resources :menus, only: [:index, :show]
+		member do
+			get 'user_location'
+		end
 	end
+
+	get 'set_user_location', :to => 'restaurants#set_user_location', :as => :set_user_location
 
 	namespace :restos do
 		get '/', to: 'restaurants#dashboard', as: ''
