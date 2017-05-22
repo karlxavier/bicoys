@@ -39,7 +39,16 @@
 			        		</li>
 				        		<% if user_signed_in? %>
 					        		<li>
-					        			<a href="#home">My Account</a>
+				        				<a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
+				                            My Account<b class="caret"></b>
+			                            </a>
+			                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+				                            <li><a href="profile.html" style="font-size: 12px;">Profile</a></li>
+				                            <li><a href="contacts.html" style="font-size: 12px;">My Orders</a></li>
+				                            <li><a href="mailbox.html" style="font-size: 12px;">Delivery Address</a></li>
+				                            <li class="divider"></li>
+				                            <li><%= link_to('Logout', destroy_user_session_path, :method => :delete, style: "font-size: 12px;") %>  </li>
+				                        </ul>					        		
 					        		</li>
 					        	<% else %>
 					        		<li>

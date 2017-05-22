@@ -27,7 +27,13 @@ class ApplicationController < ActionController::Base
               UserAddress.new
             end
         else
-            UserAddress.new
+            if UserAddress.exists?(id: session[:user_address_id])
+                UserAddress.where(id: session[:user_address_id]).first
+                # session[:user_address_id] = nil
+            else
+                # session[:user_address_id] = nil
+                UserAddress.new
+            end
         end
     else
         if UserAddress.exists?(id: session[:user_address_id])

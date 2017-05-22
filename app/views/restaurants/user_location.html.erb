@@ -11,31 +11,12 @@
 			                        <%= image_tag @restaurant.profile_image.url(:web, :full), class: "img-circle circle-border m-b-md", style: "width: 150px; height: 150px; margin-bottom: 10px;" %>
 			                    </div>
 			                    <h1 class="margin-b-10 text-warning"><%= @restaurant.name %></h1>
-	        					<p class="lead " style="color: #fff;">Give us your delivery location to get started.</p>
-	        					<div class='row'>
-					                <div class="col-lg-10 col-lg-offset-1">
-					                    <div class="input-group input-group-lg">
-					                        <span class="input-group-addon">
-					                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-					                        </span>
-
-					                        <input id="user-location" autocomplete="off" type="" value="<%= @user_add ? @user_add.full_address : '' %>" placeholder="Where's your location?" class="form-control" name="">
-					                            <div class="input-group-btn">
-					                            	<% if !session[:user_address].nil? %>
-					                                	<%= link_to 'Pakals na!', restaurant_path(@restaurant), id: "btn-pakals", class: "btn btn-primary" %>
-					                                <% else %>
-					                                	<button type="button" class="btn btn-default" disabled="true">Pakals na!
-                                        				</button>
-					                                <% end %>
-					                            </div>
-					                    </div>
-					                </div>
-					            </div>
-					            <div class="wrapper wrapper-content animated fadeInRight">
-					            	<!-- <div id="restaurant_show_details"> -->
-					            		<%= render 'restaurant_show_details' %>
-					            	<!-- </div> -->
-		        				</div>
+	        					<p class="lead " style="color: #fff; margin-bottom: 3px;">Give us your delivery location to get started.</p>
+	        					<small class="text-muted">(Minimum order varies the distance between your location and restaurant.)</small>
+	        					
+					 
+					            	<%= render 'restaurant_show_details' %>
+		        			
 
 	        				</div>
         				</div>
@@ -55,47 +36,3 @@
     </div> 
     <div id="gmap" style="display: none;"></div>	
 </section>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#user-location").geocomplete({     
-            details: ".field",
-            types: ["geocode", "establishment"],
-            componentRestrictions: {country: "ph"},
-        });
-
-        $("#user-location").bind("geocode:result", function(event, result){
-        	AsaKaDong();
-        });
-
-        function AsaKaDong() { // more accurate than google.map.geocoder
-        	var map, service, bounds;
-			
-			    map = new google.maps.Map(
-			    document.getElementById("gmap"), {});
-			    var request = {
-			    	query: document.getElementById("user-location").value
-			    }			    
-			    service = new google.maps.places.PlacesService(map);
-			    bounds = new google.maps.LatLngBounds();
-				service.textSearch(request, callback);
-			
-			function callback(results, status) {
-			  if (status == google.maps.places.PlacesServiceStatus.OK) {
-			    for (var i = 0; i < results.length; i++) {
-			      var place = results[i];			
-			    }
-			    var lat = place.geometry.location.lat();
-			    var lng = place.geometry.location.lng();
-			    var add = document.getElementById("user-location").value		
-
-			  	$.ajax({
-			  		url: '/set_user_location',
-			  		data: {lat: JSON.stringify(lat),lng: JSON.stringify(lng),add: JSON.stringify(add)},
-			  		type: 'GET'
-			  	})
-			  }
-			}
-		}
-
-    });
-</script>

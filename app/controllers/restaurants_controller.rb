@@ -15,12 +15,12 @@ class RestaurantsController < ApplicationController
 	end
 
 	def user_location
-		@user_add = UserAddress.where(id: session[:user_address_id]).first
+		# session[:restaurant_id] = params[:id]
+		@user_address = UserAddress.where(id: session[:user_address_id]).first
 
-		if @user_add
-			@distance = Geocoder::Calculations.distance_between([@restaurant.latitude,@restaurant.longitude], [@user_add.latitude,@user_add.longitude]).round(1)
+		if @user_address
+			@distance = Geocoder::Calculations.distance_between([@restaurant.latitude,@restaurant.longitude], [@user_address.latitude,@user_address.longitude]).round(1)
 			@resto_rate = TariffRate.resto_rate(@distance).first
-
 			respond_to do |format|
 				format.html { render 'restaurants/user_location' }
 			end
@@ -28,17 +28,16 @@ class RestaurantsController < ApplicationController
 	end
 
 	def set_user_location
-
 		@restaurant = Restaurant.find(session[:restaurant_id])
 		if !params[:lat].nil? && !params[:lng].nil?
-			@distance = Geocoder::Calculations.distance_between([@restaurant.latitude,@restaurant.longitude], [params[:lat],params[:lng]]).round(1) * 1.60934
-			@distance = @distance.round(1)
+			@distance = Geocoder::Calculations.distance_between([@restaurant.latitude,@restaurant.longitude], [params[:lat],params[:lng]]).round(1) * 1.609
+			@distance = @distance.round(1) 
 			if @distance > 15
 				params[:lat] = nil
 				params[:lng] = nil
 
-				user_add = UserAddress.where(id: session[:user_address_id]).first
-				user_add.destroy if user_add
+				user_address = UserAddress.where(id: session[:user_address_id]).first
+				user_address.destroy if user_address
 				session[:user_address_id] = nil
 
 				@resto_rate = TariffRate.resto_rate(@distance).first
@@ -85,7 +84,8 @@ class RestaurantsController < ApplicationController
 	end
 
 	def get_user_location
-		if current_location.nil?
+		session[:restaurant_id] =  @restaurant.id
+		if current_location.full_address.nil?
 			redirect_to user_location_restaurant_path(@restaurant)
 		end
 	end
