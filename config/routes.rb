@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     	end
     end
 
+    resources :restaurant_types, only: [:show]
+
 	resources :restaurants, only: [:index, :show] do
 		resources :menus, only: [:index, :show]
 		member do
@@ -34,6 +36,7 @@ Rails.application.routes.draw do
 	end
 
 	get 'set_user_location', :to => 'restaurants#set_user_location', :as => :set_user_location
+	get 'user_location', :to => 'restaurant_types#user_location', :as => :user_location
 
 	namespace :restos do
 		get '/', to: 'restaurants#dashboard', as: ''

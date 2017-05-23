@@ -1,0 +1,6 @@
+$('#modal-shows').replaceWith('<%= j render partial: "error_location" %>');
+$('#modal-shows').modal('show');
+$(function(){
+	document.getElementById('user-location').value = "";
+});
+$('#user_location_input').replaceWith('<%= j render partial: "user_location" %>');

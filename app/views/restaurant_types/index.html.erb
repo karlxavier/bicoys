@@ -6,25 +6,7 @@
             <p class="lead">We deliver your favourite food in Davao City online.</p>
             <br>
             <div class='row'>
-                <div class="col-lg-6 col-lg-offset-3">
-                    <div class="input-group input-group-lg">
-                        <span class="input-group-addon">
-                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        </span>
-
-                        <input id="user-location" autocomplete="off" type="" placeholder="Where's your location?" class="form-control" name="">
-                            <div class="input-group-btn">
-                                <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button" aria-expanded="false">I want <span class="caret"></span></button>
-                                <ul class="dropdown-menu pull-right">
-                                    <li><a href="#">Restaurants</a></li>
-                                    <li><a href="#">Bakeries</a></li>
-                                    <li><a href="#">Caterings</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">All</a></li>
-                                </ul>
-                            </div>
-                    </div>
-                </div>
+                <%= render 'user_location' %>
             </div>
 
         </div><!--end-container-->
@@ -128,62 +110,5 @@
         </div>
     </div>
 </section>
-<section id="about">
-            <div class="space-70"></div>
-            <div class="container">
-                 <div class="heading-style-center">
-                              
-                    <h2>who we are</h2>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                       
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-                        </p>
-                        <blockquote>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            <br> <em>John Doe</em>
-                        </blockquote>
-                    </div>
-                    <div class="col-sm-6">
-                     
-                        <div class="skill"><span class="skill-name">Design</span><span class="skill-perc" style="right: 10%;">90%</span>
-                            <div class="progress">
-                                <div role="progressbar" data-progress="90" class="progress-bar colored" style="width: 90%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill"><span class="skill-name">Branding</span><span class="skill-perc" style="right: 20%;">80%</span>
-                            <div class="progress">
-                                <div role="progressbar" data-progress="80" class="progress-bar colored" style="width: 80%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill"><span class="skill-name">Product Development</span><span class="skill-perc" style="right: 15%;">85%</span>
-                            <div class="progress">
-                                <div role="progressbar" data-progress="85" class="progress-bar colored" style="width: 85%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill"><span class="skill-name">Web Development</span><span class="skill-perc" style="right: 5%;">95%</span>
-                            <div class="progress">
-                                <div role="progressbar" data-progress="95" class="progress-bar colored" style="width: 95%;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--intro row end-->
-
-            </div><!--container end-->
-            <div class="space-40"></div>
-            <div class="container-fluid no-padd">
-
-            </div>
-</section>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#user-location").geocomplete({     
-            details: ".field",
-            types: ["geocode", "establishment"],
-            componentRestrictions: {country: "ph"},
-        });
-    });
-</script>
+<div id="gmap" style="display: none;"></div>    
 
