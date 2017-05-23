@@ -2,44 +2,88 @@
     <div class="space-70"></div>
     <div class="row">
         <div class="col-xs-12" id="resto_banner">
-        	<div class="wrapper wrapper-content animated fadeInUp" style="padding-bottom: 0;">
-        		<div class="ibox" style="margin-bottom: 0;">
-        			<div class="ibox-content" style="padding-bottom: 0;">
-        				<div class="row">
-        					<div class="col-lg-2">
-        						<div class="imageBox" style="margin-bottom: 0;">
-	        						<div class="productImage clearfix" style="background-image: url('<%= image_path @restaurant.profile_image.url(:web) %>'); height: 150px;"></div>
-	        					</div>	
-        					</div>
-                            <div class="col-lg-10">
-                                <div class="m-b-md">
-                                    <h1><%= @restaurant.name %></h1>
+        	<div class="wrapper wrapper-content animated fadeInUp" style="padding: 0;">
+                <div class="row m-b-lg m-t-lg" style="margin: 0 5px 10px 0;">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content">
+                        <i class="fa fa-map-marker"></i> 
+                            <strong>Your Current Location </strong> 
+                            <%= @user_address ? @user_address.full_address : '' %>
+                            <%= link_to 'Change Location', change_user_location_restaurant_path(@restaurant), class: "btn btn-w-m btn-default btn-xs pull-right" %>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+
+                        <div class="profile-image" style="width: 140px; float: left;">
+                            <%= image_tag @restaurant.profile_image.url(:web), style: "width: 120px; height: 120px;", class: "img-circle circle-border m-b-md" %>
+                        </div>
+
+                        <div class="profile-info">
+                            <div class="">
+                                <div>
+                                    <span class="label label-primary pull-right">Open</span>
+                                    <h2 class="no-margins">
+                                        <%= @restaurant.name %>
+                                    </h2>
+                                    <a class="btn btn-xs btn-white pull-right">
+                                            <i class="fa fa-thumbs-down"></i> 
+                                            Not
+                                        </a>
+                                        <a class="btn btn-xs btn-white pull-right">
+                                            <i class="fa fa-thumbs-up"></i> 
+                                            Like
+                                        </a>
+                                    <h4 style="margin-bottom: 8px;"><%= @restaurant.address %></h4>
+                                    <div style="margin-bottom: 10px;">
+                                        <small><strong>Tel. No:</strong> <%= @restaurant.phone %></small>
+                                    </div>
+                                    <small>
+                                        There are many variations of passages of Lorem Ipsum available, but the majority
+                                        have suffered alteration in some form Ipsum available.
+                                    </small>
                                 </div>
-                                <dl class="dl-horizontal" style="color: rgb(103, 106, 108); ">
-                                	<div style="margin-bottom: 10px;">
-                                		<dt style="width: 100px; text-align: left;">Status:</dt> 
-	                                    <dd style="margin-left: 0;">
-	                                    	<span class="label label-primary">Open</span>
-	                                    </dd>
-                                	</div>
-                                    <div style="margin-bottom: 10px;">
-	                                    <dt style="width: 100px; text-align: left;">Address:</dt> 
-	                                    <dd style="margin-left: 0;">
-	                                    	<%= @restaurant.address %>
-	                                    </dd>
-                                    </div>
-                                    <div style="margin-bottom: 10px;">
-	                                    <dt style="width: 100px; text-align: left;">Phone:</dt> 
-	                                    <dd style="margin-left: 0;">
-	                                    	<%= @restaurant.phone %>
-	                                    </dd>
-                                    </div>
-                                </dl>
                             </div>
                         </div>
-        			</div>
-        		</div>
+                    </div>
+                    <div class="col-md-4">
+                        <table class="table small m-b-xs">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <strong><%= @restaurant.menus.count %></strong> Menus
+                                </td>
+                                <td>
+                                    <strong>22</strong> Orders last 24hrs
+                                </td>
 
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>61/2</strong> Likes
+                                </td>
+                                <td>
+                                    <strong>54</strong> Photos
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>₱ <%= @resto_rate.min_order %></strong> Min Order
+                                </td>
+                                <td>
+                                    <strong><%= number_with_precision(@user_address.distance_from_user, :precision => 1, :delimiter => ',') %>km</strong> Distance from you
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="col-md-1">
+                        <a class="btn btn-xs btn-success pull-right">
+                            <i class="fa fa-facebook"></i> 
+                            Share
+                        </a>
+                    </div>
+                </div>
         	</div>
         </div>
         <div class="col-xs-8" style="padding-right: 0;">

@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 		resources :menus, only: [:index, :show]
 		member do
 			get 'user_location'
+			get 'change_user_location'
 		end
 	end
 
