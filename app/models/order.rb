@@ -4,12 +4,15 @@ class Order < ApplicationRecord
 	belongs_to :restaurant
 	belongs_to :user
 	has_many :order_items
+	has_many :menus, through: :order_items
 
 	before_create :set_order_status
 	before_save :update_subtotal
   	before_save :update_total
 
 	validates :subtotal, :total, presence: true
+
+	scope :user_orders, -> (id, resto_id) { includes(:menus).where(restaurant_id: resto_id, id: id) }
 
 	def subtotal    
 	    order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum

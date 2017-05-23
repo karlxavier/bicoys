@@ -4,6 +4,8 @@ class OrderItem < ApplicationRecord
 
 	before_save :finalize
 
+	# scope :user_orders, -> (id, resto_id) { includes(:menus).where(restaurant_id: resto_id, id: id) }
+
 	def unit_price
 	    if persisted?
 	    	self[:unit_price]

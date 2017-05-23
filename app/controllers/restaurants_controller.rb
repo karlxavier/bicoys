@@ -8,11 +8,11 @@ class RestaurantsController < ApplicationController
 	end
 
 	def show
-		@menus = Menu.resto_menus(params[:id])
+		# @order = current_order
 		@menu_cats = MenuCategory.menu_cats(params[:id])
 		@order_item = @order.order_items.new
 		session[:restaurant_id] = params[:id]
-		@user_address = UserAddress.where(id: session[:user_address_id]).first
+		@user_address = @current_location
 		@resto_rate = TariffRate.resto_rate(@user_address.distance_from_user).first
 	end
 
@@ -97,7 +97,8 @@ class RestaurantsController < ApplicationController
 
 	def get_user_location
 		session[:restaurant_id] =  @restaurant.id
-		if current_location.full_address.nil?
+		@current_location = current_location
+		if @current_location.full_address.nil?
 			redirect_to user_location_restaurant_path(@restaurant)
 		end
 	end
