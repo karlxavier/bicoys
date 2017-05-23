@@ -17,7 +17,7 @@
 	                					<div class="col-sm-2"></div>
 		                				<div class="col-sm-2">
 		                					<% if @restaurant.profile_image.present? %>
-		                						<%= image_tag @restaurant.profile_image.url(:web, :full), style: "width: 220px; height: 190px; border-radius: 3px;" %>
+		                						<%= image_tag @restaurant.profile_image.url(:web), style: "width: 220px; height: 190px; border-radius: 3px;" %>
 		                					<% else %>
 		                						<%= image_tag 'default_profile_resto.png', style: "width: 220px; height: 190px; border-radius: 3px;" %>
 		                					<% end %>
@@ -116,7 +116,7 @@
 		                					<h2>Restaurants Gallery</h2>
 		                					<div class="lightBoxGallery">
 		                						<% @restaurant.restaurant_images.each do |images| %>
-		                							<%= image_tag images.image.url(:web, :full) %>
+		                							<%= image_tag images.image.url(:web) %>
 		                						<% end %>
 		                					</div>
 		                				</div>

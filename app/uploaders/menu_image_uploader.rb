@@ -14,11 +14,23 @@ class MenuImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  # version :web do
+  #   version :thumb    { process :resize_to_fit => [32, 32] }
+  #   version :preview  { process :resize_to_fit => [128, 128] }
+  #   version :full     { process :resize_to_fit => [1024, 768] }
+  # end
+
   version :web do
-    version :thumb    { process :resize_to_fit => [32, 32] }
-    version :preview  { process :resize_to_fit => [128, 128] }
-    version :full     { process :resize_to_fit => [1024, 768] }
+    process :resize_to_fill => [1024, 1024] 
   end
+
+  version :large_thumb, :from_version => :web do
+     process :resize_to_fill => [300, 300] 
+  end
+
+  version :thumb, :from_version => :large_thumb do
+     process :resize_to_fill => [100, 100] 
+  end    
 
   def extension_white_list
     %w(jpg jpeg gif png)

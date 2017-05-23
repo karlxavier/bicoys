@@ -6,7 +6,7 @@
 					<div class="form-group"><label class="col-sm-2 control-label"></label>
 	                    <div class="col-sm-7">
 	                    	<% if @menu.image.present? %>
-	                    		<%= image_tag @menu.image.url(:web, :full), class: 'img-circle', style: 'width: 90px; height: 90px;' %>
+	                    		<%= image_tag @menu.image.url(:web), class: 'img-circle', style: 'width: 90px; height: 90px;' %>
 	                    	<% else %>
 	                    		<%= image_tag 'default_menu.png', class: 'img-circle', style: 'width: 90px; height: 90px;' %>
 	                    	<% end %>

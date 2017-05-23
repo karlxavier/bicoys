@@ -127,8 +127,8 @@
                                 <p>Discoverer the photos we had shared to our happy customers.</p>
                                 <div class="lightBoxGallery">
                                     <% @restaurant.restaurant_images.each do |image| %>
-                                        <a href="<%= image_path image.image.url(:web, :full) %>" title="Image from Unsplash" data-gallery="">
-                                            <%= image_tag image.image.url(:web, :full), style: "width: 100px; height: 100px;" %>
+                                        <a href="<%= image_path image.image.url(:web) %>" title="Image from Unsplash" data-gallery="">
+                                            <%= image_tag image.image.url(:web), style: "width: 100px; height: 100px;" %>
                                         </a>
                                     <% end %>
                                     <div id="blueimp-gallery" class="blueimp-gallery" style="display: none;">
