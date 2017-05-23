@@ -3466,126 +3466,129 @@ i.fa {
 .ui.horizontal.divider:after {
     background-position: left 1em top 50%;
 }
-@media (min-width: 768px)
-.tabCommon .nav li {
-    margin-right: 25px;
+@media (min-width: 768px){
+  .tabCommon .nav li {
+      margin-right: 25px;
+  }
+  .tabCommon .nav li {
+      display: inline-block;
+      float: none;
+      margin-right: 15px;
+  }
+  .nav-tabs>li {
+      float: left;
+      margin-bottom: -1px;
+  }
+  .nav>li {
+      position: relative;
+      display: block;
+  }
+  ul li {
+      list-style-type: none;
+  }
+  .top-right .searchBox .dropdown-menu li .input-group .form-control:focus, .top-right .searchBox .dropdown-menu li .input-group .input-group-addon, .searchBox .input-group .input-group-addon, .footer, .footer .newsletter .input-group .input-group-addon:hover, .tp-caption.rs-caption-4 .btn, .filterArea .btn-group .btn-default:hover, .filterArea .btn-group .btn-default.active, .productListSingle .media .media-body .btn-group .btn-default:hover, .productListSingle .media .media-body .btn-group .btn-default:focus, .cartListInner .table-responsive .table thead tr, .blogPage .pagination li a:hover, .blogPage .pagination li.active a, .orderBox .table-responsive .table thead tr, .orderBox .table-responsive .table tbody tr td .btn-default:hover, .footer .newsletter .input-group .input-group-addon, .tabCommon .nav-tabs>li.active>a, .tabCommon .nav-tabs>li.active>a:focus, .tabCommon .nav-tabs>li.active>a:hover, .version2 .box:hover, .tp-caption.rs-caption-4 .btn, .bannerV2 .btn, .bannerV3 .btn, .bannerV3 .owl-controls .owl-nav .owl-prev:hover, .bannerV3 .owl-controls .owl-nav .owl-next:hover, .dealSlider .productCaption .btn-border, .footer.version2 .newsletter .input-group .input-group-addon:hover, .dropGeneral.border-color .sbHolder, .dropGeneral.colorBg .sbHolder, .dropGeneral.border-color .sbHolder, .bannerV2 .caption-info-inner {
+      border-color: #47bac1;
+  }
+  .tabCommon .nav-tabs>li.active>a, .tabCommon .nav-tabs>li.active>a:focus, .tabCommon .nav-tabs>li.active>a:hover {
+      background-color: transparent;
+      color: #252525;
+      border: none;
+      border-bottom: 5px solid #47bac1;
+  }
+  .tabCommon .nav-tabs>li>a, .tabCommon .nav-tabs>li>a:hover, .tabCommon .nav-tabs>li>a:focus {
+      border: none;
+  }
 }
-.tabCommon .nav li {
-    display: inline-block;
-    float: none;
-    margin-right: 15px;
+@media (min-width: 768px){
+  .tabCommon .nav li a {
+      height: 40px;
+      font-size: 16px;
+  }
+  .tabCommon .nav li a {
+      padding: 0;
+      height: 35px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #252525;
+      display: inline-block;
+      background-color: transparent;
+      -webkit-border-radius: 0;
+      -moz-border-radius: 0;
+      border-radius: 0;
+  }
+  .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+      color: #555;
+      cursor: default;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-bottom-color: transparent;
+  }
+  .nav-tabs>li>a {
+      margin-right: 2px;
+      line-height: 1.42857143;
+      border: 1px solid transparent;
+      border-radius: 4px 4px 0 0;
+  }
+  .fade.in {
+      /*opacity: 1;*/
+  }
+  .fade {
+      opacity: 0;
+      -webkit-transition: opacity .15s linear;
+      -o-transition: opacity .15s linear;
+      transition: opacity .15s linear;
+  }
+  .imageBox, .whiteSection .featuredProducts .slide, .mainContent .featuredProducts .slide, .productsContent .productBox {
+      height: auto;
+      display: block;
+      margin-bottom: 40px;
+  }
 }
-.nav-tabs>li {
-    float: left;
-    margin-bottom: -1px;
-}
-.nav>li {
-    position: relative;
-    display: block;
-}
-ul li {
-    list-style-type: none;
-}
-.top-right .searchBox .dropdown-menu li .input-group .form-control:focus, .top-right .searchBox .dropdown-menu li .input-group .input-group-addon, .searchBox .input-group .input-group-addon, .footer, .footer .newsletter .input-group .input-group-addon:hover, .tp-caption.rs-caption-4 .btn, .filterArea .btn-group .btn-default:hover, .filterArea .btn-group .btn-default.active, .productListSingle .media .media-body .btn-group .btn-default:hover, .productListSingle .media .media-body .btn-group .btn-default:focus, .cartListInner .table-responsive .table thead tr, .blogPage .pagination li a:hover, .blogPage .pagination li.active a, .orderBox .table-responsive .table thead tr, .orderBox .table-responsive .table tbody tr td .btn-default:hover, .footer .newsletter .input-group .input-group-addon, .tabCommon .nav-tabs>li.active>a, .tabCommon .nav-tabs>li.active>a:focus, .tabCommon .nav-tabs>li.active>a:hover, .version2 .box:hover, .tp-caption.rs-caption-4 .btn, .bannerV2 .btn, .bannerV3 .btn, .bannerV3 .owl-controls .owl-nav .owl-prev:hover, .bannerV3 .owl-controls .owl-nav .owl-next:hover, .dealSlider .productCaption .btn-border, .footer.version2 .newsletter .input-group .input-group-addon:hover, .dropGeneral.border-color .sbHolder, .dropGeneral.colorBg .sbHolder, .dropGeneral.border-color .sbHolder, .bannerV2 .caption-info-inner {
-    border-color: #47bac1;
-}
-.tabCommon .nav-tabs>li.active>a, .tabCommon .nav-tabs>li.active>a:focus, .tabCommon .nav-tabs>li.active>a:hover {
-    background-color: transparent;
-    color: #252525;
-    border: none;
-    border-bottom: 5px solid #47bac1;
-}
-.tabCommon .nav-tabs>li>a, .tabCommon .nav-tabs>li>a:hover, .tabCommon .nav-tabs>li>a:focus {
-    border: none;
-}
-@media (min-width: 768px)
-.tabCommon .nav li a {
-    height: 40px;
-    font-size: 16px;
-}
-.tabCommon .nav li a {
-    padding: 0;
-    height: 35px;
-    font-size: 13px;
-    font-weight: 700;
-    color: #252525;
-    display: inline-block;
-    background-color: transparent;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
-}
-.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
-    color: #555;
-    cursor: default;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-bottom-color: transparent;
-}
-.nav-tabs>li>a {
-    margin-right: 2px;
-    line-height: 1.42857143;
-    border: 1px solid transparent;
-    border-radius: 4px 4px 0 0;
-}
-.fade.in {
-    /*opacity: 1;*/
-}
-.fade {
-    opacity: 0;
-    -webkit-transition: opacity .15s linear;
-    -o-transition: opacity .15s linear;
-    transition: opacity .15s linear;
-}
-.imageBox, .whiteSection .featuredProducts .slide, .mainContent .featuredProducts .slide, .productsContent .productBox {
-    height: auto;
-    display: block;
-    margin-bottom: 40px;
-}
-@media (min-width: 480px)
-.imageBox .productImage, .whiteSection .featuredProducts .slide .productImage, .mainContent .featuredProducts .slide .productImage, .productsContent .productBox .productImage {
-    width: 100%;
-    height: auto;
-}
-.imageBox .productImage, .whiteSection .featuredProducts .slide .productImage, .mainContent .featuredProducts .slide .productImage, .productsContent .productBox .productImage {
-    position: relative;
-    margin-bottom: 20px;
-    display: block;
-    height: 260px;
-    overflow: hidden;
-    border-radius: 3px;
-    -webkit-background-origin:border;
-    background-repeat: no-repeat;
-    background-position:  center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-.tabCommon .tab-bottom {
-    border-bottom: 5px solid #e4e4e4;
-    margin-top: -4px;
-    margin-bottom: 25px;
-}
-.productCaption h5{
-  margin-bottom: 3px;
-}
-
-.menu-image {
-  height: 80px; 
-  width: 80px;
-  background-size: cover; 
-  background-repeat: no-repeat; 
-  background-position: center center;
-}
-
-.affix {
-      top: 70px !important;
+@media (min-width: 480px){
+  .imageBox .productImage, .whiteSection .featuredProducts .slide .productImage, .mainContent .featuredProducts .slide .productImage, .productsContent .productBox .productImage {
+      width: 100%;
+      height: auto;
+  }
+  .imageBox .productImage, .whiteSection .featuredProducts .slide .productImage, .mainContent .featuredProducts .slide .productImage, .productsContent .productBox .productImage {
+      position: relative;
+      margin-bottom: 20px;
+      display: block;
+      height: 260px;
+      overflow: hidden;
+      border-radius: 3px;
+      -webkit-background-origin:border;
+      background-repeat: no-repeat;
+      background-position:  center;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+  }
+  .tabCommon .tab-bottom {
+      border-bottom: 5px solid #e4e4e4;
+      margin-top: -4px;
+      margin-bottom: 25px;
+  }
+  .productCaption h5{
+    margin-bottom: 3px;
   }
 
-.restaurant-primary-image {
-    width: 100%;
-    height: 320px;
-    background-size: cover !important;
-    background-position: 50% !important;
+  .menu-image {
+    height: 80px; 
+    width: 80px;
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center center;
+  }
+
+  .affix {
+        top: 70px !important;
+    }
+
+  .restaurant-primary-image {
+      width: 100%;
+      height: 320px;
+      background-size: cover !important;
+      background-position: 50% !important;
+  }
 }
