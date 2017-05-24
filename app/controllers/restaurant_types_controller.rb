@@ -1,8 +1,8 @@
 class RestaurantTypesController < ApplicationController
 
 	def index
-		@resto_recent = Restaurant.most_recent(4,1)
-		@bake_recent = Restaurant.most_recent(4,2)
+		@resto_recent = Restaurant.most_recent(5,1)
+		@bake_recent = Restaurant.most_recent(5,2)
 
 		@user_address = UserAddress.where(id: session[:user_address_id]).first
 
@@ -15,7 +15,7 @@ class RestaurantTypesController < ApplicationController
 	end
 
 	def show
-		@resto_type = RestaurantType.find(params[:id])
+		@restos = RestaurantType.restos(params[:id])
 	end
 
 	def user_location

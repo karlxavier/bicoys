@@ -20,7 +20,7 @@ a {
   color: #099E44;
 }
 a:hover {
-  color: #aeaeae;
+  color: #018c38;
 }
 
 a, a:hover, a:focus, button:hover, button:focus {
@@ -3507,8 +3507,8 @@ i.fa {
   .tabCommon .nav li a {
       padding: 0;
       height: 35px;
-      font-size: 13px;
-      font-weight: 700;
+      font-size: 18px;
+      font-weight: 300;
       color: #252525;
       display: inline-block;
       background-color: transparent;
@@ -3591,4 +3591,14 @@ i.fa {
       background-size: cover !important;
       background-position: 50% !important;
   }
+}
+
+a.text-primary:hover, a.text-primary:focus {
+    color: #099E44;
+}
+
+.footer-links{
+  font-size: 12px; 
+  font-weight: 500;
+  margin: 0 10px 0 10px;
 }

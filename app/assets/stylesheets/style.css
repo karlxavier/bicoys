@@ -44,7 +44,8 @@ h5 {
   padding: 14px 20px 14px 25px;
 }
 .nav.navbar-right > li > a {
-  color: #999c9e;
+  /*color: #999c9e;*/
+  color: #333;
 }
 .nav > li.active > a {
   color: #ffffff;
@@ -638,7 +639,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
   color: #23c6c8;
 }
 .btn-warning.btn-outline {
-  color: #f8ac59;
+  color: #f68b2d;
 }
 .btn-danger.btn-outline {
   color: #ed5565;
@@ -813,8 +814,8 @@ fieldset[disabled] .btn-default.active {
   color: #cacaca;
 }
 .btn-warning {
-  background-color: #f8ac59;
-  border-color: #f8ac59;
+  background-color: #f68b2d;
+  border-color: #f68b2d;
   color: #FFFFFF;
 }
 .btn-warning:hover,
@@ -1098,12 +1099,12 @@ button.dim:active:before {
 }
 .label-warning,
 .badge-warning {
-  background-color: #f8ac59;
+  background-color: #f68b2d;
   color: #FFFFFF;
 }
 .label-warning-light,
 .badge-warning-light {
-  background-color: #f8ac59;
+  background-color: #f68b2d;
   color: #ffffff;
 }
 .label-danger,
@@ -1903,7 +1904,7 @@ div.dt-button-info {
 }
 .has-warning .form-control,
 .has-warning .form-control:focus {
-  border-color: #f8ac59;
+  border-color: #f68b2d;
 }
 .has-error .form-control,
 .has-error .form-control:focus {
@@ -1913,7 +1914,7 @@ div.dt-button-info {
   color: #099E44;
 }
 .has-warning .control-label {
-  color: #f8ac59;
+  color: #f68b2d;
 }
 .has-error .control-label {
   color: #ed5565;
@@ -2506,7 +2507,7 @@ label.error {
   background-color: #23c6c8;
 }
 .toast-warning {
-  background-color: #f8ac59;
+  background-color: #f68b2d;
 }
 .toast-top-full-width {
   margin-top: 20px;
@@ -2526,7 +2527,7 @@ label.error {
   color: inherit;
 }
 .inspinia-notify.alert-warning {
-  border-left: 6px solid #f8ac59;
+  border-left: 6px solid #f68b2d;
 }
 .inspinia-notify.alert-success {
   border-left: 6px solid #1c84c6;
@@ -4150,7 +4151,7 @@ table.table-mail tr td {
   color: #23c6c8;
 }
 .text-warning {
-  color: #f8ac59;
+  color: #f68b2d;
 }
 .text-danger {
   color: #ed5565;
@@ -4898,7 +4899,7 @@ ul.notes li div {
 /* FILE MANAGER */
 .file-box {
   float: left;
-  width: 220px;
+  width: 228px;
 }
 .file-manager h5 {
   text-transform: uppercase;
@@ -4946,7 +4947,7 @@ ul.notes li div {
   color: #EF5352;
 }
 .category-list li a .text-warning {
-  color: #F8AC59;
+  color: #f68b2d;
 }
 .file-manager h5.tag-title {
   margin-top: 20px;
@@ -5453,7 +5454,7 @@ table.issue-tracker tbody tr td {
   background: #fff;
 }
 .agile-list li.warning-element {
-  border-left: 3px solid #f8ac59;
+  border-left: 3px solid #f68b2d;
 }
 .agile-list li.danger-element {
   border-left: 3px solid #ed5565;
@@ -5516,7 +5517,7 @@ del {
   color: #d1dade;
 }
 .ecommerce .fa-star.active {
-  color: #f8ac59;
+  color: #f68b2d;
 }
 .ecommerce .note-editor {
   border: 1px solid #e7eaec;
@@ -5550,7 +5551,7 @@ table.shoping-cart-table tr td:last-child {
   font-size: 14px;
   font-weight: 600;
   color: #ffffff;
-  background-color: #f8ac59;
+  background-color: #f68b2d;
   padding: 6px 12px;
   position: absolute;
   top: -32px;
@@ -7149,6 +7150,10 @@ body.landing-page {
   background: #f4f4f4;
   margin-top: 60px;
 }
+.landing-page .white-section {
+  background: #fff;
+  margin-top: 60px;
+}
 .landing-page .team-member {
   text-align: center;
 }
@@ -7221,7 +7226,7 @@ body.landing-page {
   margin-top: 60px;
 }
 .landing-page section.timeline {
-  padding-bottom: 30px;
+  /*padding-bottom: 30px;*/
 }
 .landing-page section.comments {
   padding-bottom: 80px;

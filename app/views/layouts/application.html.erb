@@ -54,55 +54,56 @@
 					        		</li>
 					        	<% end %>
 			        	</ul>
-			        </div>
-		        
+			        </div>  
 	  		</div>
-  		</header>
+  			</header>
 	<% end %>
     <%= yield %>
-    <div class="footer" style="bottom: 0; position: relative; margin-top: 30px;">
-    	<div class="container">
-    		<div class="wrapper-content" style="">
-
-	            <div class="col-lg-3 pull-right">
-	                Copyright<strong style="color: #099E44;"> habhub.ph</strong> © 2017
-	                <br>
-	                <small>All Rights Reserved</small>
-	            </div>
-
-	            <div class="col-lg-8" style="color: #777;">
-	                <a href="#" class="text-primary" style="font-size: 12px; margin-right: 10px;">
-	                	About Us
-	                </a>
-	                <span>|</span>
-	                <a href="#" class="text-primary" style="font-size: 12px; margin: 0 10px 0 10px;">
-	                	Suggest Restaurant
-	                </a>
-	                <span>|</span>
-	                <a href="#" class="text-primary" style="font-size: 12px; margin: 0 10px 0 10px;">
-	                	FAQ
-	                </a>
-	                <span>|</span>
-	                <a href="#" class="text-primary" style="font-size: 12px; margin: 0 10px 0 10px;">
-	                	Order Timeline
-	                </a>
-	                <span>|</span>
-	                <a href="#" class="text-primary" style="font-size: 12px; margin: 0 10px 0 10px;">
-	                	Terms and Conditions
-	                </a>
-	                <span>|</span>
-	                <a href="#" class="text-primary" style="font-size: 12px; margin: 0 10px 0 10px;">
-	                	Contact Us
-	                </a>
-	            </div>
-
-            </div>
-        </div>
-    </div>
 
     <div id="modal-shows"></div><!-- For modal shows, partial rendering -->
 
+  	<% if ["Admins","Restos"].exclude? controller.class.name.split("::").first %>
+  	
+		    <div class="footer" style="bottom: 0; position: relative; margin-top: 30px;">
+		    	<div class="container">
+		    		<div class="wrapper-content" style="">
 
+			            <div class="col-lg-3 pull-right" style="font-weight: 600;">
+			                Copyright<strong style="color: #099E44;"> habhub.ph</strong> © 2017
+			                <br>
+			                <small style="font-weight: 100;">All Rights Reserved</small>
+			            </div>
 
+			            <div class="col-lg-8" style="color: #777;">
+			                <a href="#" class="text-primary footer-links" style="margin-right: 10px;">
+			                	About Us
+			                </a>
+			                <span>|</span>
+			                <a href="#" class="text-primary footer-links">
+			                	Suggest Restaurant
+			                </a>
+			                <span>|</span>
+			                <a href="#" class="text-primary footer-links">
+			                	FAQ
+			                </a>
+			                <span>|</span>
+			                <a href="#" class="text-primary footer-links">
+			                	Order Timeline
+			                </a>
+			                <span>|</span>
+			                <a href="#" class="text-primary footer-links">
+			                	Terms and Conditions
+			                </a>
+			                <span>|</span>
+			                <a href="#" class="text-primary footer-links">
+			                	Contact Us
+			                </a>
+			            </div>
+
+		            </div>
+		        </div>
+		    </div>	
+
+	<% end %>
   </body>
 </html>
