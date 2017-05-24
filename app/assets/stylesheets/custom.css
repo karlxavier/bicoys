@@ -17,7 +17,7 @@ a, button {
 }
 
 a {
-  color: #1ab394;
+  color: #099E44;
 }
 a:hover {
   color: #aeaeae;
@@ -509,14 +509,14 @@ div#preloader {
   color: #eee;
 }
 .navbar-default.header-transparent .navbar-nav > li > a:hover {
-  color: #1ab394;
+  color: #099E44;
 }
 
 .navbar-default.header-transparent.shrink .navbar-nav > li > a {
   color: #333;
 }
 .navbar-default.header-transparent.shrink .navbar-nav > li > a:hover {
-  color: #1ab394;
+  color: #099E44;
 }
 
 .navbar-default.header-transparent .navbar-brand {
@@ -3487,13 +3487,13 @@ i.fa {
       list-style-type: none;
   }
   .top-right .searchBox .dropdown-menu li .input-group .form-control:focus, .top-right .searchBox .dropdown-menu li .input-group .input-group-addon, .searchBox .input-group .input-group-addon, .footer, .footer .newsletter .input-group .input-group-addon:hover, .tp-caption.rs-caption-4 .btn, .filterArea .btn-group .btn-default:hover, .filterArea .btn-group .btn-default.active, .productListSingle .media .media-body .btn-group .btn-default:hover, .productListSingle .media .media-body .btn-group .btn-default:focus, .cartListInner .table-responsive .table thead tr, .blogPage .pagination li a:hover, .blogPage .pagination li.active a, .orderBox .table-responsive .table thead tr, .orderBox .table-responsive .table tbody tr td .btn-default:hover, .footer .newsletter .input-group .input-group-addon, .tabCommon .nav-tabs>li.active>a, .tabCommon .nav-tabs>li.active>a:focus, .tabCommon .nav-tabs>li.active>a:hover, .version2 .box:hover, .tp-caption.rs-caption-4 .btn, .bannerV2 .btn, .bannerV3 .btn, .bannerV3 .owl-controls .owl-nav .owl-prev:hover, .bannerV3 .owl-controls .owl-nav .owl-next:hover, .dealSlider .productCaption .btn-border, .footer.version2 .newsletter .input-group .input-group-addon:hover, .dropGeneral.border-color .sbHolder, .dropGeneral.colorBg .sbHolder, .dropGeneral.border-color .sbHolder, .bannerV2 .caption-info-inner {
-      border-color: #47bac1;
+      border-color: #099E44;
   }
   .tabCommon .nav-tabs>li.active>a, .tabCommon .nav-tabs>li.active>a:focus, .tabCommon .nav-tabs>li.active>a:hover {
       background-color: transparent;
       color: #252525;
       border: none;
-      border-bottom: 5px solid #47bac1;
+      border-bottom: 5px solid #099E44;
   }
   .tabCommon .nav-tabs>li>a, .tabCommon .nav-tabs>li>a:hover, .tabCommon .nav-tabs>li>a:focus {
       border: none;
