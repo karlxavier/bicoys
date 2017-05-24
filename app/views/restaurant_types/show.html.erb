@@ -69,7 +69,7 @@
 	                                <%= link_to restaurant_path(resto) do %>
 	                                    <span class="corner"></span>
 	                                    <div class="image">
-	                                        <%= image_tag resto.profile_image.url(:web) || 'default_menu.png', class: "img-responsive" %>
+	                                        <%= image_tag resto.profile_image.url(:web) || image_url('default_menu.png'), class: "img-responsive" %>
 	                                    </div>
 	                                    <div class="file-name">
 	                                        <h5 style="margin-bottom: 5px;">

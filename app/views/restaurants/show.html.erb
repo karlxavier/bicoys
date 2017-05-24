@@ -15,7 +15,7 @@
                     <div class="col-md-7">
 
                         <div class="profile-image" style="width: 140px; float: left;">
-                            <%= image_tag @restaurant.profile_image.url(:web) || 'default_menu.png', style: "width: 120px; height: 120px;", class: "img-circle circle-border m-b-md" %>
+                            <%= image_tag @restaurant.profile_image.url(:web) || image_url('default_menu.png'), style: "width: 120px; height: 120px;", class: "img-circle circle-border m-b-md" %>
                         </div>
 
                         <div class="profile-info">
