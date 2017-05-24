@@ -3,6 +3,7 @@ class RestaurantTypesController < ApplicationController
 	def index
 		@resto_recent = Restaurant.most_recent(5,1)
 		@bake_recent = Restaurant.most_recent(5,2)
+		@cater_recent = Restaurant.most_recent(5,3)
 
 		@user_address = UserAddress.where(id: session[:user_address_id]).first
 

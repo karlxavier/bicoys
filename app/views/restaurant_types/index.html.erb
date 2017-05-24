@@ -37,10 +37,10 @@
                                                     <%= link_to restaurant_path(resto) do %>
                                                         <span class="corner"></span>
                                                         <div class="image">
-                                                            <%= image_tag resto.profile_image.url(:web), class: "img-responsive" %>
+                                                            <%= image_tag resto.profile_image.url(:web) || asset_path('default_menu.png'), class: "img-responsive" %>
                                                         </div>
                                                         <div class="file-name">
-                                                            <h5 style="margin-bottom: 5px;"><%= link_to resto.name, restaurant_path(resto) %></h5>
+                                                            <h5 style="margin-bottom: 5px;"><%= link_to truncate(resto.name.html_safe, length: 28), restaurant_path(resto) %></h5>
                                                             <small><%= resto.address %></small>
                                                         </div>
                                                     <% end %>
@@ -58,10 +58,32 @@
                                                     <a href="#">
                                                         <span class="corner"></span>
                                                         <div class="image">
-                                                            <%= image_tag resto.profile_image.url(:web), class: "img-responsive" %>
+                                                            <%= image_tag resto.profile_image.url(:web) || asset_path('default_menu.png'), class: "img-responsive" %>
                                                         </div>
                                                         <div class="file-name">
-                                                            <h5 style="margin-bottom: 5px;"><%= link_to resto.name, restaurant_path(resto) %></h5>
+                                                            <h5 style="margin-bottom: 5px;"><%= link_to truncate(resto.name.html_safe, length: 28), restaurant_path(resto) %></h5>
+                                                            <small><%= resto.address %></small>
+                                                        </div>
+                                                    </a>
+
+                                                </div>
+                                            </div>
+                                        <% end %>
+                                    </div>
+                                </div>
+                                <h3 class="font-bold m-b-xs">Caterings</h3>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <% @cater_recent.each do |resto| %>
+                                            <div class="file-box">
+                                                <div class="file">
+                                                    <a href="#">
+                                                        <span class="corner"></span>
+                                                        <div class="image">
+                                                            <%= image_tag resto.profile_image.url(:web) || asset_path('default_menu.png'), class: "img-responsive" %>
+                                                        </div>
+                                                        <div class="file-name">
+                                                            <h5 style="margin-bottom: 5px;"><%= link_to truncate(resto.name.html_safe, length: 28), restaurant_path(resto) %></h5>
                                                             <small><%= resto.address %></small>
                                                         </div>
                                                     </a>
