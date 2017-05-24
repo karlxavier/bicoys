@@ -55,7 +55,7 @@
                                         <% @bake_recent.each do |resto| %>
                                             <div class="file-box">
                                                 <div class="file">
-                                                    <a href="#">
+                                                    <%= link_to restaurant_path(resto) do %>
                                                         <span class="corner"></span>
                                                         <div class="image">
                                                             <%= image_tag resto.profile_image.url(:web) || asset_path('default_menu.png'), class: "img-responsive" %>
@@ -64,7 +64,7 @@
                                                             <h5 style="margin-bottom: 5px;"><%= link_to truncate(resto.name.html_safe, length: 25), restaurant_path(resto) %></h5>
                                                             <small><%= resto.address %></small>
                                                         </div>
-                                                    </a>
+                                                    <% end %>
 
                                                 </div>
                                             </div>
@@ -77,7 +77,7 @@
                                         <% @cater_recent.each do |resto| %>
                                             <div class="file-box">
                                                 <div class="file">
-                                                    <a href="#">
+                                                    <%= link_to restaurant_path(resto) do %>
                                                         <span class="corner"></span>
                                                         <div class="image">
                                                             <%= image_tag resto.profile_image.url(:web) || asset_path('default_menu.png'), class: "img-responsive" %>
@@ -86,7 +86,7 @@
                                                             <h5 style="margin-bottom: 5px;"><%= link_to truncate(resto.name.html_safe, length: 25), restaurant_path(resto) %></h5>
                                                             <small><%= resto.address %></small>
                                                         </div>
-                                                    </a>
+                                                    <% end %>
 
                                                 </div>
                                             </div>
