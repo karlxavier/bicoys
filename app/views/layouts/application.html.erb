@@ -31,23 +31,20 @@
 		        </div>
 			        <div id="navbar" class="navbar-collapse collapse">
 			        	<ul class="nav navbar-nav navbar-right">
-			        		<li>
-			        			<%= link_to 'All Restaurants', restaurants_path %>
-			        		</li>
-			        		<li>
-			        			<a href="#home">Most Selling</a>
-			        		</li>
+			        		<% RestaurantType.all.each do |resto_type| %>
+                                <li><%= link_to resto_type.RType, restaurant_type_path(resto_type), style: "font-size: 12px;" %></li>
+                            <% end %>
 				        		<% if user_signed_in? %>
 					        		<li>
 				        				<a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
 				                            My Account<b class="caret"></b>
 			                            </a>
 			                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
-				                            <li><a href="profile.html" style="font-size: 12px;">Profile</a></li>
-				                            <li><a href="contacts.html" style="font-size: 12px;">My Orders</a></li>
-				                            <li><a href="mailbox.html" style="font-size: 12px;">Delivery Address</a></li>
+				                            <li><a href="profile.html" style="font-size: 12px;"><i class="fa fa-user" aria-hidden="true" style="margin-right: 8px;"></i> Profile</a></li>
+				                            <li><a href="contacts.html" style="font-size: 12px;"><i class="fa fa-shopping-basket" aria-hidden="true" style="margin-right: 8px;"></i> My Orders</a></li>
+				                            <li><a href="mailbox.html" style="font-size: 12px;"><i class="fa fa-map-marker" aria-hidden="true" style="margin-right: 8px;"></i> Delivery Address</a></li>
 				                            <li class="divider"></li>
-				                            <li><%= link_to('Logout', destroy_user_session_path, :method => :delete, style: "font-size: 12px;") %>  </li>
+				                            <li><%= link_to destroy_user_session_path, :method => :delete, style: "font-size: 12px;" do %><i class="fa fa-mail-forward" aria-hidden="true" style="margin-right: 8px;"></i> Logout<% end %></li>
 				                        </ul>					        		
 					        		</li>
 					        	<% else %>
@@ -62,6 +59,49 @@
   		</header>
 	<% end %>
     <%= yield %>
+    <div class="footer" style="bottom: 0; position: relative; margin-top: 30px;">
+    	<div class="container">
+    		<div class="wrapper-content" style="">
+
+	            <div class="col-lg-3 pull-right">
+	                Copyright<strong style="color: #1ab394;"> habhub.ph</strong> © 2017
+	                <br>
+	                <small>All Rights Reserved</small>
+	            </div>
+
+	            <div class="col-lg-8" style="color: #777;">
+	                <a href="#" class="text-primary" style="font-size: 12px; margin-right: 10px;">
+	                	About Us
+	                </a>
+	                <span>|</span>
+	                <a href="#" class="text-primary" style="font-size: 12px; margin: 0 10px 0 10px;">
+	                	Suggest Restaurant
+	                </a>
+	                <span>|</span>
+	                <a href="#" class="text-primary" style="font-size: 12px; margin: 0 10px 0 10px;">
+	                	FAQ
+	                </a>
+	                <span>|</span>
+	                <a href="#" class="text-primary" style="font-size: 12px; margin: 0 10px 0 10px;">
+	                	Order Timeline
+	                </a>
+	                <span>|</span>
+	                <a href="#" class="text-primary" style="font-size: 12px; margin: 0 10px 0 10px;">
+	                	Terms and Conditions
+	                </a>
+	                <span>|</span>
+	                <a href="#" class="text-primary" style="font-size: 12px; margin: 0 10px 0 10px;">
+	                	Contact Us
+	                </a>
+	            </div>
+
+            </div>
+        </div>
+    </div>
+
     <div id="modal-shows"></div><!-- For modal shows, partial rendering -->
+
+
+
   </body>
 </html>

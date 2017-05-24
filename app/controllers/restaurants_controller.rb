@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
 	before_action :set_resto, except: [:index, :set_user_location]
-	before_action :set_order, except: [:index, :set_user_location, :change_user_location]
+	before_action :set_order, except: [:index, :set_user_location, :change_user_location, :user_location]
 	before_action :get_user_location, only: [:show]
 
 	def index
@@ -43,7 +43,8 @@ class RestaurantsController < ApplicationController
 		if !params[:lat].nil? && !params[:lng].nil?
 			@distance = Geocoder::Calculations.distance_between([@restaurant.latitude,@restaurant.longitude], [params[:lat],params[:lng]]).round(1) * 1.609
 			@distance = @distance.round(1) 
-			if @distance > 15
+
+			if @distance > 15 && @distance.present? # <------- check if its null also
 				params[:lat] = nil
 				params[:lng] = nil
 

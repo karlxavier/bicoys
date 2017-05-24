@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 		member do
 			get 'user_location'
 			get 'change_user_location'
+			# get 'set_user_location'
 		end
 	end
 

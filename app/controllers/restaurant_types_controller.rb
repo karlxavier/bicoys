@@ -22,7 +22,7 @@ class RestaurantTypesController < ApplicationController
 		if !params[:lat].nil? && !params[:lng].nil?
 			distance = Geocoder::Calculations.distance_between([7.065547,125.608295], [params[:lat],params[:lng]]).round(1) * 1.609
 			distance = distance.round(1) 
-			if distance > 15
+			if distance > 16
 				params[:lat] = nil
 				params[:lng] = nil
 
@@ -43,6 +43,7 @@ class RestaurantTypesController < ApplicationController
 				@user_address.full_address = address
 				@user_address.latitude = params[:lat]
 				@user_address.longitude = params[:lng]
+				@user_address.distance_from_user = distance
 
 				respond_to do |format|
 					if !@user_address.persisted?
@@ -51,7 +52,7 @@ class RestaurantTypesController < ApplicationController
 							format.js
 						end
 					else
-						if @user_address.update(user: current_user,full_address: address, latitude: params[:lat], longitude: params[:lng])
+						if @user_address.update(user: current_user,full_address: @address, latitude: params[:lat], longitude: params[:lng],distance_from_user: @distance)
 							session[:user_address_id] = @user_address.id
 							format.js
 						end
