@@ -10,21 +10,21 @@ class MigrateMenuToAnother7 < ActiveRecord::Migration[5.0]
 		# 	end
 		# end
 
-	  	resto7 = Restaurant.find(7)
-	  	resto7.menus.each do |menu|
-			Restaurant.where.not(id: 7).each do |resto|
-				resto.menus.create!(
-					:name => menu.name,
-					:description => menu.description,
-					:price => menu.price,
-					:restaurant_id => resto.id,
-					:total_price => menu.total_price,
-					:menu_category_id => menu.menu_category_id,
-					:commission => menu.commission,
-					:image => menu.image
-				)
-			end
-		end
+	 #  	resto7 = Restaurant.find(7)
+	 #  	resto7.menus.each do |menu|
+		# 	Restaurant.where.not(id: 7).each do |resto|
+		# 		resto.menus.create!(
+		# 			:name => menu.name,
+		# 			:description => menu.description,
+		# 			:price => menu.price,
+		# 			:restaurant_id => resto.id,
+		# 			:total_price => menu.total_price,
+		# 			:menu_category_id => menu.menu_category_id,
+		# 			:commission => menu.commission,
+		# 			:image => menu.image
+		# 		)
+		# 	end
+		# end
 
 	end
 end

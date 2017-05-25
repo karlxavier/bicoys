@@ -15,7 +15,7 @@
 # TariffRate.create(min_km: 6.6, max_km: 10, min_order: 550, service_charge: 60, eta_delivery: '1.5hr')
 
 # TariffRate.create(min_km: 10.1, max_km: 15, min_order: 750, service_charge: 60, eta_delivery: '1.5hr')
-# Restaurant.delete_all
+Restaurant.delete_all
 Restaurant.create!(name: "Penongs", address: "Elustre St.", phone: "09973234343", latitude: 7.065547, longitude: 125.608295, restaurant_type_id: 1)
 Restaurant.create!(name: "Bon Appetit! La Boutique", address: "Elustre St.", phone: "09973234343", latitude: 7.065547, longitude: 125.608295, restaurant_type_id: 1)
 Restaurant.create!(name: "Jack's Ridge", address: "Elustre St.", phone: "09973234343", latitude: 7.065547, longitude: 125.608295, restaurant_type_id: 1)
