@@ -13,58 +13,62 @@
   </head>
 
   <body data-spy="scroll" data-target=".menu-cat" data-offset="50">
+	  <div style="min-height: 100%">
+	  	<div style="overflow: auto; padding-bottom: 82px;">
+	  		
+		  	<% if ["Admins","Restos"].exclude? controller.class.name.split("::").first %>
+		  		<% if current_page?(root_path) %>
+		  			<header class="top-header navbar navbar-default header-transparent navbar-fixed-top yamm shirnk">
+		  		<% else %>
+		  			<header class="navbar-default-white">
+		  		<% end %>
+		  			<div class="container">
+					  	<div class="navbar-header">
+				            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				                <span class="sr-only">Toggle navigation</span>
+				                <span class="icon-bar"></span>
+				                <span class="icon-bar"></span>
+				                <span class="icon-bar"></span>
+				            </button>
+				            <%= link_to 'Home', root_path, class: "navbar-brand" %>
+				        </div>
+					        <div id="navbar" class="navbar-collapse collapse">
+					        	<ul class="nav navbar-nav navbar-right">
+					        		<% RestaurantType.all.each do |resto_type| %>
+		                                <li><%= link_to resto_type.RType, restaurant_type_path(resto_type), style: "font-size: 12px;" %></li>
+		                            <% end %>
+						        		<% if user_signed_in? %>
+							        		<li>
+						        				<a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
+						                            My Account<b class="caret"></b>
+					                            </a>
+					                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+						                            <li><a href="profile.html" style="font-size: 12px;"><i class="fa fa-user" aria-hidden="true" style="margin-right: 8px;"></i> Profile</a></li>
+						                            <li><a href="contacts.html" style="font-size: 12px;"><i class="fa fa-shopping-basket" aria-hidden="true" style="margin-right: 8px;"></i> My Orders</a></li>
+						                            <li><a href="mailbox.html" style="font-size: 12px;"><i class="fa fa-map-marker" aria-hidden="true" style="margin-right: 8px;"></i> Delivery Address</a></li>
+						                            <li class="divider"></li>
+						                            <li><%= link_to destroy_user_session_path, :method => :delete, style: "font-size: 12px;" do %><i class="fa fa-mail-forward" aria-hidden="true" style="margin-right: 8px;"></i> Logout<% end %></li>
+						                        </ul>					        		
+							        		</li>
+							        	<% else %>
+							        		<li>
+							        			<%= link_to 'Login', new_user_session_path %>
+							        		</li>
+							        	<% end %>
+					        	</ul>
+					        </div>  
+			  		</div>
+		  			</header>
+			<% end %>
+		    <%= yield %>
 
-  	<% if ["Admins","Restos"].exclude? controller.class.name.split("::").first %>
-  		<% if current_page?(root_path) %>
-  			<header class="top-header navbar navbar-default header-transparent navbar-fixed-top yamm shirnk">
-  		<% else %>
-  			<header class="navbar-default-white">
-  		<% end %>
-  			<div class="container">
-			  	<div class="navbar-header">
-		            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-		                <span class="sr-only">Toggle navigation</span>
-		                <span class="icon-bar"></span>
-		                <span class="icon-bar"></span>
-		                <span class="icon-bar"></span>
-		            </button>
-		            <%= link_to 'Home', root_path, class: "navbar-brand" %>
-		        </div>
-			        <div id="navbar" class="navbar-collapse collapse">
-			        	<ul class="nav navbar-nav navbar-right">
-			        		<% RestaurantType.all.each do |resto_type| %>
-                                <li><%= link_to resto_type.RType, restaurant_type_path(resto_type), style: "font-size: 12px;" %></li>
-                            <% end %>
-				        		<% if user_signed_in? %>
-					        		<li>
-				        				<a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
-				                            My Account<b class="caret"></b>
-			                            </a>
-			                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
-				                            <li><a href="profile.html" style="font-size: 12px;"><i class="fa fa-user" aria-hidden="true" style="margin-right: 8px;"></i> Profile</a></li>
-				                            <li><a href="contacts.html" style="font-size: 12px;"><i class="fa fa-shopping-basket" aria-hidden="true" style="margin-right: 8px;"></i> My Orders</a></li>
-				                            <li><a href="mailbox.html" style="font-size: 12px;"><i class="fa fa-map-marker" aria-hidden="true" style="margin-right: 8px;"></i> Delivery Address</a></li>
-				                            <li class="divider"></li>
-				                            <li><%= link_to destroy_user_session_path, :method => :delete, style: "font-size: 12px;" do %><i class="fa fa-mail-forward" aria-hidden="true" style="margin-right: 8px;"></i> Logout<% end %></li>
-				                        </ul>					        		
-					        		</li>
-					        	<% else %>
-					        		<li>
-					        			<%= link_to 'Login', new_user_session_path %>
-					        		</li>
-					        	<% end %>
-			        	</ul>
-			        </div>  
-	  		</div>
-  			</header>
-	<% end %>
-    <%= yield %>
+    	</div>
+     </div>
 
-    <div id="modal-shows"></div><!-- For modal shows, partial rendering -->
 
   	<% if ["Admins","Restos"].exclude? controller.class.name.split("::").first %>
   	
-		    <div class="footer" style="bottom: 0; position: relative; margin-top: 30px;">
+		    <div class="footer" style="bottom: 0; left: 0; position:relative; margin-top: -81px; height: 81px; clear: both;">
 		    	<div class="container">
 		    		<div class="wrapper-content" style="">
 
@@ -88,10 +92,6 @@
 			                </a>
 			                <span>|</span>
 			                <a href="#" class="text-primary footer-links">
-			                	Order Timeline
-			                </a>
-			                <span>|</span>
-			                <a href="#" class="text-primary footer-links">
 			                	Terms and Conditions
 			                </a>
 			                <span>|</span>
@@ -103,7 +103,8 @@
 		            </div>
 		        </div>
 		    </div>	
-
 	<% end %>
+	<div id="modal-shows"></div><!-- For modal shows, partial rendering -->
+
   </body>
 </html>
