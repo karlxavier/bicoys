@@ -89,7 +89,7 @@ class RestaurantsController < ApplicationController
 	private
 
 	def set_resto
-		@restaurant = Restaurant.find(params[:id])
+		@restaurant = Restaurant.resto_wd_images(params[:id]).first
 	end
 
 	def set_order

@@ -37,6 +37,8 @@ Rails.application.routes.draw do
 		end
 	end
 
+	resources :user_addresses, only: [:edit, :update]
+	# get 'update_user_address', :to => 'orders#update_user_address', :as => :update_user_address
 	get 'set_user_location', :to => 'restaurants#set_user_location', :as => :set_user_location
 	get 'user_location', :to => 'restaurant_types#user_location', :as => :user_location
 

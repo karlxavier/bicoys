@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170524230050) do
+ActiveRecord::Schema.define(version: 20170526123653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 20170524230050) do
     t.integer  "payment_type_id"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+    t.integer  "min_order"
   end
 
   create_table "payment_types", force: :cascade do |t|
@@ -196,6 +197,8 @@ ActiveRecord::Schema.define(version: 20170524230050) do
     t.datetime "updated_at",                                                     null: false
     t.boolean  "last_used",                                      default: false
     t.decimal  "distance_from_user",    precision: 12, scale: 3
+    t.string   "mobile_number"
+    t.string   "landline_number"
   end
 
   create_table "users", force: :cascade do |t|

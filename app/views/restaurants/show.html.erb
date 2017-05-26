@@ -169,31 +169,37 @@
                             <div class="panel-body">
                                 <strong>Image Gallery</strong>
                                 <p>Discoverer the photos we had shared to our happy customers.</p>
-                                <div class="lightBoxGallery">
-                                    <% @restaurant.restaurant_images.each do |image| %>
-                                        <a href="<%= image_path image.image.url(:web) %>" title="Image from Unsplash" data-gallery="">
-                                            <%= image_tag image.image.url(:web), style: "width: 100px; height: 100px;" %>
-                                        </a>
-                                    <% end %>
-                                    <div id="blueimp-gallery" class="blueimp-gallery" style="display: none;">
-                                        <div class="slides" style="width: 96552px;"></div>
-                                        <h3 class="title">GG</h3>
-                                        <a class="prev">‹</a>
-                                        <a class="next">›</a>
-                                        <a class="close">×</a>
-                                        <a class="play-pause"></a>
-                                        <ol class="indicator"></ol>
+                                <% if @restaurant.restaurant_images.any? %>
+                                    <div class="lightBoxGallery">
+                                            <% @restaurant.restaurant_images.each do |image| %>
+                                                <a href="<%= image_path image.image.url(:web) %>" title="Image from Unsplash" data-gallery="">
+                                                    <%= image_tag image.image.url(:web), style: "width: 100px; height: 100px;" %>
+                                                </a>
+                                            <% end %>
+                                        <div id="blueimp-gallery" class="blueimp-gallery" style="display: none;">
+                                            <div class="slides" style="width: 96552px;"></div>
+                                            <h3 class="title">GG</h3>
+                                            <a class="prev">‹</a>
+                                            <a class="next">›</a>
+                                            <a class="close">×</a>
+                                            <a class="play-pause"></a>
+                                            <ol class="indicator"></ol>
+                                        </div>
                                     </div>
-                                </div>
+                                <% else %>
+                                    <div class="col-lg-12" style="min-height: 250px; margin-top: 50px;">
+                                        <p class="text-center">
+                                            <i class="fa fa-image big-icon"></i>
+                                        </p>
+                                    </div>
+                                <% end %>
                             </div>
                         </div>
                         <div id="tab-6" class="tab-pane">
                             <div class="panel-body">
                                 <strong>Come and Visit Us!</strong>
                                 <p><%= @restaurant.address %></p>
-                                <div id="g-spot" style="height: 500px;">
-                                                
-                                </div>
+                                <div id="g-spot" style="height: 500px;"></div>
                             </div>
                         </div>
                     </div>
@@ -215,7 +221,7 @@
 	                <div class="ibox-footer textContainer text-center">
 	                	<h3 class="text-center"><i class="fa fa-phone"></i> +63 297 3254</h3>
 	                    <span class="small" style="text-align: center;">
-	                        Need support? Call us anytime. We are avalible 24/7. ☺
+	                        Need support? Call us anytime. We are avalible 24/7 ☺
 	                    </span>
 	                </div>
 	            </div>

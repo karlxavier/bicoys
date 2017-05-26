@@ -4,10 +4,13 @@ class OrderItemsController < ApplicationController
 	    @order.user = current_user
 	    @order.restaurant_id = session[:restaurant_id]
 	    @order_item = @order.order_items.new(order_item_params)
+
+	    @user_address = current_location
+		@resto_rate = TariffRate.resto_rate(@user_address.distance_from_user).first
+		@order.min_order = @resto_rate.min_order
 	    
 	    respond_to do |format|
 	      if @order.save
-	        
 	         session[:order_id] = @order.id
 	         session[:restaurant_id] = @order.restaurant_id
 	      else
@@ -23,7 +26,6 @@ class OrderItemsController < ApplicationController
 	def update
 	    @order = current_order
 	    @order_item = @order.order_items.find(params[:id])
-	    # @order_items = @order.order_items
 
 	    respond_to do |format|
 	      if @order_item.update_attributes(order_item_params)
@@ -37,10 +39,15 @@ class OrderItemsController < ApplicationController
 	end
 
 	def destroy
-		puts '*************destroy*****************'
 	    @order = current_order
 	    @order_item = @order.order_items.find(params[:id])
-	    @order_item.destroy
+	    
+	    respond_to do |format|
+	    	if @order_item.destroy
+	    	end
+	    	format.js
+	    end
+	    
 	end
 
 	private

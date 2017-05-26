@@ -1,1 +1,1 @@
-$('div#orders').html("<%= escape_javascript(render 'orders/orders', order: current_order) %>");
+$('div#orders').html("<%= escape_javascript(render 'orders/orders', order: current_order, resto_rate: @resto_rate ) %>");

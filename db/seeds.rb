@@ -76,52 +76,30 @@
 # Restaurant.create!(name: "Allmeals Restaurant & Catering Service", address: "Elustre St.", phone: "09973234343", latitude: 7.065547, longitude: 125.608295, restaurant_type_id: 3)
 # Restaurant.create!(name: "Limitless", address: "Elustre St.", phone: "09973234343", latitude: 7.065547, longitude: 125.608295, restaurant_type_id: 3)
 
-	resto7 = Restaurant.find(89)
-	resto7.menu_categories.each do |menucat|
-		Restaurant.all.each do |resto|
-			resto_menu_cat = resto.menu_categories.create!(
-				:name => menucat.name,
-				:restaurant_id => resto.id
-			)
 
-			Menu.where(menu_category_id: menucat.id).all.each do |menu|
-				resto.menus.create!(
-					:name => menu.name,
-					:description => menu.description,
-					:price => menu.price,
-					:restaurant_id => resto.id,
-					:total_price => menu.total_price,
-					:menu_category_id => resto_menu_cat.id,
-					:commission => menu.commission,
-					:image => menu.image
-				)
-			end
-		end
-	end
 
-	 #  	resto7 = Restaurant.find(89)
-	 #  	resto7.menu_categories.each do |menucat|
-		# 	Restaurant.where.not(id: 89).each do |resto|
-		# 		resto.menu_categories.create!(
-		# 			:name => menucat.name,
-		# 			:restaurant_id => resto.id
-		# 		)
-		# 	end
-		# end
+	# resto7 = Restaurant.find(89)
+	# resto7.menu_categories.each do |menucat|
+	# 	Restaurant.all.each do |resto|
+	# 		resto_menu_cat = resto.menu_categories.create!(
+	# 			:name => menucat.name,
+	# 			:restaurant_id => resto.id
+	# 		)
 
-	 #  	resto7 = Restaurant.find(7)
-	 #  	resto7.menus.each do |menu|
-		# 	Restaurant.where.not(id: 7).each do |resto|
-		# 		resto.menus.create!(
-		# 			:name => menu.name,
-		# 			:description => menu.description,
-		# 			:price => menu.price,
-		# 			:restaurant_id => resto.id,
-		# 			:total_price => menu.total_price,
-		# 			:menu_category_id => menu.menu_category_id,
-		# 			:commission => menu.commission,
-		# 			:image => menu.image
-		# 		)
-		# 	end
-		# end
+	# 		Menu.where(menu_category_id: menucat.id).all.each do |menu|
+	# 			resto.menus.create!(
+	# 				:name => menu.name,
+	# 				:description => menu.description,
+	# 				:price => menu.price,
+	# 				:restaurant_id => resto.id,
+	# 				:total_price => menu.total_price,
+	# 				:menu_category_id => resto_menu_cat.id,
+	# 				:commission => menu.commission,
+	# 				:image => menu.image
+	# 			)
+	# 		end
+	# 	end
+	# end
+
+	
 

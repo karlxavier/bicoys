@@ -11,7 +11,6 @@ class Restaurant < ApplicationRecord
 	mount_uploader :profile_image, ProfileImageUploader
 
 	scope :most_recent, -> (limited, resto_type) { where( restaurant_type_id: resto_type ).order( created_at: :desc).limit(limited) }
-	# scope :restos, -> (type_id) { includes(:restaurant_type).where( restaurant_type_id: type_id, active: true) }
-	# scope :resto_menus, -> (resto_id) { select('restaurants.id','menus.name','restaurants.latitude').joins(:menus).where( active: :true, id: resto_id) }
+	scope :resto_wd_images, -> (resto_id) { includes(:restaurant_images).where(id: resto_id) }
 
 end
