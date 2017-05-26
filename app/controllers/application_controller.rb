@@ -22,26 +22,14 @@ class ApplicationController < ActionController::Base
     if session[:user_address_id].nil?
         if user_signed_in?
             if current_user.user_addresses.present?
-              puts '**********USER ADD PRESENT**********'
               current_user.user_addresses.first
             else
-              puts '**********ADD NOT PRESENT**********'
               UserAddress.new
             end
         else
-            # if UserAddress.exists?(id: session[:user_address_id])
-            #     UserAddress.where(id: session[:user_address_id]).first
-            # else
-            #     UserAddress.new
-            # end
             UserAddress.where(id: session[:user_address_id]).first || UserAddress.new
         end
     else
-        # if UserAddress.exists?(id: session[:user_address_id])
-        #     UserAddress.where(id: session[:user_address_id]).first
-        # else
-        #     UserAddress.new
-        # end
         UserAddress.where(id: session[:user_address_id]).first || UserAddress.new
     end
   end

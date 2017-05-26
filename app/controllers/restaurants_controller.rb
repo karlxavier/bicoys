@@ -45,6 +45,7 @@ class RestaurantsController < ApplicationController
 			@distance = @distance.round(1) 
 
 			if @distance > 15 && @distance.present? # <------- check if its null also
+				session[:user_address_id]
 				params[:lat] = nil
 				params[:lng] = nil
 
@@ -57,6 +58,7 @@ class RestaurantsController < ApplicationController
 					format.js { render 'restaurants/error_msg' }
 				end	
 			else
+				puts session[:user_address_id]
 				@address = params[:add]
 				@address.gsub! /"/, ''
 
@@ -73,6 +75,12 @@ class RestaurantsController < ApplicationController
 							session[:user_address_id] = @user_address.id
 							@resto_rate = TariffRate.resto_rate(@distance).first
 							format.js
+						else
+							if @user_address.errors.any?
+								@user_address.errors.full_messages.each do |message|
+							   	puts message
+							  end
+							end
 						end
 					else
 						if @user_address.update(user: current_user,full_address: @address, latitude: params[:lat], longitude: params[:lng],distance_from_user: @distance)
@@ -97,6 +105,8 @@ class RestaurantsController < ApplicationController
 	end
 
 	def get_user_location
+		puts '*********** get_user_location ***********'
+		puts @restaurant.id
 		session[:restaurant_id] =  @restaurant.id
 		@current_location = current_location
 		if @current_location.full_address.nil?
