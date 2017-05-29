@@ -16,7 +16,18 @@ class RestaurantTypesController < ApplicationController
 	end
 
 	def show
-		@restos = RestaurantType.restos(params[:id])
+		if params[:search]
+			respond_to do |format|
+				 @restos = Restaurant.resto_search(params[:id], params[:search])
+				if @restos
+					format.js { render 'each_restaurants' }
+				else
+					@restos = RestaurantType.restos(params[:id])
+				end
+			end
+		else
+			@restos = RestaurantType.restos(params[:id])
+		end
 	end
 
 	def user_location

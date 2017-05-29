@@ -38,9 +38,13 @@ Rails.application.routes.draw do
 	end
 
 	resources :user_addresses, only: [:edit, :update]
-	# get 'update_user_address', :to => 'orders#update_user_address', :as => :update_user_address
+	resources :suggest_restos, only: [:new, :create]
+	
+	get 'err_404', :to => 'errors#err_404', :as => :err_404
 	get 'set_user_location', :to => 'restaurants#set_user_location', :as => :set_user_location
 	get 'user_location', :to => 'restaurant_types#user_location', :as => :user_location
+	get 'about_us', to: 'mains#about_us', as: :about_us
+	get 'faq', to: 'mains#faq', as: :faq
 
 	namespace :restos do
 		get '/', to: 'restaurants#dashboard', as: ''
@@ -63,5 +67,7 @@ Rails.application.routes.draw do
 		resources :users, only: [:index, :edit, :update]
 		resources :restos, only: [:index, :edit, :update]
 	end
+
+	get '*path' => redirect('/') # FOR PAGES NOT FOUND REDIRECT TO ROOT_PATH
 
 end

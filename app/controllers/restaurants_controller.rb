@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+	around_filter :catch_not_found
 	before_action :set_resto, except: [:index, :set_user_location]
 	before_action :set_order, except: [:index, :set_user_location, :change_user_location, :user_location]
 	before_action :get_user_location, only: [:show]
@@ -8,7 +9,6 @@ class RestaurantsController < ApplicationController
 	end
 
 	def show
-		# @order = current_order
 		@menu_cats = MenuCategory.menu_cats(params[:id])
 		@order_item = @order.order_items.new
 		session[:restaurant_id] = params[:id]
@@ -98,6 +98,12 @@ class RestaurantsController < ApplicationController
 
 	def set_resto
 		@restaurant = Restaurant.resto_wd_images(params[:id]).first
+
+		if @restaurant.blank?
+			redirect_to err_404_path
+		end
+		# rescue ActiveRecord::RecordNotFound
+  # 		redirect_to root_url, :flash => { :error => "Record not found." }
 	end
 
 	def set_order
@@ -105,8 +111,6 @@ class RestaurantsController < ApplicationController
 	end
 
 	def get_user_location
-		puts '*********** get_user_location ***********'
-		puts @restaurant.id
 		session[:restaurant_id] =  @restaurant.id
 		@current_location = current_location
 		if @current_location.full_address.nil?
@@ -118,6 +122,10 @@ class RestaurantsController < ApplicationController
 		params.require(:user_address).permit(:user_id,:full_address,:latitude,:longitude,:distance_from_user)
 	end
 
-
+	def catch_not_found
+	  yield
+	rescue ActiveRecord::RecordNotFound
+	  redirect_to root_url, :flash => { :error => "Record not found." }
+	end
 
 end

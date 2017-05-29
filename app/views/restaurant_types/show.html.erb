@@ -26,10 +26,10 @@
 			                        <tbody>
 			                        <tr>
 			                            <td>
-			                                <strong>142</strong> Restaurants
+			                                <strong><%= restos.restaurants.count %></strong> Restaurants
 			                            </td>
 			                            <td>
-			                                <strong>25,342</strong> Menus
+			                                <strong>1k +</strong> Menus
 			                            </td>
 
 			                        </tr>
@@ -38,7 +38,7 @@
 			                                <strong>154</strong> Today's Deliveries
 			                            </td>
 			                            <td>
-			                                <strong>32</strong> Friends
+			                                <strong>4k +</strong> Today's Visits
 			                            </td>
 			                        </tr>
 			                        </tbody>
@@ -54,39 +54,23 @@
 	    	<div class="col-lg-12">
 	    		<div class="col-lg-6 pull-right">
 	    			<div class="search-form" style="margin-bottom: 20px;">
-	    				<div class="input-group"><input type="text" class="form-control">
-                            <div class="input-group-btn">
-                                <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button" aria-expanded="false">Seach for <span class="caret"></span></button>
-                                <ul class="dropdown-menu pull-right">
-                                    <li><a href="#">Restaurants</a></li>
-                                    <li><a href="#">Menus</a></li>
-                                </ul>
-                            </div>
-                        </div>
+	    				
+	    					<%= form_tag(restaurant_type_path(restos), :method => "get", id: "search-form", remote: true) do %>
+	    						<div class="input-group">
+								    <%= text_field_tag :search, params[:search], placeholder: "Search Restaurants or Menus", class: "form-control" %>
+								    <span class="input-group-btn">
+								    	<%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
+								    </span>
+								</div>
+							<% end %>
+                        
 	                </div>
 	    		</div>
 	    	</div>
 	        <div class="col-xs-12">
 	        	<div class="row">
 	                <div class="col-lg-12">
-	                    <% restos.restaurants.where("active = ?", true).each do |resto| %>
-	                        <div class="file-box">
-	                            <div class="file">
-	                                <%= link_to restaurant_path(resto) do %>
-	                                    <span class="corner"></span>
-	                                    <div class="image">
-	                                        <%= image_tag resto.profile_image.url(:web) || asset_path('default_menu.png'), class: "img-responsive" %>
-	                                    </div>
-	                                    <div class="file-name">
-	                                        <h5 style="margin-bottom: 5px;">
-	                                        	<%= link_to truncate(resto.name.html_safe, length: 25), restaurant_path(resto) %>
-	                                        </h5>
-	                                        <small><%= resto.address %></small>
-	                                    </div>
-	                                <% end %>
-	                            </div>
-	                        </div>
-	                    <% end %>
+	                	<%= render 'each_restaurants', restos: restos.restaurants %>
 	                </div>
 	            </div>
 			</div>

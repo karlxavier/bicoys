@@ -1,0 +1,123 @@
+<section class="container" style="margin-bottom: 30px;">
+	<div class="space-70"></div>
+    <div class="row">
+        <div class="col-xs-12" id="resto_banner">
+        	<div class="wrapper wrapper-content animated fadeInUp" style="padding: 0;">
+        		<div class="ibox-content m-b-sm border-bottom">
+                    <div class="p-xs">
+                        <div class="pull-left m-r-md">
+                            <i class="fa fa-handshake-o text-navy mid-icon" style="font-size: 66px;"></i>
+                        </div>
+                        <h2>Suggest Restaurant</h2>
+                        <span>If your favourite restaurant is not listed with us, you can now suggest it and we will contact them for you.</span>
+                    </div>
+                </div>
+                <div class="ibox-content forum-container">
+                    <%= form_for @suggest_resto do |f| %>
+                        <fieldset class="form-horizontal">
+                            
+                            <div class="col-sm-5">
+                                <div class="form-group">
+                                    <strong>Restaurant's Name:</strong>
+                                    <%= f.text_field :name, class: "form-control", placeholder: "Restaurant's Name" %>
+                                </div>
+                            </div>
+                           
+                            <div class="col-sm-6" style="margin-left: 10px;">
+                                <div class="form-group">
+                                    <strong>Address:</strong>
+                                    <%= f.text_field :address, class: "form-control", placeholder: "Address" %>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-5">
+                                <div class="form-group">
+                                    <strong>Telephone:</strong>
+                                    <%= f.text_field :phone, class: "form-control", placeholder: "Telephone" %>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6" style="margin-left: 10px;">
+                                <div class="form-group">
+                                    <strong>Restaurant's Type:</strong>
+                                    <%= f.collection_select(:restaurant_type_id, RestaurantType.all, :id, :RType, {}, {class: "form-control"}) %>
+                                </div>
+                            </div>
+
+                            <%= f.hidden_field :latitude %>
+                            <%= f.hidden_field :longitude %>
+
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <h4>Locate it in Map</h4>
+                                    <small>Click on the map to change the marker</small>
+                                    <div id="g-spot" style="height: 300px;">
+                                                
+                                    </div>
+                                </div>
+                            </div>
+                            <%= button_tag(type: 'Submit', class: "col-lg-3 btn btn-primary") do %>
+                            <i class="icon-ok icon-white"></i> Save
+                        <% end %> 
+                    <%= link_to 'Cancel', root_path, class: 'col-lg-3 btn btn-default', style: 'margin-left: 10px;' %>
+                        </fieldset>
+                        
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+        $(function() {
+                var map;
+                  var myLatlng = new google.maps.LatLng(7.065547, 125.608295); // DAVAO CITY HALL AS DEFAULT LOCATION
+                  var myOptions = {
+                    zoom: 14,
+                    center: myLatlng,
+                    mapTypeId: google.maps.MapTypeId.HYBRID
+                  }
+                  map = new google.maps.Map(document.getElementById("g-spot"), myOptions);
+
+                    var vlat = 7.065547
+                    var vlng = 125.608295
+
+                    if (vlat != '') {
+                        var myLatLng = {lat: vlat, lng: vlng};
+
+                        var map = new google.maps.Map(document.getElementById('g-spot'), {
+                            zoom: 14,
+                            center: myLatLng,
+                            mapTypeId: google.maps.MapTypeId.HYBRID
+                        });
+
+                        var marker = new google.maps.Marker({
+                          position: myLatLng,
+                          map: map,
+                          title: 'Nia ko diri!'
+                        });
+                    }
+
+                    var marker;
+
+                    function placeMarker(location) {
+                      if ( marker ) {
+                        marker.setPosition(location);
+                      } else {
+                        marker = new google.maps.Marker({
+                          position: location,
+                          map: map,
+                          title: "sure ka diri ila resto?"
+                        });
+                      }
+                    }
+
+                    google.maps.event.addListener(map, 'click', function(event) {
+                      placeMarker(event.latLng);
+                      var myLatLng = event.latLng;
+                      document.getElementById("suggest_resto_latitude").value = myLatLng.lat();
+                      document.getElementById("suggest_resto_longitude").value = myLatLng.lng();
+                    });
+        });
+
+    </script>

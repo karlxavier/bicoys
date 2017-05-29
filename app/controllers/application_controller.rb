@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  rescue_from ActiveRecord::RecordNotFound, :with => :render_404
   before_action :configure_permitted_parameters, if: :devise_controller?
 	helper_method :current_order
   helper_method :current_location
@@ -43,6 +44,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def render_404
+    render :template => "errors/err_404", :status => 404
+  end
 
   protected
 	  def configure_permitted_parameters

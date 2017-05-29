@@ -1,0 +1,24 @@
+<div id="each-restos">
+    <% if restos.exists? %>
+        <% restos.each do |resto| %>
+            <div class="file-box">
+                <div class="file">
+                    <%= link_to restaurant_path(resto) do %>
+                        <span class="corner"></span>
+                        <div class="image">
+                            <%= image_tag resto.profile_image.url(:web) || asset_path('default_menu.png'), class: "img-responsive" %>
+                        </div>
+                        <div class="file-name">
+                            <h5 style="margin-bottom: 5px;">
+                            	<%= link_to truncate(resto.name.html_safe, length: 25), restaurant_path(resto) %>
+                            </h5>
+                            <small><%= resto.address %></small>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
+    <% else %>
+        <h1 class="text-muted text-center" style="margin-top: 70px;">No matches found.</h1>
+    <% end %>
+</div>  
