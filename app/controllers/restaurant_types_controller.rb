@@ -16,17 +16,26 @@ class RestaurantTypesController < ApplicationController
 	end
 
 	def show
-		if params[:search]
+		if !params[:search].blank?
 			respond_to do |format|
-				 @restos = Restaurant.resto_search(params[:id], params[:search])
+				@restos = Restaurant.resto_search(params[:id], params[:search])
 				if @restos
 					format.js { render 'each_restaurants' }
 				else
 					@restos = RestaurantType.restos(params[:id])
+					format.js { render 'each_restaurants' }
 				end
 			end
 		else
-			@restos = RestaurantType.restos(params[:id])
+			respond_to do |format|
+				if request.format.to_s == 'text/html' # <-------- STILL NEEDS TO IMPROVE
+					@restos = RestaurantType.restos(params[:id])
+					format.html { render 'show' }
+				else
+					@restos = Restaurant.where(restaurant_type_id: params[:id])
+					format.js { render 'each_restaurants' }
+				end
+			end
 		end
 	end
 

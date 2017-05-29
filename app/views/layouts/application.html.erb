@@ -43,9 +43,12 @@
 						                            My Account<b class="caret"></b>
 					                            </a>
 					                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
-						                            <li><a href="profile.html" style="font-size: 12px;"><i class="fa fa-user" aria-hidden="true" style="margin-right: 8px;"></i> Profile</a></li>
+						                            <li>
+						                            	<%= link_to edit_user_registration_path, style: "font-size: 12px;" do %>
+						                            		<i class="fa fa-user" aria-hidden="true" style="margin-right: 8px;"></i> Profile
+						                            	<% end %>
+						                            </li>
 						                            <li><a href="contacts.html" style="font-size: 12px;"><i class="fa fa-shopping-basket" aria-hidden="true" style="margin-right: 8px;"></i> My Orders</a></li>
-						                            <li><a href="mailbox.html" style="font-size: 12px;"><i class="fa fa-map-marker" aria-hidden="true" style="margin-right: 8px;"></i> Delivery Address</a></li>
 						                            <li class="divider"></li>
 						                            <li><%= link_to destroy_user_session_path, :method => :delete, style: "font-size: 12px;" do %><i class="fa fa-mail-forward" aria-hidden="true" style="margin-right: 8px;"></i> Logout<% end %></li>
 						                        </ul>					        		
