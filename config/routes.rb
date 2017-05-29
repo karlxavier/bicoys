@@ -6,13 +6,14 @@ Rails.application.routes.draw do
 			  		registrations: "admins/registrations",
 			  		sessions: "admins/sessions"
 			  	} do
-		# get '/admins/sign_out' => 'admins/sessions#destroy'
 	end
 
 	devise_for :users, controllers: {
         sessions: 'users/sessions',
-        registrations: 'users/registrations'
+        registrations: 'users/registrations',
+        omniauth_callbacks: 'omniauth_callbacks'
     }
+    # get '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
     devise_for :restos, controllers: {
     	sessions: 'restos/sessions',

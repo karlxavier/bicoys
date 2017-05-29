@@ -3,13 +3,14 @@
       <h3>Register to <span style="color: #1ab394;">habhub.ph</span></h3>
       <p>Create an account to see us in action.</p>
       <br>
-      <a href="#" id="facebook-login-global" data-store-cookie-session="false" data-reload="true" class="ui massive facebook fluid labeled icon button facebook-login mb5">
+
+      <%= link_to user_facebook_omniauth_authorize_path, class: "ui massive facebook fluid labeled icon button facebook-login mb5" do %>
           <i class="icon">
                <i class="fa fa-facebook fa-2x" style="margin-top: 10px;"></i>
           </i>
        
           <span class="fontsize3">Continue with Facebook</span>
-      </a>
+      <% end %>
       <div class="clearfix"></div>
       <div class="ui horizontal divider">
         or        
