@@ -13,7 +13,8 @@ Rails.application.routes.draw do
         registrations: 'users/registrations',
         omniauth_callbacks: 'omniauth_callbacks'
     }
-    # get '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
+   #  get 'auth/facebook/callback', to: 'sessions#create'
+  	# get 'auth/failure', to: redirect('/')
 
     devise_for :restos, controllers: {
     	sessions: 'restos/sessions',
