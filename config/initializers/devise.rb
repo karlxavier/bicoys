@@ -17,7 +17,7 @@ Devise.setup do |config|
   require 'devise/orm/active_record'
 
   config.omniauth :facebook, ENV["FB_KEY"], ENV["FB_SECRET"],
-                callback_url: ENV["FB_CALLBACK"] + '/users/auth/facebook/callback'
+                callback_url: ENV["FB_CALLBACK"]
 
   # config.omniauth :facebook, ENV["FB_KEY"], ENV["FB_SECRET"]
 
