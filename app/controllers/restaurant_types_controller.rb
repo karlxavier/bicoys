@@ -1,4 +1,5 @@
 class RestaurantTypesController < ApplicationController
+	before_filter :allow_iframe_requests
 
 	def index
 		@resto_recent = Restaurant.most_recent(5,1)
@@ -81,6 +82,10 @@ class RestaurantTypesController < ApplicationController
 				end	
 			end
 		end
+	end
+
+	def allow_iframe_requests
+		response.headers.delete('X-Frame-Options')
 	end
 
 end
