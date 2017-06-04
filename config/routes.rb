@@ -14,10 +14,10 @@ Rails.application.routes.draw do
         registrations: 'users/registrations'
     }
 
-    devise_scope :user do
-    	get '/users/auth/:provider/upgrade' => 'omniauth_callbacks#upgrade', as: :user_omniauth_upgrade
-    	get '/users/auth/:provider/setup', :to => 'omniauth_callbacks#setup'
-    end
+    # devise_scope :user do
+    # 	get '/users/auth/:provider/upgrade' => 'omniauth_callbacks#upgrade', as: :user_omniauth_upgrade
+    # 	get '/users/auth/:provider/setup', :to => 'omniauth_callbacks#setup'
+    # end
 
     devise_for :restos, controllers: {
     	sessions: 'restos/sessions',
