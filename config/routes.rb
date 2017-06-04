@@ -13,8 +13,11 @@ Rails.application.routes.draw do
         sessions: 'users/sessions',
         registrations: 'users/registrations'
     }
-   #  get 'auth/facebook/callback', to: 'sessions#create'
-  	# get 'auth/failure', to: redirect('/')
+
+    devise_scope :user do
+    	get '/users/auth/:provider/upgrade' => 'omniauth_callbacks#upgrade', as: :user_omniauth_upgrade
+    	get '/users/auth/:provider/setup', :to => 'omniauth_callbacks#setup'
+    end
 
     devise_for :restos, controllers: {
     	sessions: 'restos/sessions',

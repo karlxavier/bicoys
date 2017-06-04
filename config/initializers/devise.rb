@@ -16,7 +16,7 @@ Devise.setup do |config|
 
   require 'devise/orm/active_record'
 
-  config.omniauth :facebook, ENV["FB_KEY"], ENV["FB_SECRET"], scope: "email"
+  config.omniauth :facebook, ENV["FB_KEY"], ENV["FB_SECRET"], scope: "email", setup: true
 
   # config.omniauth :facebook, ENV["FB_KEY"], ENV["FB_SECRET"]
 
