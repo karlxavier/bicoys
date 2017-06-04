@@ -8,10 +8,10 @@ Rails.application.routes.draw do
 			  	} do
 	end
 
-	devise_for :users, controllers: {
+	devise_for :users, controllers: { 
+		omniauth_callbacks: 'omniauth_callbacks',
         sessions: 'users/sessions',
-        registrations: 'users/registrations',
-        omniauth_callbacks: 'users/omniauth_callbacks'
+        registrations: 'users/registrations'
     }
    #  get 'auth/facebook/callback', to: 'sessions#create'
   	# get 'auth/failure', to: redirect('/')
