@@ -1,4 +1,8 @@
-<div class="ibox-content" style="display: block; padding: 15px 0 0 0;">
+<div class="ibox-content" id="menus" style="display: block; padding: 15px 0 0 0;">
+    <div class="sk-spinner sk-spinner-double-bounce">
+        <div class="sk-double-bounce1"></div>
+        <div class="sk-double-bounce2"></div>
+    </div>
     <div>
         <table class="table shoping-cart-table">
             <tbody>
@@ -28,7 +32,7 @@
                                   <%= f.hidden_field :quantity, value: 1, min: 1 %>
                                   <div class="input-group-btn">
                                     <%= f.hidden_field :menu_id, value: menu.id %>
-                                    <%= f.submit "Add", class: "btn btn-outline btn-primary" %>            
+                                    <%= f.submit "Add", class: "btn btn-outline btn-primary add-sk" %>            
                                   </div>
                                 </div>
                             <% end %>   

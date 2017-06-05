@@ -146,7 +146,7 @@
 					                    </div>
                                 	</div>
                                 	<div class="col-md-9" style="padding: 0;">
-                                		<div class="ibox collapsed border-bottom">
+                                		<div class="ibox collapsed border-bottom" id="sk-menus">
                                 			<% @menu_cats.each do |menu_cat| %>
                                 				<div id="cat<%= menu_cat.id %>">
 		                                			<div class="ibox-title" style="border-style: none; padding-left: 8px;">
@@ -215,14 +215,18 @@
         <div class="cart-summary">
             <div class="col-xs-4" style="padding-left: 0;">
             	<div class="wrapper-content" style="padding-bottom: 0;">
-    	        	<div class="ibox" data-spy="affix" data-offset-top="220" data-clampedwidth=".col-xs-4 .wrapper-content">
+    	        	<div class="ibox" id="sk-orders" data-spy="affix" data-offset-top="220" data-clampedwidth=".col-xs-4 .wrapper-content">
     	                <div class="ibox-title">
     	                    <h5>Cart Summary</h5>
     	                </div>
-    	                <div class="ibox-content" style="padding-bottom: 2px; min-height: 80px;">
-                            <div id="orders">
-                                <%= render 'orders/orders', order: current_order %>
+    	                <div class="ibox-content" id="orders" style="padding-bottom: 2px; min-height: 80px;">
+                            <div class="sk-spinner sk-spinner-double-bounce">
+                                <div class="sk-double-bounce1"></div>
+                                <div class="sk-double-bounce2"></div>
                             </div>
+
+                                <%= render 'orders/orders', order: current_order %>
+
     	                </div>
 
     	                <div class="ibox-footer textContainer text-center">
@@ -237,6 +241,19 @@
         </div>
     </div>
 </section>
+<script type="text/javascript">
+    $(function(){
+        $('.close').on('click', function(){
+            alert("X");
+            $('#sk-orders').children('.ibox-content').addClass('sk-loading');
+            
+        })
+        $('.add-sk').on('click', function(){
+            $('#sk-orders').children('.ibox-content').addClass('sk-loading');
+            alert("X");
+        })
+    })
+</script>
 <script type="text/javascript">
     $(document).on("turbolinks:load", function () { 
         $('[data-clampedwidth]').each(function () {
