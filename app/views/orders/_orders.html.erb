@@ -1,11 +1,14 @@
-
+  <div class="sk-spinner sk-spinner-double-bounce">
+    <div class="sk-double-bounce1"></div>
+    <div class="sk-double-bounce2"></div>
+</div>
 <% if order.order_items.exists? %>
 
 		<div class="scroll_content" style="overflow: hidden; width: auto; max-height: 50vh;">
 			<% order.order_items.each do |myorder| %>
 				<div class="alert alert-info alert-dismissable" style="margin-bottom: 5px; ">
 				    <%= link_to myorder, { method: :delete, remote: true } do %>
-				    	<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+				    	<button aria-hidden="true" data-dismiss="alert" class="close close-sk" type="button">×</button>
 				    <% end %>
 		    		<span><%= myorder.menu.name %></span>
 		    		<div style="float: right;">
@@ -72,6 +75,9 @@
 
         $('.scroll_content').slimscroll({
             height: '50%'
+        })
+        $('.close-sk').on('click', function(){
+            $('#sk-orders').children('.ibox-content').addClass('sk-loading');
         })
 
     });
