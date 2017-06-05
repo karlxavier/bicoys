@@ -142,7 +142,9 @@ label, .label {
   -ms-border-radius: 0px;
   border-radius: 0px;
 }
-
+.footer-links {
+  text-align: right;
+}
 .label-primary {
   background: #09c4f2;
 }
@@ -373,9 +375,9 @@ div#preloader {
   }
 }
 @media (max-width: 767px) {
-  .no-padding-xs {
-    padding: 0px;
-  }
+    .no-padding-xs {
+      padding: 0px;
+    }
 
     .navbar-container{
       text-align: center;
@@ -383,7 +385,7 @@ div#preloader {
 
     .navbar-brand {
       margin-left: 0;
-      left: 40%;
+      left: 43%;
       position: absolute;
       display: inline-block;
     }
@@ -424,6 +426,23 @@ div#preloader {
       color: #333;
       /*color: #FFFFFF;*/
     }
+    .footer-company {
+      /*display: none;*/
+      width: 100%;
+      text-align: center;
+    }
+    .footer-links {
+      width: 100%;
+      padding: 0;
+      text-align: center;
+    }
+    .footer-social {
+      text-align: center;
+      padding: 10px 0 10px 0;
+      width: 100%;
+    }
+
+
 }
 /**section headings style**/
 .separator-border {
@@ -3151,9 +3170,19 @@ FOOTER STYLES
 
 *******5**/
 .footer {
-  padding-top: 50px;
+ /* padding-top: 50px;
   padding-bottom: 0px;
-  color: #aeaeae;
+  color: #aeaeae;*/
+  background: none repeat scroll 0 0 white;
+  border-top: 1px solid #e7eaec;
+  left: 0;
+  padding: 10px 20px;
+  right: 0;
+  bottom: 0;
+  position: relative;
+  margin-top: -81px;
+  height: 81px;
+  clear: both;
 }
 .footer h3 {
   text-transform: uppercase;
@@ -3570,7 +3599,7 @@ i.fa {
   ul li {
       list-style-type: none;
   }
-  .top-right .searchBox .dropdown-menu li .input-group .form-control:focus, .top-right .searchBox .dropdown-menu li .input-group .input-group-addon, .searchBox .input-group .input-group-addon, .footer, .footer .newsletter .input-group .input-group-addon:hover, .tp-caption.rs-caption-4 .btn, .filterArea .btn-group .btn-default:hover, .filterArea .btn-group .btn-default.active, .productListSingle .media .media-body .btn-group .btn-default:hover, .productListSingle .media .media-body .btn-group .btn-default:focus, .cartListInner .table-responsive .table thead tr, .blogPage .pagination li a:hover, .blogPage .pagination li.active a, .orderBox .table-responsive .table thead tr, .orderBox .table-responsive .table tbody tr td .btn-default:hover, .footer .newsletter .input-group .input-group-addon, .tabCommon .nav-tabs>li.active>a, .tabCommon .nav-tabs>li.active>a:focus, .tabCommon .nav-tabs>li.active>a:hover, .version2 .box:hover, .tp-caption.rs-caption-4 .btn, .bannerV2 .btn, .bannerV3 .btn, .bannerV3 .owl-controls .owl-nav .owl-prev:hover, .bannerV3 .owl-controls .owl-nav .owl-next:hover, .dealSlider .productCaption .btn-border, .footer.version2 .newsletter .input-group .input-group-addon:hover, .dropGeneral.border-color .sbHolder, .dropGeneral.colorBg .sbHolder, .dropGeneral.border-color .sbHolder, .bannerV2 .caption-info-inner {
+  .top-right .searchBox .dropdown-menu li .input-group .form-control:focus, .top-right .searchBox .dropdown-menu li .input-group .input-group-addon, .searchBox .input-group .input-group-addon, .footer .newsletter .input-group .input-group-addon:hover, .tp-caption.rs-caption-4 .btn, .filterArea .btn-group .btn-default:hover, .filterArea .btn-group .btn-default.active, .productListSingle .media .media-body .btn-group .btn-default:hover, .productListSingle .media .media-body .btn-group .btn-default:focus, .cartListInner .table-responsive .table thead tr, .blogPage .pagination li a:hover, .blogPage .pagination li.active a, .orderBox .table-responsive .table thead tr, .orderBox .table-responsive .table tbody tr td .btn-default:hover, .footer .newsletter .input-group .input-group-addon, .tabCommon .nav-tabs>li.active>a, .tabCommon .nav-tabs>li.active>a:focus, .tabCommon .nav-tabs>li.active>a:hover, .version2 .box:hover, .tp-caption.rs-caption-4 .btn, .bannerV2 .btn, .bannerV3 .btn, .bannerV3 .owl-controls .owl-nav .owl-prev:hover, .bannerV3 .owl-controls .owl-nav .owl-next:hover, .dealSlider .productCaption .btn-border, .footer.version2 .newsletter .input-group .input-group-addon:hover, .dropGeneral.border-color .sbHolder, .dropGeneral.colorBg .sbHolder, .dropGeneral.border-color .sbHolder, .bannerV2 .caption-info-inner {
       border-color: #099E44;
   }
   .tabCommon .nav-tabs>li.active>a, .tabCommon .nav-tabs>li.active>a:focus, .tabCommon .nav-tabs>li.active>a:hover {
