@@ -26,7 +26,7 @@
 	  		
 		  	<% if ["Admins","Restos"].exclude? controller.class.name.split("::").first %>
 		  		<% if current_page?(root_path) %>
-		  			<header class="top-header navbar navbar-default header-transparent navbar-fixed-top yamm shirnk">
+		  			<header class="top-header navbar navbar-default header-transparent navbar-fixed-top yamm shirnk" style="padding-top: 0;">
 		  		<% else %>
 		  			<header class="navbar-default-white">
 		  		<% end %>
@@ -46,32 +46,32 @@
 				        
 				            <%= link_to 'Home', root_path, class: "navbar-brand", style: "padding-left: 0;" %> 
 				        </div>
-				        <div id="navbar" style="padding: 0;" class="navbar-collapse collapse">
+				        <div id="navbar" style="padding: 0; margin: 0; border: 0;" class="navbar-collapse collapse">
 				        	<ul class="nav navbar-nav navbar-right" style="padding-right: 15px;">
 				        		<% RestaurantType.all.each do |resto_type| %>
 	                                <li><%= link_to resto_type.RType, restaurant_type_path(resto_type), style: "font-size: 12px;" %></li>
 	                            <% end %>
-					        		<% if user_signed_in? %>
-						        		<li>
-					        				<a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
-					                            My Account<b class="caret"></b>
-				                            </a>
-				                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
-					                            <li>
-					                            	<%= link_to edit_user_registration_path, style: "font-size: 12px;" do %>
-					                            		<i class="fa fa-user" aria-hidden="true" style="margin-right: 8px;"></i> Profile
-					                            	<% end %>
-					                            </li>
-					                            <li><a href="contacts.html" style="font-size: 12px;"><i class="fa fa-shopping-basket" aria-hidden="true" style="margin-right: 8px;"></i> My Orders</a></li>
-					                            <li class="divider"></li>
-					                            <li><%= link_to destroy_user_session_path, :method => :delete, style: "font-size: 12px;" do %><i class="fa fa-mail-forward" aria-hidden="true" style="margin-right: 8px;"></i> Logout<% end %></li>
-					                        </ul>					        		
-						        		</li>
-						        	<% else %>
-						        		<li>
-						        			<%= link_to 'Login', new_user_session_path %>
-						        		</li>
-						        	<% end %>
+				        		<% if user_signed_in? %>
+					        		<li>
+				        				<a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
+				                            My Account<b class="caret"></b>
+			                            </a>
+			                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+				                            <li>
+				                            	<%= link_to edit_user_registration_path, style: "font-size: 12px;" do %>
+				                            		<i class="fa fa-user" aria-hidden="true" style="margin-right: 8px;"></i> Profile
+				                            	<% end %>
+				                            </li>
+				                            <li><a href="contacts.html" style="font-size: 12px;"><i class="fa fa-shopping-basket" aria-hidden="true" style="margin-right: 8px;"></i> My Orders</a></li>
+				                            <li class="divider"></li>
+				                            <li><%= link_to destroy_user_session_path, :method => :delete, style: "font-size: 12px;" do %><i class="fa fa-mail-forward" aria-hidden="true" style="margin-right: 8px;"></i> Logout<% end %></li>
+				                        </ul>					        		
+					        		</li>
+					        	<% else %>
+					        		<li>
+					        			<%= link_to 'Login', new_user_session_path %>
+					        		</li>
+					        	<% end %>
 				        	</ul>
 				        </div>  
 				        

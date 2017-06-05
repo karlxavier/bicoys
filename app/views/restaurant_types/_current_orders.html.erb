@@ -1,15 +1,15 @@
- <a class="dropdown-toggle count-info" data-toggle="dropdown" style="padding: 15px 0;" href="#" aria-expanded="false">
+<a class="dropdown-toggle count-info" data-toggle="dropdown" style="padding: 15px 0;" href="#" aria-expanded="false">
     <i class="fa fa-shopping-cart fa-2x" style="margin-right: 6px; color: #f68b2d;"></i>  
     	<span class="label label-primary"><%= orders.menus.count %></span>
 </a>
 <ul class="dropdown-menu dropdown-alerts pull-right" style="width: 300px;">
+	<% if orders.menus.exists? %>
 	<li>
         <div>
-            <span><h3 style="color: #099E44;"><%= truncate(orders.restaurant.name.html_safe, length: 25) %></h3></span>
+            <span><h3 style="color: #099E44;"><%= truncate(orders.restaurant.name.html_safe , length: 25) %></h3></span>
         </div>
     </li>
 	<li class="divider"></li>
-	<% if orders.menus.exists? %>
 		<% orders.order_items.each do |order| %>
 		    <li>
 	            <div class="alert-dismissable">

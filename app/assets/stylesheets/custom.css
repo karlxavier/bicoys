@@ -377,48 +377,53 @@ div#preloader {
     padding: 0px;
   }
 
-  .navbar-container{
-    text-align: center;
-  }
+    .navbar-container{
+      text-align: center;
+    }
 
-  .navbar-brand {
-    margin-left: 0;
-    left: 40%;
-    position: absolute;
-    display: inline-block;
-  }
+    .navbar-brand {
+      margin-left: 0;
+      left: 40%;
+      position: absolute;
+      display: inline-block;
+    }
+    .dropdown-toggle {
+      color: #999c9e;
+      position: relative;
+      display: block;
+    }
+    /*.navbar-header {
+      width: 100%;
+      margin-left: 0;
+    }*/
+    .navbar-toggle {
+      float: left;
+    }
 
-  .navbar-header {
-    width: 100%;
-    margin-left: 0;
-  }
-  .navbar-toggle {
-    float: left;
-  }
+    .input-group-lg > .input-group-btn > .btn {
+      font-size: 14px;
+    }
 
-  .input-group-lg > .input-group-btn > .btn {
-    font-size: 14px;
-  }
-
-  .input-group-lg > .form-control {
-    font-size: 14px;
-  }
-/*  .cart-orders {
-    display: inline;
-  }*/
-  .cart-summary {
-    display: none;
-  }
-  .resto-menus {
-    width: 100%;
-  }
-  .resto-image {
-    width: 100%;
-    text-align: center;
-  }
-  .profile-info {
-    margin-left: 5px;
-  }
+    .input-group-lg > .form-control {
+      font-size: 14px;
+    }
+    .cart-summary {
+      display: none;
+    }
+    .resto-menus {
+      width: 100%;
+    }
+    .resto-image {
+      width: 100%;
+      text-align: center;
+    }
+    .profile-info {
+      margin-left: 5px;
+    }
+    .navbar-default.header-transparent .navbar-nav > li > a {
+      color: #333;
+      /*color: #FFFFFF;*/
+    }
 }
 /**section headings style**/
 .separator-border {
@@ -568,7 +573,8 @@ div#preloader {
 }
 
 .navbar-default.header-transparent .navbar-nav > li > a {
-  color: #333;
+  /*color: #333;*/
+  /*color: #FFFFFF;*/
 }
 .navbar-default.header-transparent .navbar-nav > li > a:hover {
   color: #099E44;
@@ -793,7 +799,7 @@ div#preloader {
 .yamm .collapse,
 .yamm .dropup,
 .yamm .yamm-fw {
-  position: static;
+  /*position: static;*/
 }
 
 .yamm .container {
@@ -986,6 +992,11 @@ div#preloader {
 
   .navbar-nav {
     background-color: #fff;
+    position: absolute;
+    right: 0;
+    margin-top: 50px;
+    left: 0;
+    color: #333;
   }
 
   .navbar-nav > li > a {

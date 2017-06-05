@@ -44,7 +44,12 @@ h5 {
   padding: 14px 20px 14px 25px;
 }
 .nav.navbar-right > li > a {
-  /*color: #999c9e;*/
+  color: #ffffff;
+}
+.navbar-default-white .nav.navbar-right > li > a {
+  color: #333;
+}
+.navbar-default-white.nav.navbar-right > li > a {
   color: #333;
 }
 .nav > li.active > a {
@@ -618,6 +623,10 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
   }
   .menu-visible-lg {
     display: block !important;
+  }
+  .nav.navbar-right > li > a {
+    color: #333;
+    font-weight: 400;
   }
 }
 .btn {
