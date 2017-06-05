@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>habhub</title>
     <meta property="og:url" content="http://habhub.herokuapp.com/"/>
     <meta property="og:title" content="habhub.ph"/>
@@ -29,43 +31,50 @@
 		  			<header class="navbar-default-white">
 		  		<% end %>
 		  			<div class="container">
-					  	<div class="navbar-header">
+		  				<div class="navbar-header cart-orders" style="float: right; width: 40px; height: 50px;">
+		  					<div id="current_orders">
+			                	<%= render 'restaurant_types/current_orders', orders: current_order %>
+			                </div>
+			      		</div>
+					  	<div class="navbar-header" style="margin-left: 0; min-height: 50px;">
 				            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 				                <span class="sr-only">Toggle navigation</span>
 				                <span class="icon-bar"></span>
 				                <span class="icon-bar"></span>
 				                <span class="icon-bar"></span>
 				            </button>
-				            <%= link_to 'Home', root_path, class: "navbar-brand" %>
+				        
+				            <%= link_to 'Home', root_path, class: "navbar-brand", style: "padding-left: 0;" %> 
 				        </div>
-					        <div id="navbar" class="navbar-collapse collapse">
-					        	<ul class="nav navbar-nav navbar-right">
-					        		<% RestaurantType.all.each do |resto_type| %>
-		                                <li><%= link_to resto_type.RType, restaurant_type_path(resto_type), style: "font-size: 12px;" %></li>
-		                            <% end %>
-						        		<% if user_signed_in? %>
-							        		<li>
-						        				<a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
-						                            My Account<b class="caret"></b>
-					                            </a>
-					                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
-						                            <li>
-						                            	<%= link_to edit_user_registration_path, style: "font-size: 12px;" do %>
-						                            		<i class="fa fa-user" aria-hidden="true" style="margin-right: 8px;"></i> Profile
-						                            	<% end %>
-						                            </li>
-						                            <li><a href="contacts.html" style="font-size: 12px;"><i class="fa fa-shopping-basket" aria-hidden="true" style="margin-right: 8px;"></i> My Orders</a></li>
-						                            <li class="divider"></li>
-						                            <li><%= link_to destroy_user_session_path, :method => :delete, style: "font-size: 12px;" do %><i class="fa fa-mail-forward" aria-hidden="true" style="margin-right: 8px;"></i> Logout<% end %></li>
-						                        </ul>					        		
-							        		</li>
-							        	<% else %>
-							        		<li>
-							        			<%= link_to 'Login', new_user_session_path %>
-							        		</li>
-							        	<% end %>
-					        	</ul>
-					        </div>  
+				        <div id="navbar" style="padding: 0;" class="navbar-collapse collapse">
+				        	<ul class="nav navbar-nav navbar-right" style="padding-right: 15px;">
+				        		<% RestaurantType.all.each do |resto_type| %>
+	                                <li><%= link_to resto_type.RType, restaurant_type_path(resto_type), style: "font-size: 12px;" %></li>
+	                            <% end %>
+					        		<% if user_signed_in? %>
+						        		<li>
+					        				<a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
+					                            My Account<b class="caret"></b>
+				                            </a>
+				                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+					                            <li>
+					                            	<%= link_to edit_user_registration_path, style: "font-size: 12px;" do %>
+					                            		<i class="fa fa-user" aria-hidden="true" style="margin-right: 8px;"></i> Profile
+					                            	<% end %>
+					                            </li>
+					                            <li><a href="contacts.html" style="font-size: 12px;"><i class="fa fa-shopping-basket" aria-hidden="true" style="margin-right: 8px;"></i> My Orders</a></li>
+					                            <li class="divider"></li>
+					                            <li><%= link_to destroy_user_session_path, :method => :delete, style: "font-size: 12px;" do %><i class="fa fa-mail-forward" aria-hidden="true" style="margin-right: 8px;"></i> Logout<% end %></li>
+					                        </ul>					        		
+						        		</li>
+						        	<% else %>
+						        		<li>
+						        			<%= link_to 'Login', new_user_session_path %>
+						        		</li>
+						        	<% end %>
+				        	</ul>
+				        </div>  
+				        
 			  		</div>
 		  			</header>
 			<% end %>

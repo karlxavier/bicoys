@@ -71,7 +71,24 @@ h6 {
 .full-wid {
   width: 100%;
 }
+.cart-orders {
+  /*display: none;*/
+  position: relative;
+  display: block;
+/*  float: right; 
+  width: 40px; 
+  height: 50px;
+  margin-left: 10px;*/
+}
+.cart-summary {
+  display: inline;
+}
 
+.dropdown-toggle {
+  color: #999c9e;
+  position: relative;
+  display: block;
+}
 .separator-border-1 {
   width: 120px;
   height: 2px;
@@ -129,7 +146,9 @@ label, .label {
 .label-primary {
   background: #09c4f2;
 }
-
+.profile-info {
+  margin-left: 100px;
+}
 .no-padd {
   padding: 0px;
 }
@@ -357,6 +376,49 @@ div#preloader {
   .no-padding-xs {
     padding: 0px;
   }
+
+  .navbar-container{
+    text-align: center;
+  }
+
+  .navbar-brand {
+    margin-left: 0;
+    left: 40%;
+    position: absolute;
+    display: inline-block;
+  }
+
+  .navbar-header {
+    width: 100%;
+    margin-left: 0;
+  }
+  .navbar-toggle {
+    float: left;
+  }
+
+  .input-group-lg > .input-group-btn > .btn {
+    font-size: 14px;
+  }
+
+  .input-group-lg > .form-control {
+    font-size: 14px;
+  }
+/*  .cart-orders {
+    display: inline;
+  }*/
+  .cart-summary {
+    display: none;
+  }
+  .resto-menus {
+    width: 100%;
+  }
+  .resto-image {
+    width: 100%;
+    text-align: center;
+  }
+  .profile-info {
+    margin-left: 5px;
+  }
 }
 /**section headings style**/
 .separator-border {
@@ -506,7 +568,7 @@ div#preloader {
 }
 
 .navbar-default.header-transparent .navbar-nav > li > a {
-  color: #eee;
+  color: #333;
 }
 .navbar-default.header-transparent .navbar-nav > li > a:hover {
   color: #099E44;
@@ -519,15 +581,15 @@ div#preloader {
   color: #099E44;
 }
 
-.navbar-default.header-transparent .navbar-brand {
+.navbar-brand {
   background-image: url("habhub.png");
   background-size: contain;
   background-repeat: no-repeat;
-  width: 91px;
+  width: 61px;
   height: auto;
   text-indent: -9999px;
   background-position: 50% 50%;
-  margin-left: 12px;
+  /*margin-left: 12px;*/
 }
 
 .navbar-inverse.header-transparent .navbar-brand {
@@ -551,6 +613,7 @@ div#preloader {
   right: 0;
   left: 0;
   z-index: 1030;
+  height: 50px;
 }
 
 .navbar-default.header-transparent.shrink .h-item a {
@@ -607,8 +670,9 @@ div#preloader {
 .top-header.navbar-default .navbar-toggle:hover, .top-header.navbar-default .navbar-toggle:focus, .top-header.navbar-inverse .navbar-toggle:hover, .top-header.navbar-inverse .navbar-toggle:focus {
   background-color: transparent;
 }
-.top-header.navbar-default .navbar-toggle .icon-bar, .top-header.navbar-inverse .navbar-toggle .icon-bar {
-  background-color: #09c4f2;
+.navbar-toggle .icon-bar {
+  background-color: #888;
+  /*background-color: transparent;*/
 }
 
 /**header logo center style**/
@@ -920,11 +984,11 @@ div#preloader {
     background-color: #000;
   }
 
-  .navbar-default .navbar-nav {
+  .navbar-nav {
     background-color: #fff;
   }
 
-  .navbar-default.header-transparent .navbar-nav > li > a {
+  .navbar-nav > li > a {
     color: #333;
   }
 
@@ -1474,6 +1538,15 @@ Intro sections
 @media (max-width: 991px) {
   .v-align-children {
     display: block !important;
+  }
+  .menu-cats {
+    display: none;
+  }
+  .cart-summary {
+    display: none;
+  }
+  .resto-menus {
+    width: 100%;
   }
 }
 .v-align-transform {
@@ -3573,14 +3646,6 @@ i.fa {
     margin-bottom: 3px;
   }
 
-  .menu-image {
-    height: 80px; 
-    width: 80px;
-    background-size: cover; 
-    background-repeat: no-repeat; 
-    background-position: center center;
-  }
-
   .affix {
         top: 70px !important;
     }
@@ -3592,6 +3657,14 @@ i.fa {
       background-position: 50% !important;
   }
 }
+
+.menu-image {
+    height: 80px; 
+    width: 80px;
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center center;
+  }
 
 a.text-primary:hover, a.text-primary:focus {
     color: #099E44;

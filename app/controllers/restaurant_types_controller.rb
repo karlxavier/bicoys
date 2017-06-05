@@ -17,6 +17,7 @@ class RestaurantTypesController < ApplicationController
 	end
 
 	def show
+		# @current_order = current_order
 		if !params[:search].blank?
 			respond_to do |format|
 				@restos = Restaurant.resto_search(params[:id], params[:search])

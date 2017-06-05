@@ -50,13 +50,12 @@
             * Minimum order depends in your location and the resto.
         </span>
         <div class="m-t-sm">
-            <% if order.total >= (order.min_order || 9999999999999) %>
+            <% if order.total >= (order.min_order || 330) %>
                 <%= link_to checkout_order_path(order), class: "btn btn-block btn-primary" do %>
     				<i class="fa fa-shopping-cart"></i> Checkout
                 <% end %>
             <% else %>
-                <button type="button" class="btn btn-block btn-default">
-                    <i class="fa fa-shopping-cart"></i>
+                <button type="button" class="btn btn-block btn-default text-muted">
                     Min. Order ₱<%= order.min_order %>
                 </button>
             <% end %>

@@ -1,4 +1,4 @@
-class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def instagram
     generic_callback( 'instagram' )
   end

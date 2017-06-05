@@ -583,7 +583,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
   padding: 40px 0 40px 0;
 }
 .navbar-toggle {
-  background-color: #099E44;
+  /*background-color: #099E44;*/
   color: #fff;
   padding: 6px 12px;
   font-size: 14px;
@@ -5038,9 +5038,6 @@ a.compose-mail {
 .profile-image img {
   width: 96px;
   height: 96px;
-}
-.profile-info {
-  margin-left: 120px;
 }
 .feed-activity-list .feed-element {
   border-bottom: 1px solid #e7eaec;

@@ -1,0 +1,60 @@
+ <a class="dropdown-toggle count-info" data-toggle="dropdown" style="padding: 15px 0;" href="#" aria-expanded="false">
+    <i class="fa fa-shopping-cart fa-2x" style="margin-right: 6px; color: #f68b2d;"></i>  
+    	<span class="label label-primary"><%= orders.menus.count %></span>
+</a>
+<ul class="dropdown-menu dropdown-alerts pull-right" style="width: 300px;">
+	<li>
+        <div>
+            <span><h3 style="color: #099E44;"><%= truncate(orders.restaurant.name.html_safe, length: 25) %></h3></span>
+        </div>
+    </li>
+	<li class="divider"></li>
+	<% if orders.menus.exists? %>
+		<% orders.order_items.each do |order| %>
+		    <li>
+	            <div class="alert-dismissable">
+	            	<%= link_to order, { method: :delete, remote: true } do %>
+				    	<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+				    <% end %>
+	                <span class="text-muted"><%= truncate(order.menu.name.html_safe, length: 25) %></span>
+	                <span class="pull-right text-muted small"><%= order.quantity %> x <%= number_with_precision(order.total_price, :precision => 0, :delimiter => ',') %></span>
+
+	            </div>
+		    </li>
+	    	<li class="divider"></li>
+	    <% end %>
+	    <li style="margin-bottom: 5px;">
+            <div>
+                Service Charge: 
+                <span class="pull-right">50</span>
+            </div>
+	    </li>
+
+	    <li>
+            <div>
+                <strong>Total:</strong> 
+                <span><strong class="pull-right">₱ <%= number_with_precision(orders.total, :precision => 0, :delimiter => ',') %></strong></span>
+            </div>
+	    </li>
+	    <li class="divider"></li>
+	    <li>
+            <div class="text-center link-block">
+	            <% if orders.total >= (orders.min_order || 330) %>
+	                <%= link_to checkout_order_path(orders), class: "btn btn-block btn-primary", style: "color: #FFFFFF;" do %>
+	    				<i class="fa fa-shopping-cart"></i> Checkout
+	                <% end %>
+	            <% else %>
+	                <button type="button" class="btn btn-block btn-default text-muted">
+	                    Min. Order ₱<%= orders.min_order %>
+	                </button>
+	            <% end %>
+	        </div>
+        </li>
+    <% else %>
+    	<li>
+            <div>
+                You dont have any orders yet.
+            </div>
+	    </li>
+    <% end %>
+</ul>

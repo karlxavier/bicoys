@@ -1,1 +1,2 @@
 $('div#orders').html("<%= escape_javascript(render 'orders/orders', order: @order ) %>");
+$('div#current_orders').html("<%= escape_javascript(render 'restaurant_types/current_orders', orders: @order ) %>");

@@ -47,7 +47,7 @@ class OrderItemsController < ApplicationController
 	    	end
 	    	format.js
 	    end
-	    
+	    @current_order = current_order
 	end
 
 	private

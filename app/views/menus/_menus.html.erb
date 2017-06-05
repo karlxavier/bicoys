@@ -1,19 +1,19 @@
 <div class="ibox-content" style="display: block; padding: 15px 0 0 0;">
-    <div class="table-responsive">
+    <div>
         <table class="table shoping-cart-table">
             <tbody>
             	<% menu_cat.menus.each do |menu| %>
                     <tr>
                         <td width="80">
                         	<% if menu.image.present? %>
-                            	<div class="productImage menu-image" style="background-image: url('<%= image_path menu.image.url(:web) %>'); "></div>
+                            	<div class="productImage menu-image" style="width: 80px; height: 80px; background-image: url('<%= image_path menu.image.url(:web) %>'); "></div>
                             <% else %>
                             	<%= image_tag 'default_menu.png', class: 'productImage', style: 'width: 80px; height: 80px;' %>
                             <% end %>
                         </td>
                         <td class="desc">
                             <h4 class="text-navy">
-                                    <%= menu.name %>
+                                <%= menu.name %>
                             </h4>
                             <h5>
                                 ₱ <%= number_with_precision(menu.price, :precision => 2, :delimiter => ',') %>
