@@ -16,7 +16,8 @@ Devise.setup do |config|
 
   require 'devise/orm/active_record'
 
-  config.omniauth :facebook, ENV["FB_KEY"], ENV["FB_SECRET"], scope: "email", callback_path: "https://hh2.herokuapp.com/users/auth/facebook/callback"
+  config.omniauth :facebook, ENV["FB_KEY"], ENV["FB_SECRET"], scope: "email"
+  # , callback_path: "https://hh2.herokuapp.com/users/auth/facebook/callback"
 
   # config.omniauth :facebook, ENV["FB_KEY"], ENV["FB_SECRET"]
 
