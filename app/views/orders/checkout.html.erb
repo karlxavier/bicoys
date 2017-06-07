@@ -310,7 +310,7 @@
     </div>
 </section>
 <script type="text/javascript">
-	$(document).on("turbolinks:load", function () { // subscription to the "turbolinks:load" event
+	$(document).on("ready page:load", function () {
 		$("#wizard").steps();
 	});
 
