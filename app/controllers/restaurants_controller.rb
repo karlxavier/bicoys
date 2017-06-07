@@ -17,7 +17,6 @@ class RestaurantsController < ApplicationController
 
 		set_meta_tags :og => {
 	              :title    => @restaurant.name,
-	              :type     => 'website',
 	              :url => request.url,
 	              :description	=> 'We will deliver right to your door step!',
 	              :image    => @restaurant.profile_image.url(:web) || 'https://hh2.herokuapp.com/assets/default_menu-7f7911460fd09a199d27ee44aed20aee1d5c50c93dd8f3e371bccbbbeabc801b.png'
