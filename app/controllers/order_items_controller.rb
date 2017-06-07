@@ -8,18 +8,36 @@ class OrderItemsController < ApplicationController
 	    @user_address = current_location
 		@resto_rate = TariffRate.resto_rate(@user_address.distance_from_user).first
 		@order.min_order = @resto_rate.min_order
-	    
+
 	    respond_to do |format|
-	      if @order.save
-	         session[:order_id] = @order.id
-	         session[:restaurant_id] = @order.restaurant_id
-	      else
-	      	puts '*************ERROR*****************'
-	      	@order.errors.full_messages.each do |message|
-	      		puts message
-	      	end
-	      end
-	      format.js
+	    	if !@order.order_items.exists?(menu_id: params[:order_item][:menu_id], order_id: @order.id)
+	    		puts '*************NEW*****************'
+	    		puts params[:order_item][:menu_id]
+	    		puts params[:order_item][:quantity]
+	    		@order.save
+		    else
+		    	puts '*************UPDATE*****************'
+		    	# @order.order_items.find(:first, conditions: {menu_id: params[:order_item][:menu_id], order_id: @order.id}).increment! :quantity
+		    	menu_item = @order.order_items.where(menu_id: params[:order_item][:menu_id], order_id: @order.id).first
+		    	menu_item.quantity += 1
+		    	menu_item.save
+	    		# order_item.update(quantity: )
+	    	# else
+	    	# 	puts '*************NEW*****************'
+		    #     if @order.save
+		    #     	session[:order_id] = @order.id
+		    #     	session[:restaurant_id] = @order.restaurant_id
+		    #   	else
+		    #   		puts '*************ERROR*****************'
+		    #   		@order.errors.full_messages.each do |message|
+		    #   			puts message
+		    #   		end
+		    #   	end
+		    end
+		    @order = current_order
+		    session[:order_id] = @order.id
+		    session[:restaurant_id] = @order.restaurant_id
+	      	format.js
 	    end	
 	end
 

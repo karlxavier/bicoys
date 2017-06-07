@@ -7,12 +7,6 @@ class ApplicationController < ActionController::Base
 
   def current_order
     if !session[:order_id].nil? && !session[:restaurant_id].nil?      
-      # if Order.exists?(id: session[:order_id], restaurant_id: session[:restaurant_id], order_status_id: 1)
-      #   # Order.where(id: session[:order_id], restaurant_id: session[:restaurant_id]).first                
-      #   Order.user_orders(session[:order_id],session[:restaurant_id]).first
-      # else
-      #   Order.new
-      # end
       Order.user_orders(session[:order_id],session[:restaurant_id]).first || Order.new
     else
       Order.new
