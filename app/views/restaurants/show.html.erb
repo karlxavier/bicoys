@@ -86,7 +86,7 @@
                     </div>
                     <div class="col-md-1">
                       <div class="fb-share-button" 
-                        data-href="https://hh2.herokuapp.com/" 
+                        data-href="<% request.url %>" 
                         data-layout="button_count">
                       </div>
                         <%= social_share_button_tag(@restaurant.name, :url => "https://habhub.ph", :image => "#{ @restaurant.profile_image.url(:web) || 'https://hh2.herokuapp.com/assets/default_menu-7f7911460fd09a199d27ee44aed20aee1d5c50c93dd8f3e371bccbbbeabc801b.png'}", desc: "We will now deliver to your doorstep! See our menus, write reviews and get our location.", :'data-type' => 'photo') %>
