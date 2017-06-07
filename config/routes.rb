@@ -25,11 +25,7 @@ Rails.application.routes.draw do
     }
 
     resources :order_items
-    resources :orders, only: [:index] do
-    	member do
-    		get 'checkout'
-    	end
-    end
+    resources :orders, only: [:index]
 
     resources :restaurant_types, only: [:show]
 
@@ -45,6 +41,7 @@ Rails.application.routes.draw do
 	resources :user_addresses, only: [:edit, :update]
 	resources :suggest_restos, only: [:new, :create]
 	
+	get 'checkout', :to => 'orders#checkout', :as => :checkout
 	get 'err_404', :to => 'errors#err_404', :as => :err_404
 	get 'set_user_location', :to => 'restaurants#set_user_location', :as => :set_user_location
 	get 'user_location', :to => 'restaurant_types#user_location', :as => :user_location

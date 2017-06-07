@@ -45,7 +45,7 @@
 		    <li>
 	            <div class="text-center link-block">
 		            <% if orders.total >= (orders.min_order || 330) %>
-		                <%= link_to checkout_order_path(orders), class: "btn btn-block btn-primary", style: "color: #FFFFFF;" do %>
+		                <%= link_to checkout_path, class: "btn btn-block btn-primary", style: "color: #FFFFFF;" do %>
 		    				<i class="fa fa-shopping-cart"></i> Checkout
 		                <% end %>
 		            <% else %>

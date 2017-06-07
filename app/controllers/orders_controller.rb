@@ -4,6 +4,8 @@ class OrdersController < ApplicationController
 	def checkout
 		@order = Order.find(current_order.id)
 		@user_address = current_location
+		puts '******************'
+		# puts current_page
 	end
 
 	def update_user_address

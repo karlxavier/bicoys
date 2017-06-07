@@ -53,7 +53,7 @@
         </span>
         <div class="m-t-sm">
             <% if order.total >= (order.min_order || 330) %>
-                <%= link_to checkout_order_path(order), class: "btn btn-block btn-primary" do %>
+                <%= link_to checkout_path, class: "btn btn-block btn-primary" do %>
     				<i class="fa fa-shopping-cart"></i> Checkout
                 <% end %>
             <% else %>
