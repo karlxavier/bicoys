@@ -4,9 +4,12 @@
   	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>habhub na!</title>
-
     <meta property="fb:app_id" 		content="1750726818531501"/>
 
+    <% if content_for? :for_head %>
+	    <%= yield :for_head %>
+	<% end %>
+	
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
