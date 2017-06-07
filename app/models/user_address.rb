@@ -1,5 +1,5 @@
 class UserAddress < ApplicationRecord
 	belongs_to :user
 
-	validates :full_address, :latitude, :longitude, :additional_directions, presence: true
+	validates :full_address, :latitude, :longitude, presence: true
 end
