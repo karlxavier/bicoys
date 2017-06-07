@@ -8,7 +8,6 @@
     <meta property="og:type"		content="website" />
     <meta property="og:title" 		content="habhub na!"/>
     <meta property="og:description" content="Davao City online food delivery services"/>
-    <meta property="og:image" 		content="https://hh2.herokuapp.com/assets/habhub.png"/>
     <meta property="fb:app_id" 		content="1750726818531501"/>
 
     <%= csrf_meta_tags %>
@@ -25,7 +24,7 @@
   <body data-spy="scroll" data-target=".menu-cat" data-offset="50">
 		<div id="fb-root" data-turbolinks-permanent></div>
 
-	  <div style="min-height: 100%;">
+	 <div style="min-height: 100%;">
 	  	<div style="overflow: auto;">
 	  		
 		  	<% if ["Admins","Restos"].exclude? controller.class.name.split("::").first %>
