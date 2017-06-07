@@ -34,9 +34,10 @@ class OrderItemsController < ApplicationController
 		    #   		end
 		    #   	end
 		    end
-		    @order = current_order
+
 		    session[:order_id] = @order.id
 		    session[:restaurant_id] = @order.restaurant_id
+		    @order = current_order
 	      	format.js
 	    end	
 	end
