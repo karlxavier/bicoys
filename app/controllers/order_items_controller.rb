@@ -11,28 +11,11 @@ class OrderItemsController < ApplicationController
 
 	    respond_to do |format|
 	    	if !@order.order_items.exists?(menu_id: params[:order_item][:menu_id], order_id: @order.id)
-	    		puts '*************NEW*****************'
-	    		puts params[:order_item][:menu_id]
-	    		puts params[:order_item][:quantity]
 	    		@order.save
 		    else
-		    	puts '*************UPDATE*****************'
-		    	# @order.order_items.find(:first, conditions: {menu_id: params[:order_item][:menu_id], order_id: @order.id}).increment! :quantity
 		    	menu_item = @order.order_items.where(menu_id: params[:order_item][:menu_id], order_id: @order.id).first
 		    	menu_item.quantity += 1
 		    	menu_item.save
-	    		# order_item.update(quantity: )
-	    	# else
-	    	# 	puts '*************NEW*****************'
-		    #     if @order.save
-		    #     	session[:order_id] = @order.id
-		    #     	session[:restaurant_id] = @order.restaurant_id
-		    #   	else
-		    #   		puts '*************ERROR*****************'
-		    #   		@order.errors.full_messages.each do |message|
-		    #   			puts message
-		    #   		end
-		    #   	end
 		    end
 
 		    session[:order_id] = @order.id
