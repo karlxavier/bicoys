@@ -47,6 +47,7 @@ Rails.application.routes.draw do
 	get 'user_location', :to => 'restaurant_types#user_location', :as => :user_location
 	get 'about_us', to: 'mains#about_us', as: :about_us
 	get 'faq', to: 'mains#faq', as: :faq
+	get 'timeline', to: 'mains#timeline', as: :timeline
 
 	namespace :restos do
 		get '/', to: 'restaurants#dashboard', as: ''

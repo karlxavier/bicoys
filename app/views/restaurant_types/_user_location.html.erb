@@ -1,5 +1,5 @@
 <div id="user_location_input">
-        <div class="col-lg-8 col-lg-offset-2">
+         <div class="col-lg-8 col-lg-offset-2">
             <div class="input-group input-group-lg">
                 <span class="input-group-addon">
                     <i class="fa fa-map-marker" aria-hidden="true"></i>
@@ -9,7 +9,7 @@
 
                         <% if @user_address.present? %>
                             <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button" aria-expanded="false">
-                                Pakals na! <span class="caret"></span>
+                                Search <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu pull-right">
                                 <% RestaurantType.all.each do |resto_type| %>
@@ -20,7 +20,7 @@
                             </ul>
                         <% else %>
                             <button data-toggle="dropdown" disabled="true" class="btn btn-primary dropdown-toggle" type="button" aria-expanded="false">
-                                Gutom na! <span class="caret"></span>
+                                Search <span class="caret"></span>
                             </button>
                         <% end %>
                         

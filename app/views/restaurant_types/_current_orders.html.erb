@@ -11,7 +11,7 @@
 		<% if orders.menus.exists? %>
 		<li>
 	        <div>
-	            <span><h3 style="color: #099E44;"><%= truncate(orders.restaurant.name.html_safe , length: 25) %></h3></span>
+	            <span><h3 style="color: #099E44;"><%= link_to truncate(orders.restaurant.name.html_safe , length: 44), restaurant_path(orders.restaurant) %></h3></span>
 	        </div>
 	    </li>
 		<li class="divider"></li>

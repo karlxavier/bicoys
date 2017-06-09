@@ -63,7 +63,7 @@ class Admins::RestaurantsController < ApplicationController
 
 		def restaurant_params
 			# params.require(:restaurant).permit(:name, :address, :phone, :fax, :website, :commission_percentage, :active, :latitude, :longitude, restaurant_images_attributes: [:id, :restaurant_id, :image])
-			params.require(:restaurant).permit(:name, :address, :phone, :fax, :website, :commission_percentage, :active, :latitude, :longitude, :profile_image, :restaurant_type_id)
+			params.require(:restaurant).permit(:name, :description, :address, :phone, :fax, :website, :commission_percentage, :active, :latitude, :longitude, :profile_image, :restaurant_type_id)
 		end
 
 		def set_restaurant
