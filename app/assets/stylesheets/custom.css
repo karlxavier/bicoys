@@ -385,7 +385,7 @@ div#preloader {
 
     .navbar-brand {
       margin-left: 0;
-      left: 43%;
+      left: 34%;
       position: absolute;
       display: inline-block;
     }
@@ -607,13 +607,13 @@ div#preloader {
 }
 
 .navbar-brand {
-  background-image: url("habhub.png");
-  background-size: contain;
+  /*background-image: url("habhub.png");*/
+/*  background-size: contain;
   background-repeat: no-repeat;
   width: 61px;
   height: auto;
   text-indent: -9999px;
-  background-position: 50% 50%;
+  background-position: 50% 50%;*/
   /*margin-left: 12px;*/
 }
 
@@ -629,6 +629,41 @@ div#preloader {
 
 .navbar-default.header-transparent.shrink .navbar-brand {
   background-image: url("habhub.png");
+  padding: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 120px;
+  height: 50px;
+  text-indent: -9999px;
+  background-position: 50% 50%;
+}
+
+.navbar-default-white .navbar-brand {
+  background-image: url("habhub.png");
+  padding: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 120px;
+  height: 50px;
+  text-indent: -9999px;
+  background-position: 50% 50%;
+}
+
+.logo-home {
+  height: 120px;
+  width: 120px;
+  line-height: 128px;
+  margin: 0 auto;
+}
+
+.center-home-logo {
+  background-image: url("habhub.png");
+  padding: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  text-indent: -9999px;
+  background-position: 50% 50%;
+  height: 150px; width: 150px; border-radius: 5px; background-color: #ffffff;
 }
 
 .navbar-default-white{
@@ -3422,8 +3457,10 @@ FOOTER STYLES
 }
 
 .fullscreen-cover h1 {
-  font-weight: 700;
-  text-transform: capitalize;
+  font-weight: 200;
+  font-size: 62px;
+  margin-bottom: 10px;
+  /*text-transform: capitalize;*/
 }
 
 @media (max-width: 991px) {

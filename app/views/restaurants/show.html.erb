@@ -78,7 +78,6 @@
                             </tr>
                             </tbody>
                         </table>
-
                     </div>
                     <div class="col-md-1">
                           <div class="fb-share-button" 
@@ -128,17 +127,13 @@
 					                            <h5>Categories</h5>
 					                        </div>
 					                        <div style="width: 150px;">
-					     
-						                        	<% @menu_cats.each do |menu_cat| %>
-          											
-          													<a href="#cat<%= menu_cat.id %>" style="padding: 10px 0 10px 10px;">
-          														<p class="text-muted">
-          															<%= menu_cat.name %>
-          														</p>
-          													</a>
-          											
-						                        	<% end %>
-					                      
+    				                        	<% @menu_cats.each do |menu_cat| %>
+  													<a href="#cat<%= menu_cat.id %>" style="padding: 10px 0 10px 10px;">
+  														<p class="text-muted">
+  															<%= menu_cat.name %>
+  														</p>
+  													</a>
+    				                        	<% end %>
 					                        </div>
 					                    </div>
                                 	</div>
@@ -212,12 +207,8 @@
     	                    <h5>Cart Summary</h5>
     	                </div>
     	                <div class="ibox-content" id="orders" style="padding-bottom: 2px; min-height: 80px;">
-                          
-
-                                <%= render 'orders/orders', order: current_order %>
-
+                            <%= render 'orders/orders', order: current_order %>
     	                </div>
-
     	                <div class="ibox-footer textContainer text-center">
     	                	<h3 class="text-center"><i class="fa fa-phone"></i> +63 297 3254</h3>
     	                    <span class="small" style="text-align: center;">
@@ -239,18 +230,18 @@
 </script>
 <script type="text/javascript">
     $(document).on("turbolinks:load", function () { 
-        $('[data-clampedwidth]').each(function () {
-            
-            var elem = $(this);
-            var parentPanel = elem.data('clampedwidth');
-            var resizeFn = function () {
-                var sideBarNavWidth = $(parentPanel).width() - parseInt(elem.css('paddingLeft')) - parseInt(elem.css('paddingRight')) - parseInt(elem.css('marginLeft')) - parseInt(elem.css('marginRight')) - parseInt(elem.css('borderLeftWidth')) - parseInt(elem.css('borderRightWidth'));
-                elem.css('width', sideBarNavWidth);
-            };
-
-            resizeFn();
-            $(window).resize(resizeFn);
-        });
+        // $('[data-clampedwidth]').each(function () {
+        //     alert("x");
+        //     var elem = $(this);
+        //     var parentPanel = elem.data('clampedwidth');
+        //     var resizeFn = function () {
+        //         var sideBarNavWidth = $(parentPanel).width() - parseInt(elem.css('paddingLeft')) - parseInt(elem.css('paddingRight')) - parseInt(elem.css('marginLeft')) - parseInt(elem.css('marginRight')) - parseInt(elem.css('borderLeftWidth')) - parseInt(elem.css('borderRightWidth'));
+        //         elem.css('width', sideBarNavWidth);
+        //     };
+        //     alert(resizeFn);
+        //     resizeFn();
+        //     $(window).resize(resizeFn);
+        // });
             
     });
 
