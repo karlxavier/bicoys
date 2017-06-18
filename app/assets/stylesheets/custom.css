@@ -1669,11 +1669,11 @@ Intro sections
 }
 
 .intro-bg-1 {
-  background: url("pizza3.jpg");
+  /*background: url("pizza3.jpg");*/
 }
 
 .intro-bg-2 {
-  background: url("../images/bg-3.jpg");
+  /*background: url("../images/bg-3.jpg");*/
 }
 
 .parallax {
@@ -3053,7 +3053,15 @@ Intro sections
 }
 
 .intro-bg-1 {
-  background: url("pizza3.jpg");
+  background-image: url('pizza3.jpg');
+  /*background-image: url('food_table.jpg');*/
+  background-repeat: no-repeat;
+  background-size: cover;
+    /*background-repeat: no-repeat;*/
+
+  /*background-width: 100%;*/
+  /*background-size: cover;*/
+  overflow: visible;
 }
 
 .intro-bg-2 {
@@ -3061,13 +3069,15 @@ Intro sections
 }
 
 .parallax {
-  background-position: 0 0;
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  width: 100%;
-  background-size: cover;
-  background-attachment: fixed;
-  width: 100%;
+  /*background-position: 0 0;*/
+    /*background-attachment: fixed;*/
+    /*  background-size: 100% auto;*/
+
+  /*background-repeat: no-repeat;*/
+
+  /*background-width: 100%;*/
+  /*background-size: cover;*/
+  /*overflow: visible;*/
 }
 
 @media (max-width: 767px) {

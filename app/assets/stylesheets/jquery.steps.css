@@ -141,6 +141,7 @@
     overflow: hidden;
     position: relative;
     width: auto;
+    overflow: visible;
 
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;

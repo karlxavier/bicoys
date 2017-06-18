@@ -14,4 +14,5 @@ class Users::RegistrationsController < Devise::RegistrationsController
       resource.update_with_password(params)
     end
   end
+
 end

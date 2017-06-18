@@ -1,63 +1,53 @@
 class UsersController < ApplicationController
-  # before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  # # GET /users/:id.:format
-  # def show
-  #   # authorize! :read, @user
-  # end
+	def update
+		respond_to do |format|
+			@user = current_user
+		    authy = Authy::API.register_user(
+		        email: @user.email,
+		        cellphone: params[:user][:mobile_no],
+        		country_code: '+971'
+		    )
+		    @user.update(authy_id: authy.id, mobile_no: params[:user][:mobile_no])
 
-  # # GET /users/:id/edit
-  # def edit
-  #   # authorize! :update, @user
-  # end
+      		Authy::API.request_sms(id: @user.authy_id)
+			format.js
+		end
+	end
 
-  # # PATCH/PUT /users/:id.:format
-  # def update
-  #   # authorize! :update, @user
-  #   respond_to do |format|
-  #     if @user.update(user_params)
-  #       sign_in(@user == current_user ? @user : current_user, :bypass => true)
-  #       format.html { redirect_to @user, notice: 'Your profile was successfully updated.' }
-  #       format.json { head :no_content }
-  #     else
-  #       format.html { render action: 'edit' }
-  #       format.json { render json: @user.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+	def verify
 
-  # # GET/PATCH /users/:id/finish_signup
-  # def finish_signup
-  #   # authorize! :update, @user 
-  #   if request.patch? && params[:user] #&& params[:user][:email]
-  #     if @user.update(user_params)
-  #       # @user.skip_reconfirmation!
-  #       sign_in(@user, :bypass => true)
-  #       redirect_to @user, notice: 'Your profile was successfully updated.'
-  #     else
-  #       @show_errors = true
-  #     end
-  #   end
-  # end
+	    # Use Authy to send the verification token
+	    token = Authy::API.verify(id: @user.authy_id, token: params[:token])
 
-  # # DELETE /users/:id.:format
-  # def destroy
-  #   # authorize! :delete, @user
-  #   @user.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to root_url }
-  #     format.json { head :no_content }
-  #   end
-  # end
-  
-  # private
-  #   def set_user
-  #     @user = User.find(params[:id])
-  #   end
+	    if token.ok?
+	      # Mark the user as verified for get /user/:id
+	      @user.update(verified: true)
 
-  #   def user_params
-  #     accessible = [ :name, :email ] # extend with your own params
-  #     accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
-  #     params.require(:user).permit(accessible)
-  #   end
+	      # Send an SMS to the user 'success'
+	      send_message("You did it! Signup complete :)")
+
+	      # Show the user profile
+	      redirect_to user_path(@user.id)
+	    else
+	      flash.now[:danger] = "Incorrect code, please try again"
+	      render :show_verify
+	    end
+	end
+
+
+	private
+
+	def send_message(message)
+	    @user = current_user
+	    twilio_number = ENV['TWILIO_NUMBER']
+	    @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
+	    message = @client.account.messages.create(
+	      :from => twilio_number,
+	      :to => @user.mobile_no,
+	      :body => message
+	    )
+	    puts message.to
+	end
+
 end

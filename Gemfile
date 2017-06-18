@@ -37,6 +37,8 @@ gem "mini_magick"
 gem 'geocoder'
 gem 'omniauth-facebook'
 gem 'meta-tags'
+gem 'authy'
+gem 'twilio-ruby'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

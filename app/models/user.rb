@@ -3,6 +3,8 @@ class User < ApplicationRecord
 	has_many :orders
 	has_many :user_addresses
 	has_many :suggest_restos 
+
+  validates :email, presence: true, format: { with: /\A.+@.+$\Z/ }, uniqueness: true
 	
   	devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :omniauthable#, :validatable, :omniauth_providers => [:facebook]
@@ -29,6 +31,15 @@ class User < ApplicationRecord
 
   def instagram_client
     @instagram_client ||= Instagram.client( access_token: instagram.accesstoken )
+  end
+
+  def landline_number
+    [international_code, mobile_no].join('   ')
+  end
+
+  def international_code
+    self.country_code = ISO3166::Country[country_code]
+    country_code.international_prefix
   end
 
 end

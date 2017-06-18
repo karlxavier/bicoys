@@ -2,8 +2,18 @@ class OrdersController < ApplicationController
 	before_action :authenticate_user!, only: [:checkout]
 
 	def checkout
-		@order = Order.find(current_order.id)
-		@user_address = current_location
+		respond_to do |format|
+			@order = Order.find(current_order.id)
+			@user = current_user
+			if @user
+				@order.user = @user
+				@order.save
+			end
+			
+			@user_address = current_location
+
+			format.html
+		end
 	end
 
 	def update_user_address
