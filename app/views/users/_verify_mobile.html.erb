@@ -1,6 +1,6 @@
 <div id="verify_mobile">    
     <div class="col-md-12">
-        <%= form_tag users_verify_path do %>   
+        <%= form_tag users_verify_path, remote: true  do %>   
             <fieldset class="form-horizontal">
 
                 <div class="form-group text-center">
@@ -11,10 +11,7 @@
                 </div>
                 <%= button_tag(type: 'Submit', class: "col-sm-4 col-sm-offset-4 btn btn-warning") do %>
                     <i class="icon-ok icon-white"></i> Verify
-                <% end %> 
-                <%= form_tag users_resend_path do %>
-                    <button type="submit" class="btn">Resend code</button>
-                <% end -%>
+                <% end %>
 
             </fieldset>
         <% end %>

@@ -1,1 +1,6 @@
-$('div#verify_mobile').html("<%= escape_javascript(render 'verify_mobile' ) %>");
+<% if @user.authy_id %>
+	$('div#verify_mobile').html("<%= escape_javascript(render 'verify_mobile' ) %>");
+<% else %>
+	$('#modal-shows').replaceWith('<%= j render partial: "error" %>');
+	$('#modal-shows').modal('show');
+<% end %>

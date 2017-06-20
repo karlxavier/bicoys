@@ -1,0 +1,4 @@
+<% if !@user.verified %>
+	$('#modal-shows').replaceWith('<%= j render partial: "error_token" %>');
+	$('#modal-shows').modal('show');
+<% end %>
