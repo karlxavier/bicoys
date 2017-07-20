@@ -47,6 +47,13 @@ Rails.application.routes.draw do
 	get 'faq', to: 'mains#faq', as: :faq
 	get 'timeline', to: 'mains#timeline', as: :timeline
 	get 'checkout', :to => 'orders#checkout', :as => :checkout
+	get 'user_verify_mobile', to: 'users#user_verify_mobile', as: :user_verify_mobile
+
+	get 'edit_address', to: 'orders#edit_address', as: :edit_address
+
+	# get 'wizard_delivery', to: 'ordres#wizard_delivery', as: :wizard_delivery
+	# get 'wizard_payment', to: 'ordres#wizard_payment', as: :wizard_payment
+	# get 'wizard_finish', to: 'ordres#wizard_finish', as: :wizard_finish
 
 	namespace :restos do
 		get '/', to: 'restaurants#dashboard', as: ''

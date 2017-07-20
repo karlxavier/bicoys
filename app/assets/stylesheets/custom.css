@@ -3218,16 +3218,17 @@ FOOTER STYLES
  /* padding-top: 50px;
   padding-bottom: 0px;
   color: #aeaeae;*/
-  background: none repeat scroll 0 0 white;
+  background: none repeat 0 0 white;
   border-top: 1px solid #e7eaec;
   left: 0;
   padding: 10px 20px;
   right: 0;
   bottom: 0;
   position: relative;
-  margin-top: -81px;
-  height: 81px;
+  margin-top: -100px;
+  height: 100px;
   clear: both;
+  margin-top: 10px;
 }
 .footer h3 {
   text-transform: uppercase;
@@ -3761,4 +3762,46 @@ a.text-primary:hover, a.text-primary:focus {
   font-size: 12px; 
   font-weight: 500;
   margin: 0 10px 0 10px;
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for vh unit */
+  min-height: 90vh; /* You might also want to use
+                        'height' property instead.
+                        
+                        Note that for percentage values of
+                        'height' or 'min-height' properties,
+                        the 'height' of the parent element
+                        should be specified explicitly.
+  
+                        In this case the parent of '.vertical-center'
+                        is the <body> element */
+
+  /* Make it a flex container */
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex; 
+  
+  /* Align the bootstrap's container vertically */
+    -webkit-box-align : center;
+  -webkit-align-items : center;
+       -moz-box-align : center;
+       -ms-flex-align : center;
+          align-items : center;
+  
+  /* In legacy web browsers such as Firefox 9
+     we need to specify the width of the flex container */
+  /*width: 100%;*/
+  
+  /* Also 'margin: 0 auto' doesn't have any effect on flex items in such web browsers
+     hence the bootstrap's container won't be aligned to the center anymore.
+  
+     Therefore, we should use the following declarations to get it centered again */
+         -webkit-box-pack : center;
+            -moz-box-pack : center;
+            -ms-flex-pack : center;
+  -webkit-justify-content : center;
+          justify-content : center;
 }

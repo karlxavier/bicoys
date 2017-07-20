@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
 	before_action :authenticate_user!, only: [:checkout]
+	before_action :check_user_verification, only: [:checkout]
 
 	def checkout
 		respond_to do |format|
@@ -7,12 +8,24 @@ class OrdersController < ApplicationController
 			@user = current_user
 			if @user
 				@order.user = @user
+				if @user.verified?
+					@order.wizard = 2
+					format.js { render partial: 'wizard/wizard_delivery' }
+				else
+					@order.wizard = 1
+					# format.html
+				end
 				@order.save
 			end
-			
-			@user_address = current_location
-
 			format.html
+		end
+	end
+
+	def edit_address
+		@user_address = current_location
+
+		respond_to do |format|
+			format.js
 		end
 	end
 
@@ -28,7 +41,14 @@ class OrdersController < ApplicationController
 	private
 
 		def user_address_params
-			permit.require(:user_addresses).require(:mobile_number, :landline_number, :street_name, :additional_directions)
+			permit.require(:user_addresses).require(:barangay_subdv, :landline_number, :street_name, :additional_directions)
+		end
+
+		def check_user_verification
+			if !current_user.verified?
+				puts '******** NOT VERIFIED ***********'
+				redirect_to user_verify_mobile_path
+			end
 		end
 
 end

@@ -5,7 +5,7 @@
 
                 <div class="form-group text-center">
                     <label class="col-sm-2 control-label">Mobile:</label>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2" style="max-width: 46px;">
                         <input id="country_code" type="tel" class="form-control" maxlength="5" name="">
                         <%= f.hidden_field :area_code, required: "" %>
                     </div>
@@ -20,31 +20,33 @@
             </fieldset>
         <% end %>
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#country_code").intlTelInput({
+                initialCountry: "ph",
+                nationalMode: false,
+                preferredCountries: [ "ph" ]
+            });
+        })  
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var mobileNo = $("#user_mobile_no"),
+            telInput = $("#country_code"),
+            userAreaCode = $("#user_area_code");
+
+            mobileNo.numeric();
+
+            var initialCountry = "+" + telInput.intlTelInput("getSelectedCountryData").dialCode;
+            userAreaCode.val(initialCountry);
+
+            $("#country_code").on("countrychange", function() {
+                document.getElementById("user_area_code").value = document.getElementById("country_code").value
+            });
+
+        })  
+    </script>
+
 </div>
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("#country_code").intlTelInput({
-            initialCountry: "ph",
-            nationalMode: false,
-            preferredCountries: [ "ph" ]
-        });
-    })  
-</script>
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        var mobileNo = $("#user_mobile_no"),
-        telInput = $("#country_code"),
-        userAreaCode = $("#user_area_code");
-
-        mobileNo.numeric();
-
-        var initialCountry = "+" + telInput.intlTelInput("getSelectedCountryData").dialCode;
-        userAreaCode.val(initialCountry);
-
-        $("#country_code").on("countrychange", function() {
-            document.getElementById("user_area_code").value = document.getElementById("country_code").value
-        });
-
-    })  
-</script>

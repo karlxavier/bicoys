@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
+	before_action :check_user_verification, only: [:user_verify_mobile]
 
 	def update
 		@user = current_user
 		mobile_no = params[:user][:area_code] + params[:user][:mobile_no]
 		if valid?(mobile_no)
+			puts '****** valid mobile ******'
 			respond_to do |format|
 			    authy = Authy::API.register_user(
 			        email: @user.email,
@@ -15,6 +17,8 @@ class UsersController < ApplicationController
 	      		Authy::API.request_sms(id: @user.authy_id)
 				format.js
 			end
+		else
+			puts '****** not valid mobile no ********'
 		end
 	end
 
@@ -26,12 +30,12 @@ class UsersController < ApplicationController
 		    if token.ok?
 		      # Mark the user as verified for get /user/:id
 		      @user.update(verified: true)
+		      # redirect_to checkout_path
 
-		      # Send an SMS to the user 'success'
-		      send_message("You did it! Signup complete :)")
+		      # send_message("You did it! Signup complete :)")
+		      puts '********* CHECKOUT ***********'
+		      render :js => "window.location = '/checkout'"
 
-		      # Show the user profile
-		      redirect_to user_path(@user.id)
 		    else
 		      flash.now[:danger] = "Incorrect code, please try again"
 		      render :show_verify
@@ -41,6 +45,8 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def user_verify_mobile
+	end
 
 	private
 
@@ -71,4 +77,13 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def check_user_verification
+		if current_user.verified?
+			puts '******** VERIFIED ***********'
+			redirect_to checkout_path
+		end
+	end
+
 end
+
+

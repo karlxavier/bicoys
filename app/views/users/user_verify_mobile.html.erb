@@ -1,0 +1,23 @@
+<section class="container">
+	<div class="wrapper wrapper-content animated fadeInUp">
+	  <div class="row">
+		  <div class="col-lg-6 col-lg-offset-3 vertical-center">
+		        <div class="panel panel-default">
+		            <div class="panel-heading">
+		                <i class="fa fa-user"></i> New User Verification
+		            </div>
+		            <div class="panel-body">
+		                <p>Your account has been created, but we need to make sure you're a human
+						    in control of the phone number you gave us. Can you please give us your 
+						    mobile number and we will send the token to your phone.
+					    </p>
+
+					    <div class="row">
+                        	<%= render 'users/user_mobile', user: current_user %>
+                        </div>
+		            </div>
+		        </div>
+		    </div>
+	  </div>
+	</div>
+</section>

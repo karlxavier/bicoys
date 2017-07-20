@@ -1,0 +1,17 @@
+<div id="delivery_address">        			
+	<div class="row">
+		<div class="col-lg-6">
+			<%= link_to 'Update my Address', edit_address_path, class: "btn btn-default btn-xs pull-right", remote: true %>
+			<h4>Delivery Address</h4>
+	        <p style="margin-bottom: 5px;"><strong>Address: </strong> <%= @user.user_addresses.last.full_address %></p>
+	        <p style="margin-bottom: 5px;"><strong>Barangay/Subdivision: </strong> <%= @user.user_addresses.last.barangay_subdv %></p>
+	        <p style="margin-bottom: 5px; margin-top: 0;"><strong>Additional Directions: </strong> <%= @user.user_addresses.last.additional_directions %></p>
+	        <p style="margin-bottom: 5px; margin-top: 0;"><strong>Mobile: </strong> <%= @user.area_code + @user.mobile_no %></p>
+	        <p style="margin-bottom: 5px; margin-top: 0;"><strong>Landline: </strong> <%= @user.user_addresses.last.landline_number %></p>
+		</div>
+		<div class="col-lg-6">
+			<h4>Delivery Notes</h4>
+			<textarea class="form-control" placeholder="eg: I dont want spicy, and please be quick! gutom na!" style="resize: none;"></textarea>
+		</div>
+	</div>
+</div>

@@ -1,1 +1,2 @@
-$('#wizard').steps("next");
+$('#delivery_address').replaceWith('<%= j render partial: "orders/delivery_address", user: @user %>');
+$('#modal-shows').modal('hide');
