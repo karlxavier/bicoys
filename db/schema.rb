@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170620054433) do
+ActiveRecord::Schema.define(version: 20170720180029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admin_rates", force: :cascade do |t|
+    t.integer  "service_charge"
+    t.integer  "discount_redeem"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -126,7 +133,7 @@ ActiveRecord::Schema.define(version: 20170620054433) do
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
     t.integer  "min_order"
-    t.integer  "wizard"
+    t.string   "delivery_notes"
   end
 
   create_table "payment_types", force: :cascade do |t|

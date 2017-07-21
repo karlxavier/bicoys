@@ -31,14 +31,14 @@
 		    <li style="margin-bottom: 5px;">
 	            <div>
 	                Service Charge: 
-	                <span class="pull-right">50</span>
+	                <span class="pull-right">₱ <%= number_with_precision(orders.delivery_charge.to_i, :precision => 0, :delimiter => ',') %></span>
 	            </div>
 		    </li>
 
 		    <li>
 	            <div>
 	                <strong>Total:</strong> 
-	                <span><strong class="pull-right">₱ <%= number_with_precision(orders.total, :precision => 0, :delimiter => ',') %></strong></span>
+	                <span><strong class="pull-right">₱ <%= number_with_precision(orders.total.to_i, :precision => 0, :delimiter => ',') %></strong></span>
 	            </div>
 		    </li>
 		    <li class="divider"></li>

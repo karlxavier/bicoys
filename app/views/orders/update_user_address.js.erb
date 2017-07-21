@@ -1,2 +1,2 @@
-$('#delivery_address').replaceWith('<%= j render partial: "delivery_address", user: current_user %>');
+$('#delivery_address').replaceWith('<%= j render partial: "delivery_address", user_address: @user_address, user: @user %>');
 $('#modal-shows').modal('hide');

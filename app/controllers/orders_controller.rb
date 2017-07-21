@@ -6,43 +6,49 @@ class OrdersController < ApplicationController
 		respond_to do |format|
 			@order = Order.find(current_order.id)
 			@user = current_user
-			if @user
-				@order.user = @user
-				if @user.verified?
-					@order.wizard = 2
-					format.js { render partial: 'wizard/wizard_delivery' }
-				else
-					@order.wizard = 1
-					# format.html
-				end
-				@order.save
-			end
+			@user_address = @user.user_addresses.last
+
 			format.html
 		end
 	end
 
-	def edit_address
-		@user_address = current_location
+	# def edit_address
+	# 	@user_address = current_location
 
-		respond_to do |format|
-			format.js
-		end
-	end
+	# 	respond_to do |format|
+	# 		format.js
+	# 	end
+	# end
 
-	def update_user_address
-		user_address = current_location
-		respond_to do |format|
-			if user_address.update_attributes(user_address_params)
-				format.js
-			end
+	# def update_user_address
+	# 	user_address = current_location
+	# 	respond_to do |format|
+	# 		if user_address.update_attributes(user_address_params)
+	# 			@user = current_user
+	# 			@user_address = @user.user_addresses.last
+	# 			format.js
+	# 		end
+	# 	end
+	# end
+
+	def update
+		order = Order.find(current_order)
+		order.user_id = current_user.id
+		order.order_status_id = 3
+		if order.update_attributes(order_params)
+			redirect_to root_path
 		end
 	end
 
 	private
 
-		def user_address_params
-			permit.require(:user_addresses).require(:barangay_subdv, :landline_number, :street_name, :additional_directions)
+		def order_params
+			params.require(:order).permit(:delivery_notes)
 		end
+
+		# def user_address_params
+		# 	params.require(:user_addresses).permit(:barangay_subdv, :landline_number, :street_name, :additional_directions)
+		# end
 
 		def check_user_verification
 			if !current_user.verified?

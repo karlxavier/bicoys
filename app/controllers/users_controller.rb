@@ -45,6 +45,11 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def my_orders
+		@orders = Order.user_finish_orders(current_user.id).all
+		# @orders = current_user.orders.all
+	end
+
 	def user_verify_mobile
 	end
 

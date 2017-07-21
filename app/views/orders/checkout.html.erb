@@ -5,149 +5,106 @@
         	<div class="wrapper wrapper-content animated fadeInUp" style="padding-bottom: 0;">
         		<div class="row">
                 <div class="col-lg-12">
-
                     <div class="ibox product-detail">
-                        <div class="ibox-content" style="padding-bottom: 15px;">
-
-                            <div class="row">
-
-                                <div class="col-md-12">
-                                    <h2 class="font-bold m-b-xs">
-                                        Order Checkout
-                                    </h2>
-                                    <small>Please complete all necessary details below.</small>
-
-                                    <hr>
-		                      			<%= render 'delivery_address', user: @user %>
-                                    <hr>
-                                    <h4>Payment Details</h4>
-                                    <div class="row">
-                                    	<div class="col-lg-6">
-		                                    <div class="ibox">
-						                        <div class="ibox-content" style="border: 0; padding: 0;">
-
-						                            <div class="panel-group payments-method" id="accordion">
-						                                <div class="panel panel-default">
-						                                    <div class="panel-heading">
-						                                        <div class="pull-right">
-						                                            <i class="fa fa-cc-paypal text-success"></i>
-						                                        </div>
-						                                        <h5 class="panel-title">
-						                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="" aria-expanded="true">Cash</a>
-						                                        </h5>
-						                                    </div>
-						                                    <div id="collapseOne" class="panel-collapse collapse in" aria-expanded="true">
-						                                        <div class="panel-body">
-
-						                                            <div class="row">
-						                                                <div class="col-md-10">
-						                                                	<button class="btn btn-primary" type="submit">Cash on Delivery</button>
-						                                                </div>
-
-						                                            </div>
-						                                        </div>
-						                                    </div>
-						                                </div>
-						                                <div class="panel panel-default">
-						                                    <div class="panel-heading">
-						                                        <div class="pull-right">
-						                                            <i class="fa fa-cc-amex text-success"></i>
-						                                            <i class="fa fa-cc-mastercard text-warning"></i>
-						                                            <i class="fa fa-cc-discover text-danger"></i>
-						                                        </div>
-						                                        <h5 class="panel-title">
-						                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" class="collapsed">Credit Card</a>
-						                                        </h5>
-						                                    </div>
-						                                    <div id="collapseTwo" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-						                                        <div class="panel-body">
-						                                            <div class="row">
-						                                                <div class="col-md-12">
-
-						                                                    <form role="form" id="payment-form">
-						                                                        <div class="row">
-						                                                            <div class="col-xs-12">
-						                                                                <div class="form-group">
-						                                                                    <label>CARD NUMBER</label>
-						                                                                    <div class="input-group">
-						                                                                        <input type="text" class="form-control" name="Number" placeholder="Valid Card Number" required="">
-						                                                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
-						                                                                    </div>
-						                                                                </div>
-						                                                            </div>
-						                                                        </div>
-						                                                        <div class="row">
-						                                                            <div class="col-xs-7 col-md-7">
-						                                                                <div class="form-group">
-						                                                                    <label>EXPIRATION DATE</label>
-						                                                                    <input type="text" class="form-control" name="Expiry" placeholder="MM / YY" required="">
-						                                                                </div>
-						                                                            </div>
-						                                                            <div class="col-xs-5 col-md-5 pull-right">
-						                                                                <div class="form-group">
-						                                                                    <label>CV CODE</label>
-						                                                                    <input type="text" class="form-control" name="CVC" placeholder="CVC" required="">
-						                                                                </div>
-						                                                            </div>
-						                                                        </div>
-						                                                        <div class="row">
-						                                                            <div class="col-xs-12">
-						                                                                <div class="form-group">
-						                                                                    <label>NAME OF CARD</label>
-						                                                                    <input type="text" class="form-control" name="nameCard" placeholder="NAME AND SURNAME">
-						                                                                </div>
-						                                                            </div>
-						                                                        </div>
-						                                                        <div class="row">
-						                                                            <div class="col-xs-12">
-						                                                                <button class="btn btn-primary" type="submit">Make a payment!</button>
-						                                                            </div>
-						                                                        </div>
-						                                                    </form>
-						                                                </div>
-						                                            </div>
-						                                        </div>
-						                                    </div>
-						                                </div>
-						                            </div>
+                    	<%= form_for @order do |f| %>
+	                        <div class="ibox-content" style="padding-bottom: 15px;">
+	                            <div class="row">
+	                                <div class="col-md-12">
+	                                    <h2 class="font-bold m-b-xs">
+	                                        Order Checkout
+	                                    </h2>
+	                                    <small>Please complete all necessary details below.</small>
+	                                    <hr>
+	                                    	<div class="row">
+			                      				<%= render 'delivery_address', user_address: @user_address, user: @user %>
+			                      				<div class="col-lg-6">
+													<h4>Delivery Notes</h4>
+													<%= f.text_area :delivery_notes, class: "form-control", placeholder: "eg: I dont want spicy, and please be quick! gutom na!", style: "resize: none;" %>
 												</div>
-						                    </div>
-						            	</div>
-						            	<div class="col-lg-6">
-						            		<div class="row">
-						            			<div class="col-lg-5">
-							            			<div class="input-group">
-									            		<button class="btn btn-outline btn-warning" type="submit">Redeem my discounts</button>
-		                                        	</div>
-						            			</div>
-							            		<small style="margin-top: 10px;"><cite> 
-							            			* Redeem your discounts based on friends referrals.
-							            			</cite>
-							            		</small>
-						            		</div>
-							            
-						            		<hr>
-                                    		<ul class="list-group clear-list">
-                                    			<li class="list-group-item fist-item">
-	                                                <span class="pull-right"> ₱ <%= number_with_precision(@order.subtotal, :precision => 2, :delimiter => ',') %> </span>
-	                                                Subtotal
-	                                            </li>
-	                                            <li class="list-group-item">
-	                                                <span class="pull-right"> ₱ 50 </span>
-	                                                Service Fee
-	                                            </li>
-	                                            <li class="list-group-item">
-	                                                <span class="pull-right"><h3> ₱ <%= number_with_precision(@order.total, :precision => 2, :delimiter => ',') %></h3>  </span>
-	                                                <h4>Total</h4>
-	                                            </li>
-                                    		</ul>
-                                    	</div>
-                                    </div>
+			                      			</div>
+	                                    <hr>
+	                                    <h4>Payment Details</h4>
+	                                    <div class="row">
+	                                    	<div class="col-lg-6">
+			                                    <div class="ibox">
+							                        <div class="ibox-content" style="border: 0; padding: 0;">
 
-                                </div>
-                            </div>
+							                            <div class="panel-group payments-method" id="accordion">
+							                                <div class="panel panel-default">
+							                                    <div class="panel-heading">
+							                                        <div class="pull-right">
+							                                            <i class="fa fa-money text-success"></i>
+							                                        </div>
+							                                        <h5 class="panel-title">
+							                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="" aria-expanded="true">Cash</a>
+							                                        </h5>
+							                                    </div>
+							                                    <div id="collapseOne" class="panel-collapse collapse in" aria-expanded="true">
+							                                     
+							                                    </div>
+							                                </div>
+							                                <div class="panel panel-default">
+							                                    <div class="panel-heading">
+							                                        <div class="pull-right">
+							                                            <i class="fa fa-cc-amex text-success"></i>
+							                                            <i class="fa fa-cc-mastercard text-warning"></i>
+							                                            <i class="fa fa-cc-discover text-danger"></i>
+							                                        </div>
+							                                        <h5 class="panel-title">
+							                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" class="collapsed">Credit Card</a>
+							                                        </h5>
+							                                    </div>
+							                                    <div id="collapseTwo" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+							                                        <div class="panel-body">
+							                                            <div class="row">
+							                                                <div class="col-md-12">
 
-                        </div>
+							                                    
+
+							                                                </div>
+							                                            </div>
+							                                        </div>
+							                                    </div>
+							                                </div>
+							                            </div>
+													</div>
+							                    </div>
+							            	</div>
+							            	<div class="col-lg-6">
+							            		<div class="row">
+							            			<div class="col-lg-5">
+								            			<div class="input-group">
+										            		<button class="btn btn-outline btn-warning" type="submit">Redeem my discounts</button>
+			                                        	</div>
+							            			</div>
+								            		<small style="margin-top: 10px;"><cite> 
+								            			* Redeem your discounts based on friends referrals.
+								            			</cite>
+								            		</small>
+							            		</div>
+								            
+							            		<hr>
+	                                    		<ul class="list-group clear-list">
+	                                    			<li class="list-group-item fist-item">
+		                                                <span class="pull-right"> ₱ <%= number_with_precision(@order.subtotal, :precision => 2, :delimiter => ',') %> </span>
+		                                                Subtotal
+		                                            </li>
+		                                            <li class="list-group-item">
+		                                                <span class="pull-right"> ₱ <%= number_with_precision(@order.delivery_charge, :precision => 2, :delimiter => ',') %> </span>
+		                                                Service Fee
+		                                            </li>
+		                                            <li class="list-group-item">
+		                                                <span class="pull-right"><h3> ₱ <%= number_with_precision(@order.total, :precision => 2, :delimiter => ',') %></h3>  </span>
+		                                                <h4>Total</h4>
+		                                            </li>
+	                                    		</ul>
+	                                    		<%= f.submit "Place My Order", class: "btn btn-primary btn-lg pull-right", controller: 'orders', action: 'update' %>
+	                                    	</div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    <% end %>
                         <div class="ibox-footer">
                             <span class="pull-right">
                                 Full stock - <i class="fa fa-clock-o"></i> 14.04.2016 10:04 pm
@@ -155,7 +112,6 @@
                             The generated Lorem Ipsum is therefore always free
                         </div>
                     </div>
-
                 </div>
             </div>
         	</div>

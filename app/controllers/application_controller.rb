@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def current_order
     if !session[:order_id].nil? && !session[:restaurant_id].nil?      
-      Order.user_orders(session[:order_id],session[:restaurant_id]).first || Order.new
+      Order.user_current_orders(session[:order_id],session[:restaurant_id]).first || Order.new
     else
       Order.new
     end

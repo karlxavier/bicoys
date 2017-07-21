@@ -36,7 +36,7 @@
     		</div>
     		<div class="col-lg-6">
     			<div class="text-right">
-    				<h5>₱ 50</h5>
+    				<h5>₱ <%= number_with_precision(order.delivery_charge, :precision => 0, :delimiter => ',') %></h5>
     			</div>
     		</div>
     		<div class="col-lg-6">

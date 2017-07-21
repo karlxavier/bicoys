@@ -102,4 +102,13 @@
 	# end
 
 	
+OrderStatus.create!(OStatus: "Pending") 	# Order not yet finished
+OrderStatus.create!(OStatus: "Failed")		# Payment failed and order cannot continue
+OrderStatus.create!(OStatus: "Processing")	# Payment received (or Cash on Delivery) then forwarded to resto
+OrderStatus.create!(OStatus: "Prepared")	# Resto food preparation	
+OrderStatus.create!(OStatus: "On d Way")	# Delivery on the way to location
+OrderStatus.create!(OStatus: "Completed")	# Order received by the user
+OrderStatus.create!(OStatus: "Cancelled")	# Cancelled by admin or the user, no further action required
+OrderStatus.create!(OStatus: "Refunded")	# Payment received but food is not available, only for online payments
+OrderStatus.create!(OStatus: "Bogus")		# Bogus or fake order
 
