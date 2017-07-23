@@ -30,53 +30,54 @@
 		                        <% @orders.each do |order| %>
 			                        <div class="ibox-content" style="padding-bottom: 0;">
 			                            <div class="table-responsive">
-			                                <table class="table shoping-cart-table">
+			                                <div class="shoping-cart-table" style="overflow: hidden;">
 
-			                                    <tbody>
-			                                    <tr>
-			                                        <td width="90">
-			                                            <%= image_tag order.restaurant.profile_image.url(:web) || asset_path('default_menu.png'), style: "width: 100px; height: 100px;", class: "img-circle circle-border m-b-md" %>
-			                                        </td>
-			                                        <td class="desc">
-			                                            <h3>
-			                                            <a href="#" class="text-navy">
-			                                                <%= order.restaurant.name %>
-			                                            </a>
-			                                            </h3>
-			                                            <p class="<%= order.order_status == 3 ? 'text-success' : 'text-warning' %>">
-			                                                <%= order.order_status.OStatus %>
-			                                            </p>
-			                                            <dl class="small m-b-none">
-			                                                <dt>Order ID: </dt>
-			                                                <dd><%= time_ago_in_words(order.created_at) %> ago</dd>
-			                                            </dl>
+			                          
+				                                    <div class="row">
+				                                        <div class="col-md-1">
+				                                            <%= image_tag order.restaurant.profile_image.url(:web) || asset_path('default_menu.png'), style: "width: 100px; height: 100px;", class: "img-circle circle-border m-b-md" %>
+				                                        </div>
+				                                        <div class="col-md-5" style="margin-left: 20px;">
+				                                            <h3>
+				                                            <a href="#" class="text-navy">
+				                                                <%= order.restaurant.name %>
+				                                            </a>
+				                                            </h3>
+				                                            <p class="<%= order.order_status == 3 ? 'text-success' : 'text-warning' %>">
+				                                                <%= order.order_status.OStatus %>
+				                                            </p>
+				                                            <dl class="small m-b-none">
+				                                                <dt>Order ID: </dt>
+				                                                <dd><%= time_ago_in_words(order.created_at) %> ago</dd>
+				                                            </dl>
 
-			                                           
-			                                        </td>
-			                                        <td width="350" style="text-align: left;">
-			                                        	 <div class="m-t-sm">
-			                         
-			                                                <a class="btn btn-white btn-sm btn-default">
-									                            <i class="fa fa-star"></i> Rate Order
-									                        </a>
-			                                                
-			                                                <a class="btn btn-white btn-sm btn-default">
-									                            <i class="fa fa-refresh"></i> Reorder
-									                        </a>
-			                                       
-			                                            </div>
-			                                        </td>
-			                                        <td>
-			                                            <h4>
-			                                                ₱ <%= number_with_precision(order.total, :precision => 2, :delimiter => ',') %>
-			                                            </h4>
-			                                            <div class="m-t text-righ">
-						                                    <a href="#" class="btn btn-xs btn-outline btn-default">Summary <i class="fa fa-long-arrow-right"></i> </a>
-						                                </div>
-			                                        </td>
-			                                    </tr>
-			                                    </tbody>
-			                                </table>
+				                                           
+				                                        </div>
+				                                        <div class="col-md-3" style="text-align: left;">
+				                                        	 <div class="m-t-sm">
+				                         
+				                                                <a class="btn btn-white btn-sm btn-default">
+										                            <i class="fa fa-star"></i> Rate Order
+										                        </a>
+				                                                
+				                                                <a class="btn btn-white btn-sm btn-default">
+										                            <i class="fa fa-refresh"></i> Reorder
+										                        </a>
+				                                       
+				                                            </div>
+				                                        </div>
+				                                        <div class="2">
+				                                            <h4>
+				                                                ₱ <%= number_with_precision(order.total, :precision => 2, :delimiter => ',') %>
+				                                            </h4>
+				                                            <div class="m-t text-righ">
+							                                    <a href="#" class="btn btn-xs btn-outline btn-default">Summary <i class="fa fa-long-arrow-right"></i> </a>
+							                                </div>
+				                                        </div>
+				                                    </div>
+			                               
+			                                </div>
+
 			                            </div>
 			                        </div>
 			                    <% end %>

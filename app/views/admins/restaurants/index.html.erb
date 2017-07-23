@@ -2,7 +2,7 @@
   <div id="right_menu">Right menu items here</div>
   <%= content_for?(:all_resto_dashboard) ? yield(:all_resto_dashboard) : yield %>
 <% end %>
-<%= render template: "admins/restaurants/dashboard" %>
+<%= render template: "admins/dashboard/index" %>
 
 <div id="page-wrapper" class="gray-bg">
 	<div class="row wrapper border-bottom white-bg page-heading">
@@ -10,7 +10,7 @@
 	        <h2 style="margin-top: 20px;">All Restaurants</h2>
 	        <ol class="breadcrumb">
 	            <li>
-	                <%= link_to "Dashboard", admins_path %>
+	                <%= link_to "Dashboard", admins_dashboard_index_path %>
 	            </li>
 	            <li class="active">
 	                <strong>All Restaurants</strong>

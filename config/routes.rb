@@ -52,10 +52,6 @@ Rails.application.routes.draw do
 	get 'edit_address', to: 'orders#edit_address', as: :edit_address
 	get 'my_orders', to: 'users#my_orders', as: :my_orders
 
-	# get 'wizard_delivery', to: 'ordres#wizard_delivery', as: :wizard_delivery
-	# get 'wizard_payment', to: 'ordres#wizard_payment', as: :wizard_payment
-	# get 'wizard_finish', to: 'ordres#wizard_finish', as: :wizard_finish
-
 	namespace :restos do
 		get '/', to: 'restaurants#dashboard', as: ''
 		resources :restaurants, only: [:index, :edit, :update] do
@@ -66,12 +62,14 @@ Rails.application.routes.draw do
 
 
 	namespace :admins do
-		get '/', to: 'restaurants#dashboard', as: ''
+		resources :dashboard, only: [:index]
+		get 'current_orders', to: 'orders#current_orders', as: :current_orders
+		resources :orders do
+			resources :order_items, only: [:index]
+		end
+
 		resources :restaurants, only: [:index, :new, :create, :edit, :update] do
 			resources :menus, only: [:new, :create, :edit, :update]
-			resources :orders do
-				resources :order_items
-			end
 		end
 		resources :restaurant_images, only: [:create, :destroy]
 		resources :users, only: [:index, :edit, :update]

@@ -3805,3 +3805,8 @@ a.text-primary:hover, a.text-primary:focus {
   -webkit-justify-content : center;
           justify-content : center;
 }
+
+.navbar-default .landing_link a {
+    background: #1cc09f;
+    color: white;
+}

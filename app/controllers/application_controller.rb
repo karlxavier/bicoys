@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 	helper_method :current_order
   helper_method :current_location
+  helper_method :admins_current_orders
 
   def current_order
     if !session[:order_id].nil? && !session[:restaurant_id].nil?      
@@ -27,6 +28,10 @@ class ApplicationController < ActionController::Base
     else
         UserAddress.where(id: session[:user_address_id]).first || UserAddress.new
     end
+  end
+
+  def admins_current_orders
+    @current_orders = Order.where(order_status_id: 3)
   end
 
   def render_404
