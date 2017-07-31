@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170720180029) do
+ActiveRecord::Schema.define(version: 20170723074143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,22 @@ ActiveRecord::Schema.define(version: 20170720180029) do
     t.string   "DType"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "driver_statuses", force: :cascade do |t|
+    t.string   "DStatus"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "drivers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "driver_license"
+    t.string   "aka"
+    t.string   "driver_image"
+    t.integer  "driver_status_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "identities", force: :cascade do |t|

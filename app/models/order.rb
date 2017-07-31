@@ -15,16 +15,11 @@ class Order < ApplicationRecord
 
 	scope :user_current_orders, -> (id, resto_id) { includes(:menus).where(restaurant_id: resto_id, id: id, order_status_id: 1) }
 	scope :user_finish_orders, -> (user_id) { includes(:restaurant, :order_status, :order_items).where(user_id: user_id).where("order_status_id != 1").order(created_at: :desc) }
-	
-	scope :admin_current_orders, -> (status_id) { includes(:restaurant, :user, :order_items).where(order_status_id: status_id).order(created_at: :desc) }
+	scope :admin_current_orders, -> (status_id) { includes(:restaurant, order_items: :menu, user: [:user_addresses, :identities] ).where(order_status_id: status_id).order(created_at: :desc) }
 
 	def subtotal    
 	    order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum
 	end
-
-	# def delivery_charge
-	# 	AdminRate.first.service_charge
-	# end
 
 	def total
     	subtotal + AdminRate.first.service_charge

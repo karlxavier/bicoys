@@ -1,0 +1,201 @@
+<div class="wrapper wrapper-content animated fadeInRight ecommerce">
+	<%= form_for [:admins, @restaurant] do |f| %>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="tabs-container">
+					<ul class="nav nav-tabs">
+	                    <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true"> Resto info</a></li>
+	                    <li class=""><a data-toggle="tab" href="#tab-2"> Location Map</a></li>
+	                    <li class=""><a data-toggle="tab" href="#tab-3"> Images</a></li>
+	                </ul>
+	                <div class="tab-content">
+	                	<div id="tab-1" class="tab-pane active">
+	                		<div class="panel-body">
+	                			
+	                			<fieldset class="form-horizontal">
+	                				<div class="form-group">
+	                					<div class="col-sm-2"></div>
+		                				<div class="col-sm-2">
+		                					<% if @restaurant.profile_image.present? %>
+		                						<%= image_tag @restaurant.profile_image.url(:web), style: "width: 220px; height: 190px; border-radius: 3px;" %>
+		                					<% else %>
+		                						<%= image_tag 'default_profile_resto.png', style: "width: 220px; height: 190px; border-radius: 3px;" %>
+		                					<% end %>
+		            							
+			                				<br>
+			                				<%= f.file_field :profile_image, class: "form-control", style: "margin-bottom: 2px; margin-top: 10px;" %>
+			                		
+			                			</div>
+			                
+			                		</div>
+	                				<div class="form-group"><label class="col-sm-2 control-label">Name:</label>
+	                                    <div class="col-sm-10">
+	                                    	<%= f.text_field :name, class: "form-control", placeholder: "Restaurant's Name" %>
+	                                    </div>
+	                                </div>
+	                                <div class="form-group"><label class="col-sm-2 control-label">Description:</label>
+	                                    <div class="col-sm-10">
+	                                    	<%= f.text_field :description, class: "form-control", placeholder: "Restaurant's detailed specialties" %>
+	                                    </div>
+	                                </div>
+	                                <div class="form-group"><label class="col-sm-2 control-label">Resto Type:</label>
+	                                    <div class="col-sm-10">
+	                                    	<%= f.collection_select(:restaurant_type_id, RestaurantType.all, :id, :RType, {}, {class: "form-control"}) %>
+	                                    </div>
+	                                </div>
+	                                <div class="form-group"><label class="col-sm-2 control-label">Address:</label>
+	                                    <div class="col-sm-10">
+	                                    	<%= f.text_field :address, class: "form-control", placeholder: "Full Address" %>
+	                                    </div>
+	                                </div>
+	                                <div class="form-group"><label class="col-sm-2 control-label">Phone:</label>
+	                                    <div class="col-sm-10">
+	                                    	<%= f.text_field :phone, class: "form-control", placeholder: "Phone" %>
+	                                    </div>
+	                                </div>
+	                                <div class="form-group"><label class="col-sm-2 control-label">Fax:</label>
+	                                    <div class="col-sm-10">
+	                                    	<%= f.text_field :fax, class: "form-control", placeholder: "Fax" %>
+	                                    </div>
+	                                </div>
+	                                <div class="form-group"><label class="col-sm-2 control-label">Website:</label>
+	                                    <div class="col-sm-10">
+	                                    	<%= f.text_field :website, class: "form-control", placeholder: "Website (if any)" %>
+	                                    </div>
+	                                </div>
+	                                <div class="form-group"><label class="col-sm-2 control-label">Commission %:</label>
+	                                    <div class="col-sm-10">
+	                                    	<%= f.text_field :commission_percentage, class: "form-control", placeholder: "12%" %>
+	                                    </div>
+	                                </div>
+	                                <div class="form-group"><label class="col-sm-2 control-label">Active:</label>
+	                                    <div class="col-sm-1">
+	                                    	<%= f.check_box :active, class: "form-control", placeholder: "12%" %>
+	                                    </div>
+	                                </div>
+	                			</fieldset>
+	                		</div>
+	                	</div>
+	                	<div id="tab-2" class="tab-pane">
+	                		<div class="panel-body">
+	                			<fieldset class="form-horizontal">
+	                				<div class="form-group"><label class="col-sm-2 control-label">Latitude:</label>
+	                                    <div class="col-sm-6">
+	                                    	<%= f.text_field :latitude, class: "form-control", placeholder: "Latitude" %>
+	                                    </div>
+	                                </div>
+	                                <div class="form-group"><label class="col-sm-2 control-label">Longitude:</label>
+	                                    <div class="col-sm-6">
+	                                    	<%= f.text_field :longitude, class: "form-control", placeholder: "Longitude" %>
+	                                    </div>
+	                                </div>
+	                			</fieldset>
+	                			<div class="row">
+	                				<div class="ibox">
+	                					<div class="ibox-title">
+	                						<h5>Google Map</h5>
+	                					</div>
+	                					<div class="ibox-content">
+	                						<p>
+				                                Locate the restaurant's location, then I will handle the rest hehe.
+				                            </p>
+				                            <div id="g-spot" style="height: 500px;">
+				                            	
+				                            </div>
+	                					</div>
+	                				</div>
+	                			</div>
+	                		</div>
+	                	</div>
+	                	<div id="tab-3" class="tab-pane">
+	                		<div class="panel-body">
+	                			<fieldset class="form-horizontal">
+		                				<div class="form-group">
+		                                    <%= file_field_tag "images[]", type: :file, multiple: true %>
+		                                </div>
+	                			</fieldset>
+	                			<br>
+		                		<div class="col-lg-12">
+		                			<div class="ibox float-e-margins">
+		                				<div class="ibox-content" style="border: none;">
+		                					<h2>Restaurants Gallery</h2>
+		                					<div class="lightBoxGallery">
+		                						<% @restaurant.restaurant_images.each do |images| %>
+		                							<%= image_tag images.image.url(:web) %>
+		                						<% end %>
+		                					</div>
+		                				</div>
+		                			</div>
+		                		</div>
+	                		</div>
+	                	</div>
+	                </div>
+	                <br>
+	                <%= button_tag(type: 'Submit', class: "col-lg-3 btn btn-primary") do %>
+				        <i class="icon-ok icon-white"></i> Save
+				    <% end %> 
+				    <%= link_to 'Cancel', admins_restaurants_path, class: 'col-lg-3 btn btn-default', style: 'margin-left: 10px;' %>
+				</div>
+			</div>
+		</div>
+	<% end %>
+</div>
+	<script type="text/javascript">
+		$(function() {
+			$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+			  var target = $(e.target).attr("href")
+			  if (target == '#tab-2') {
+				  var map;
+				  var myLatlng = new google.maps.LatLng(7.065547, 125.608295); // DAVAO CITY HALL AS DEFAULT LOCATION
+				  var myOptions = {
+				    zoom: 14,
+				    center: myLatlng,
+				    mapTypeId: google.maps.MapTypeId.HYBRID
+				  }
+				  map = new google.maps.Map(document.getElementById("g-spot"), myOptions);
+
+				  	var vlat = <%= @lat %>
+				  	var vlng = <%= @lng %>
+
+				  	if (vlat != '') {
+        				var myLatLng = {lat: vlat, lng: vlng};
+
+				        var map = new google.maps.Map(document.getElementById('g-spot'), {
+				          	zoom: 14,
+				          	center: myLatLng,
+				    		mapTypeId: google.maps.MapTypeId.HYBRID
+				        });
+
+				        var marker = new google.maps.Marker({
+				          position: myLatLng,
+				          map: map,
+				          title: 'Nia ko diri!'
+				        });
+				  	}
+
+					var marker;
+
+					function placeMarker(location) {
+					  if ( marker ) {
+					    marker.setPosition(location);
+					  } else {
+					    marker = new google.maps.Marker({
+					      position: location,
+					      map: map,
+					      title: "sure ka diri ila resto?"
+					    });
+					  }
+					}
+
+					google.maps.event.addListener(map, 'click', function(event) {
+					  placeMarker(event.latLng);
+					  var myLatLng = event.latLng;
+					  document.getElementById("restaurant_latitude").value = myLatLng.lat();
+					  document.getElementById("restaurant_longitude").value = myLatLng.lng();
+					});
+
+				}
+			});
+  		});
+
+	</script>

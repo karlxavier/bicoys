@@ -74,6 +74,7 @@ Rails.application.routes.draw do
 		resources :restaurant_images, only: [:create, :destroy]
 		resources :users, only: [:index, :edit, :update]
 		resources :restos, only: [:index, :edit, :update]
+		resources :drivers
 	end
 
 	get '*path' => redirect('/') # FOR PAGES NOT FOUND REDIRECT TO ROOT_PATH
