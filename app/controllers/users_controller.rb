@@ -49,8 +49,15 @@ class UsersController < ApplicationController
 		@orders = Order.user_finish_orders(current_user.id).all
 		# @orders = current_user.orders.all
 	end
-
+ 
 	def user_verify_mobile
+	end
+
+	def complains
+		respond_to do |format|
+			@order = Order.find(params[:order_id])
+			format.js
+		end
 	end
 
 	private

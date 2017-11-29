@@ -1,0 +1,2 @@
+module Restos::OrdersHelper
+end

@@ -4,25 +4,25 @@ class RestaurantsController < ApplicationController
 	before_action :set_order, except: [:index, :set_user_location, :change_user_location, :user_location]
 	before_action :get_user_location, only: [:show]
 
-	def index
+	def index	
 		@restaurants = Restaurant.all
 	end
 
 	def show
-		@menu_cats = MenuCategory.menu_cats(params[:id])
+		@menu_cats = MenuCategory.menu_cats(@restaurant.id)
 		@order_item = @order.order_items.new
-		session[:restaurant_id] = params[:id]
+		session[:restaurant_id] = @restaurant.id
 		@user_address = @current_location
 		@resto_rate = TariffRate.resto_rate(@user_address.distance_from_user).first
+		@resto_stars = Rate.resto_stars(@restaurant.id).presence || 0 #if !Restaurant.resto_stars(@restaurant.id).nil?
+		@voters_count = Rate.where(rateable_type: "Restaurant", rateable_id: @restaurant.id).count
 
 		set_meta_tags :og => {
-	              :title    => @restaurant.name,
-	              :url => request.url,
-	              :description	=> 'We will deliver right to your door step!',
-	              :image    => @restaurant.profile_image.url(:web) || 'https://hh2.herokuapp.com/assets/default_menu-7f7911460fd09a199d27ee44aed20aee1d5c50c93dd8f3e371bccbbbeabc801b.png'
-	            }
-	    # set_meta_tags image_src: @restaurant.profile_image.url(:web) || 'https://hh2.herokuapp.com/assets/default_menu-7f7911460fd09a199d27ee44aed20aee1d5c50c93dd8f3e371bccbbbeabc801b.png'
-
+         	:title    => @restaurant.name,
+          	:url => request.url,
+          	:description	=> 'We will deliver right to your door step!',
+          	:image    => @restaurant.profile_image.url(:web) || 'https://hh2.herokuapp.com/assets/default_menu-7f7911460fd09a199d27ee44aed20aee1d5c50c93dd8f3e371bccbbbeabc801b.png'
+        }
 	end
 
 	def user_location
@@ -107,12 +107,10 @@ class RestaurantsController < ApplicationController
 
 	def set_resto
 		@restaurant = Restaurant.resto_wd_images(params[:id]).first
-
+		puts @restaurant.id
 		if @restaurant.blank?
 			redirect_to err_404_path
-		end
-		# rescue ActiveRecord::RecordNotFound
-  # 		redirect_to root_url, :flash => { :error => "Record not found." }
+		end	
 	end
 
 	def set_order

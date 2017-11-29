@@ -1,0 +1,51 @@
+<div class="modal inmodal in" id="modal-shows" tabindex="-1" role="dialog" aria-hidden="true" style="display: block; padding-right: 15px;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Order Tracking</h4>
+                <small class="font-bold">You can track your order and its current status.</small>
+            </div>
+            <div class="modal-body">
+                <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between">
+                    <div class="step <%= @order.order_status_id >= 2 ? 'step completed' : '' %>">
+                        <div class="step-icon-wrap">
+                            <div class="step-icon">
+                                <i class="fa fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                        <h4 class="step-title">Checkout</h4>
+                    </div>
+                    <div class="step <%= @order.order_status_id >= 3 ? 'step completed' : '' %>">
+                        <div class="step-icon-wrap">
+                            <div class="step-icon">
+                                <i class="fa fa-thumbs-o-up"></i>
+                            </div>
+                        </div>
+                        <h4 class="step-title">Food Preparation</h4>
+                    </div>
+                    <div class="step <%= @order.order_status_id >= 5 ? 'step completed' : '' %>">
+                        <div class="step-icon-wrap">
+                            <div class="step-icon">
+                                <i class="fa fa-motorcycle"></i>
+                            </div>
+                        </div>
+                        <h4 class="step-title">On d Way</h4>
+                    </div>
+                    <div class="step <%= @order.order_status_id > 5 ? 'step completed' : '' %>">
+                        <div class="step-icon-wrap">
+                            <div class="step-icon">
+                                <i class="fa fa-check"></i>
+                            </div>
+                        </div>
+                        <h4 class="step-title">Delivered</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

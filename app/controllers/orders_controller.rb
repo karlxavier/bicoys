@@ -34,9 +34,9 @@ class OrdersController < ApplicationController
 	def update
 		order = Order.find(current_order)
 		order.user_id = current_user.id
-		order.order_status_id = 3
+		order.order_status_id = 2 # CHECKOUT CONFIRM STATUS
 		if order.update_attributes(order_params)
-			redirect_to root_path
+			# redirect_to root_path
 		end
 	end
 

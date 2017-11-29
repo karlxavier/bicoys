@@ -1,16 +1,33 @@
-<h2>Forgot your password?</h2>
+<div class="middle-box text-center loginscreen   animated fadeInDown">
+  <div>
+      <h3>Forgot your Password</h3>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: {class: 'm-t', method: :post} )do |f| %>
+          <% flash.each do |name, msg| %>
+              <% if msg.class == Array %>
+                  <% msg.each do |message| %>
+                      <div class="alert alert-danger alert-dismissable">
+                          <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                          <%= content_tag :div, message, :id => "flash_#{name}" %>
+                      </div>
+                  <% end %>
+              <% else %>
+                  <div class="alert alert-danger alert-dismissable">
+                      <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+                  </div>
+              <% end %>
+          <% end %>
+          <div class="form-group">
+            <%= f.email_field :email, class: 'form-control', placeholder: 'Email', required: "true" %>
+          </div>
+          <div class="form-group">
+            <%= f.submit "Send me reset password instructions", class: 'btn btn-primary block full-width m-b' %>
+          </div>
+          
+      <% end %>
+      <%= link_to 'Login', new_resto_session_path, class: "btn btn-sm btn-white btn-block", style: "margin-top: 15px;" %>
+      <%= link_to 'Home', root_path, class: "btn btn-sm btn-white btn-block", style: "margin-top: 5px;" %>
+      <p class="m-t"> <small><strong>GG Tech</strong> Copyright © 2018</small> </p>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "restos/shared/links" %>
+</div>

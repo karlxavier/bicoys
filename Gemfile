@@ -39,6 +39,8 @@ gem 'omniauth-facebook'
 gem 'meta-tags'
 gem 'authy'
 gem 'twilio-ruby'
+gem 'friendly_id', '~> 5.1.0'
+gem 'ratyrate'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

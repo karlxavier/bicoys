@@ -16,29 +16,33 @@
         		<div class="ibox">
         			<div class="ibox-content">
 
-        				<table class="footable table table-stripped toggle-arrow-tiny footable-loaded phone breakpoint footable-filtering" data-paging-limit="40" data-paging="true" data-filter-filters='true'>
+        				<table class="footable table table-stripped toggle-arrow-tiny footable-loaded phone breakpoint footable-filtering" data-paging="true" data-filtering="true" data-sorting="true" data-filter-filters='true'>
                             <thead>
                                 <tr>
+                                    <th>Order ID</th>
                                     <th>Restaurant</th>
                                     <th>Customer</th>
                                     <th>Address</th>
                                     <th>Price</th>
                                     <th>Order Time</th>
                                     <th data-breakpoints="all" data-search-ignore="true"></th>
-                                    <th data-sort-ignore="true" data-search-ignore="true"></th>
+                                    <th data-sortable="false" data-filterable="false"></th>
                                 </tr>
                             </thead>
                             <tbody>
                             	<% @cur_orders.each do |order| %>
                             		<tr class="footable">
+                                        <td class="footable-visible">
+                                            <strong> <%= order.id %> </strong>
+                                        </td>
                             			<td class="footable-visible">
-                            				<strong> <%= order.restaurant.name %> </strong>
+                            				<strong> <%= truncate(order.restaurant.name, length: 12) %> </strong>
                             			</td>
                             			<td class="footable-visible">
-                            				<%= order.user.identities.last.name %>
+                            				<%= truncate(order.user.fullname || order.user.identities.last.name, length: 12) %>
                             			</td>
                             			<td class="footable-visible">
-                            				<%= order.user.user_addresses.last.full_address %>
+                            				<%= truncate(order.user.user_addresses.last.full_address, length: 35) %>
                             			</td>
                             			<td class="footable-visible">
                             				₱ <%= number_with_precision(order.total, :precision => 2, :delimiter => ',') %>
@@ -50,6 +54,9 @@
                 							<ul class="list-group clear-list">
                 								<div class="jumbotron" style="padding: 20px">
                 									<div class="row">
+                                                        <div class="col-md-12">
+                                                            <h3>Order ID: <%= order.id %></h3>
+                                                        </div>
                 										<div class="col-md-4">
                 											<div class="row">
                 												<div class="col-md-6">
@@ -117,7 +124,7 @@
                             			</td>
                             			<td class="text-right footable-visible footable-last-column" style="margin-right: 20px;">
 	                                        <div class="btn-group">
-				                                <button class="btn btn-sm btn-warning" type="button">Deliver</button>
+                                                <%= link_to 'Confirm', admins_confirm_order_path(order), class: "btn btn-sm btn-warning", remote: true %>
 				                                <button data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle" aria-expanded="true">Others <span class="caret"></span></button>
 				                                <ul class="dropdown-menu">
 					                                <li><a href="#" style="font-size: 12px;">Action</a></li>

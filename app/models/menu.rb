@@ -11,10 +11,8 @@ class Menu < ApplicationRecord
 
 	mount_uploader :image, MenuImageUploader
 
-	scope :resto_menus, -> (resto_id) { joins(:menu_category).where( restaurant_id: resto_id, active: true ) }
-	# scope :resto_menus, -> (resto_id) { joins("INNER JOIN menu_categories ON menus.menu_category_id = menu_categories.id").select("menu_categories.*") }
-
-	# scope :resto_menus, -> (resto_id) { joins(:menu_category ).select('menus.* , menu_categories.*') }
+	scope :resto_menus, -> (resto_id) { includes(:menu_category).where( restaurant_id: resto_id, active: true ) }
+	scope :all_resto_menus, -> (resto_id) { includes(:menu_category).where( restaurant_id: resto_id ) }
 
 	private
 

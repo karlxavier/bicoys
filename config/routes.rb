@@ -20,7 +20,9 @@ Rails.application.routes.draw do
 
     devise_for :restos, controllers: {
     	sessions: 'restos/sessions',
-    	registrations: 'restos/registrations'
+    	registrations: 'restos/registrations',
+    	passwords: 'restos/passwords',
+    	mailer: 'restos/mailer'
     }
 
     resources :order_items
@@ -51,9 +53,15 @@ Rails.application.routes.draw do
 
 	get 'edit_address', to: 'orders#edit_address', as: :edit_address
 	get 'my_orders', to: 'users#my_orders', as: :my_orders
+	get 'complains/:order_id', to: 'users#complains', as: :complains
+
+	post '/rate' => 'rater#create', :as => 'rate' # POST RATING STARS
 
 	namespace :restos do
-		get '/', to: 'restaurants#dashboard', as: ''
+		get '/', to: 'restaurants#restodb', as: ''
+		get 'current_orders', to: 'orders#current_orders', as: :current_orders
+		get 'restodb', to: 'restaurants#restodb', as: :restodb
+		get 'order_ready/:order_id', to: 'orders#order_ready', as: :order_ready
 		resources :restaurants, only: [:index, :edit, :update] do
 			resources :menus
 			resources :menu_categories
@@ -62,8 +70,10 @@ Rails.application.routes.draw do
 
 
 	namespace :admins do
+		get '/', to: 'dashboard#index', as: ''
 		resources :dashboard, only: [:index]
 		get 'current_orders', to: 'orders#current_orders', as: :current_orders
+		get 'confirm_order/:order_id', to: 'orders#confirm_order', as: :confirm_order
 		resources :orders do
 			resources :order_items, only: [:index]
 		end

@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  ratyrate_rater
+  
   has_many :identities
 	has_many :orders
 	has_many :user_addresses

@@ -5,4 +5,6 @@ class Admins::RestosController < ApplicationController
 		@restos = Resto.all
 	end
 
+
 end
+	

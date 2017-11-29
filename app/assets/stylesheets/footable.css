@@ -121,7 +121,7 @@
 	-ms-touch-action: manipulation;
 	touch-action: manipulation;
 	cursor: pointer;
-	-webkit-appearance: button;
+	/*-webkit-appearance: button;*/
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;

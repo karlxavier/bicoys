@@ -3,7 +3,7 @@ class Restos::MenusController < ApplicationController
 	before_action :set_restaurant
 
 	def index
-		@menus = @restaurant.menus.all
+		@menus = Menu.all_resto_menus(@restaurant.id)
 	end
 
 	def new
@@ -38,7 +38,7 @@ class Restos::MenusController < ApplicationController
 	private
 
 		def set_restaurant
-			@restaurant = Restaurant.find(params[:restaurant_id])
+			@restaurant = Restaurant.find(current_resto.restaurant_id)
 		end
 
 		def menu_params

@@ -9,7 +9,7 @@
                         <div class="ibox-content">
                             <i class="fa fa-map-marker"></i> 
                             <%= @user_address ? @user_address.full_address : '' %>
-                            <%= link_to 'Change Location', change_user_location_restaurant_path(@restaurant), class: "btn btn-w-m btn-default btn-xs pull-right", style: "margin-bottom: 5px;" %>
+                            <%= link_to 'Change My Location', change_user_location_restaurant_path(@restaurant), class: "btn btn-w-m btn-default btn-xs pull-right", style: "margin-bottom: 5px;" %>
                         </div>
                     </div>
                     <div class="col-md-7" stylex="padding: 0;">
@@ -27,14 +27,10 @@
                                             <h2 class="no-margins">
                                                 <%= @restaurant.name %>
                                             </h2>
-                                            <a class="btn btn-xs btn-white pull-right">
-                                                    <i class="fa fa-thumbs-down"></i> 
-                                                    Not
-                                                </a>
-                                                <a class="btn btn-xs btn-white pull-right">
-                                                    <i class="fa fa-thumbs-up"></i> 
-                                                    Like
-                                                </a>
+                                                <div class="fb-share-button pull-right" 
+                                                    data-href="<% request.url %>" 
+                                                    data-layout="button_count">
+                                                </div>
                                             <h4 style="margin-bottom: 8px;"><%= @restaurant.address %></h4>
                                             <div style="margin-bottom: 10px;">
                                                 <small><strong>Tel. No:</strong> <%= @restaurant.phone %></small>
@@ -48,42 +44,34 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         <table class="table small m-b-xs">
                             <tbody>
-                            <tr>
-                                <td>
-                                    <strong><%= @restaurant.menus.count %></strong> Menus
-                                </td>
-                                <td>
-                                    <strong>22</strong> Orders last 24hrs
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td>
-                                    <strong>61/2</strong> Likes
-                                </td>
-                                <td>
-                                    <strong>54</strong> Photos
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <strong>₱ <%= @resto_rate.min_order %></strong> Min Order
-                                </td>
-                                <td>
-                                    <strong><%= number_with_precision(@user_address.distance_from_user, :precision => 1, :delimiter => ',') %>km</strong> Distance from you
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>
+                                        <strong><%= number_with_precision(@user_address.distance_from_user, :precision => 1, :delimiter => ',') %>km</strong> Distance from you
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>₱ <%= @resto_rate.min_order %></strong> Min Order
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-md-1">
-                          <div class="fb-share-button" 
-                            data-href="<% request.url %>" 
-                            data-layout="button_count">
-                          </div>
+                    <div class="col-md-2">
+                        <div class="row" style="margin-bottom: 10px;">
+                            <div class="col-xs-4 text-center">
+                                <i class="fa fa-star fa-5x" style="color: #f8ac59;"></i>
+                            </div>
+                            <div class="col-xs-8 text-right">
+                                <span> Overall Rating </span>
+                                <h2 class="font-bold" style="margin-bottom: 0;"> <%= number_with_precision(@resto_stars || 1, :precision => 1, :delimiter => ',') %> <small style="font-size: 11px;">/ 5</small> </h2>
+                                <small style="font-size: 11px; color: #676a6c;"> <%= @voters_count %> votes </small>
+                            </div>
+                        </div>
+                        <%= rating_for @restaurant, "resto_rate", enable_half: true, disable_after_rate: false %>
                     </div>
                 </div>
         	</div>
@@ -122,7 +110,7 @@
                             <div class="panel-body">
                                 <div class="row">
                                 	<div class="col-md-3 menu-cats">
-                                		<div class="ibox" data-spy="affix" data-offset-top="280" data-clampedwidth=".col-xs-3">
+                                		<div class="ibox" id="sk-cats" data-spy="affix" data-offset-top="280" data-clampedwidth=".col-xs-3">
 					                        <div class="ibox-title" style="border-style: none;">
 					                            <h5>Categories</h5>
 					                        </div>
@@ -200,9 +188,9 @@
             </div>
         </div>
         <div class="cart-summary">
-            <div class="col-xs-4" style="padding-left: 0;">
+            <div class="col-xs-4" style="padding-left: 0;" id="order-holder">
             	<div class="wrapper-content" style="padding-bottom: 0;">
-    	        	<div class="ibox" id="sk-orders" data-spy="affix" data-offset-top="220" data-clampedwidth=".col-xs-4 .wrapper-content">
+    	        	<div class="ibox" id="sk-orders">
     	                <div class="ibox-title">
     	                    <h5>Cart Summary</h5>
     	                </div>
@@ -230,60 +218,70 @@
 </script>
 <script type="text/javascript">
     $(document).on("turbolinks:load", function () { 
-        // $('[data-clampedwidth]').each(function () {
-        //     alert("x");
-        //     var elem = $(this);
-        //     var parentPanel = elem.data('clampedwidth');
-        //     var resizeFn = function () {
-        //         var sideBarNavWidth = $(parentPanel).width() - parseInt(elem.css('paddingLeft')) - parseInt(elem.css('paddingRight')) - parseInt(elem.css('marginLeft')) - parseInt(elem.css('marginRight')) - parseInt(elem.css('borderLeftWidth')) - parseInt(elem.css('borderRightWidth'));
-        //         elem.css('width', sideBarNavWidth);
-        //     };
-        //     alert(resizeFn);
-        //     resizeFn();
-        //     $(window).resize(resizeFn);
-        // });
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            alert("x");
+            var elem = $(this);
+            var parentPanel = elem.data('clampedwidth');
+            var resizeFn = function () {
+                var sideBarNavWidth = $(parentPanel).width() - parseInt(elem.css('paddingLeft')) - parseInt(elem.css('paddingRight')) - parseInt(elem.css('marginLeft')) - parseInt(elem.css('marginRight')) - parseInt(elem.css('borderLeftWidth')) - parseInt(elem.css('borderRightWidth'));
+                elem.css('width', sideBarNavWidth);
+            };
+            alert(resizeFn);
+            resizeFn();
+            $(window).resize(resizeFn);
+        });
             
     });
 
-    $(document).on('turbolinks:before-cache', function() {
-      // $('[data-clampedwidth]')
+    $('#sk-orders').affix({
+      offset: {
+        top: 235
+      }
+    });
+
+    $('#sk-cats').affix({
+      offset: {
+        top: 235
+      }
+    });
+
+    $(window).scroll(function () {
+        $('.ibox.affix').width($('#order-holder').width());
     });
 </script>
 <script type="text/javascript">
      
-            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-              var target = $(e.target).attr("href")
-              if (target == '#tab-6') {
-                  var map;
-                  var myLatlng = new google.maps.LatLng(7.065547, 125.608295); // DAVAO CITY HALL AS DEFAULT LOCATION
-                  var myOptions = {
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+      var target = $(e.target).attr("href")
+      if (target == '#tab-6') {
+          var map;
+          var myLatlng = new google.maps.LatLng(7.065547, 125.608295); // DAVAO CITY HALL AS DEFAULT LOCATION
+          var myOptions = {
+            zoom: 14,
+            center: myLatlng,
+            mapTypeId: google.maps.MapTypeId.HYBRID
+          }
+          map = new google.maps.Map(document.getElementById("g-spot"), myOptions);
+
+            var vlat = <%= @restaurant.latitude %>
+            var vlng = <%= @restaurant.longitude %>
+
+            if (vlat != '') {
+                var myLatLng = {lat: vlat, lng: vlng};
+
+                var map = new google.maps.Map(document.getElementById('g-spot'), {
                     zoom: 14,
-                    center: myLatlng,
+                    center: myLatLng,
                     mapTypeId: google.maps.MapTypeId.HYBRID
-                  }
-                  map = new google.maps.Map(document.getElementById("g-spot"), myOptions);
+                });
 
-                    var vlat = <%= @restaurant.latitude %>
-                    var vlng = <%= @restaurant.longitude %>
-
-                    if (vlat != '') {
-                        var myLatLng = {lat: vlat, lng: vlng};
-
-                        var map = new google.maps.Map(document.getElementById('g-spot'), {
-                            zoom: 14,
-                            center: myLatLng,
-                            mapTypeId: google.maps.MapTypeId.HYBRID
-                        });
-
-                        var marker = new google.maps.Marker({
-                          position: myLatLng,
-                          map: map,
-                          title: 'Nia ko diri!'
-                        });
-                    }
-                }
-
-
-            });
-
+                var marker = new google.maps.Marker({
+                  position: myLatLng,
+                  map: map,
+                  title: 'Nia ko diri!'
+                });
+            }
+        }
+    });
 </script>
+<%= javascript_include_tag 'ratyrate.js', "data-turbolinks-track": false %>

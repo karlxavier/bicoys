@@ -1,0 +1,134 @@
+<% content_for :dashboard do %>
+  <div id="right_menu">Right menu items here</div>
+  <%= content_for?(:current_order_dashboard) ? yield(:current_order_dashboard) : yield %>
+<% end %>
+<%= render template: "restos/restaurants/dashboard" %>
+
+<div id="page-wrapper" class="gray-bg">
+	<div class="wrapper wrapper-content animated fadeInRight ecommerce">
+		<div class="row">
+			<div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-success pull-right">Total</span>
+                        <h5>Income</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">40 886,200</h1>
+                        <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>
+                        <small>Total income</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-info pull-right">Total</span>
+                        <h5>Orders</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">275,800</h1>
+                        <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
+                        <small>New orders</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Average per Order</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">275,800</h1>
+                        <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
+                        <small> Income / Orders</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="row" style="margin-bottom: 10px;">
+                    <div class="col-xs-4 text-center">
+                        <i class="fa fa-star fa-5x" style="color: #f8ac59;"></i>
+                    </div>
+                    <div class="col-xs-8 text-right">
+                        <span> User Rating </span>
+                        <h2 class="font-bold" style="margin-bottom: 0;"> <%= number_with_precision(@resto_stars, :precision => 1, :delimiter => ',') %> <small style="font-size: 11px;">/ 5</small> </h2>
+                        <small style="font-size: 11px; color: #676a6c;"> <%= @voters_count %> votes </small>
+                    </div>
+                </div>
+            </div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                            <div>
+                                <span class="pull-right text-right">
+                                <small>Average value of sales in the past month in: <strong>United states</strong></small>
+                                    <br>
+                                    All sales: 162,862
+                                </span>
+                                <h1 class="m-b-xs">$ 50,992</h1>
+                                <h3 class="font-bold no-margins">
+                                    Half-year revenue margin
+                                </h3>
+                                <small>Sales marketing.</small>
+                            </div>
+
+                        <div><iframe class="chartjs-hidden-iframe" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"></iframe>
+                            <canvas id="lineChart" height="194" width="836" style="display: block; width: 418px; height: 97px;"></canvas>
+                        </div>
+
+                        <div class="m-t-md">
+                            <small class="pull-right">
+                                <i class="fa fa-clock-o"> </i>
+                                Update on 16.07.2015
+                            </small>
+                           <small>
+                               <strong>Analysis of sales:</strong> The value has been changed over time, and last month reached a level over $50,000.
+                           </small>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	
+        $(document).ready(function() {
+
+            var lineData = {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [
+                    {
+                        label: "Example dataset",
+                        backgroundColor: "rgba(26,179,148,0.5)",
+                        borderColor: "rgba(26,179,148,0.7)",
+                        pointBackgroundColor: "rgba(26,179,148,1)",
+                        pointBorderColor: "#fff",
+                        data: [28, 48, 40, 19, 86, 27, 90]
+                    },
+                    {
+                        label: "Example dataset",
+                        backgroundColor: "rgba(220,220,220,0.5)",
+                        borderColor: "rgba(220,220,220,1)",
+                        pointBackgroundColor: "rgba(220,220,220,1)",
+                        pointBorderColor: "#fff",
+                        data: [65, 59, 80, 81, 56, 55, 40]
+                    }
+                ]
+            };
+
+            var lineOptions = {
+                responsive: true
+            };
+
+
+            var ctx = document.getElementById("lineChart").getContext("2d");
+            new Chart(ctx, {type: 'line', data: lineData, options:lineOptions});
+
+        });
+    
+</script>

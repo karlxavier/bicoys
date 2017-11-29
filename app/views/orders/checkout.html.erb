@@ -98,7 +98,7 @@
 		                                                <h4>Total</h4>
 		                                            </li>
 	                                    		</ul>
-	                                    		<%= f.submit "Place My Order", class: "btn btn-primary btn-lg pull-right", controller: 'orders', action: 'update' %>
+	                                    		<%= f.submit "Place My Order", class: "btn btn-primary btn-lg pull-right alert-success", controller: 'orders', action: 'update' %>
 	                                    	</div>
 	                                    </div>
 	                                </div>
@@ -118,4 +118,22 @@
         </div>
     </div>
 </section>
+<script type="text/javascript">
+	
 
+    $(document).ready(function () {
+
+        $('.alert-success').click(function(){
+            swal({
+                title: "Thank you!",
+                text: "Your order is now confirmed.",
+                type: "success"
+            }, function() {
+            	window.location.href = "/";
+        	});
+        });
+
+    });
+
+
+</script>

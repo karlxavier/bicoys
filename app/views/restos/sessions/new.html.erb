@@ -1,8 +1,23 @@
 <div class="middle-box text-center loginscreen   animated fadeInDown">
   <div>
-      <h3>Login to <span style="color: #1ab394;">habhub.ph</span> as Resto Admin</h3>
+      <h3>Login to <span style="color: #099E44;">habhub.ph</span> as Resto Admin</h3>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'm-t'} )do |f| %>
+          <% flash.each do |name, msg| %>
+              <% if msg.class == Array %>
+                  <% msg.each do |message| %>
+                      <div class="alert alert-danger alert-dismissable">
+                          <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                          <%= content_tag :div, message, :id => "flash_#{name}" %>
+                      </div>
+                  <% end %>
+              <% else %>
+                  <div class="alert alert-danger alert-dismissable">
+                      <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+                  </div>
+              <% end %>
+          <% end %>
           <div class="form-group">
             <%= f.email_field :email, class: 'form-control', placeholder: 'Email' %>
           </div>
@@ -12,7 +27,11 @@
           <div class="form-group">
             <%= f.submit "Login", class: 'btn btn-primary block full-width m-b' %>
           </div>
-          <p class="m-t"> <small>GG Technologies Copyright © 2016</small> </p>
+          <%= link_to new_resto_password_path do %>
+            <small>Forgot password?</small>
+          <% end %>
+          <%= link_to 'Home', root_path, class: "btn btn-sm btn-white btn-block", style: "margin-top: 15px;" %>
+          <p class="m-t"> <small><strong>GG Tech</strong> Copyright © 2018</small> </p>
       <% end %>
   </div>
 </div>

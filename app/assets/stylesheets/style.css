@@ -64,7 +64,7 @@ h5 {
 .nav .open > a:hover,
 .nav .open > a:focus {
   /*background: #fff;*/
-  background: #2f4050;
+  /*background: #2f4050;*/
 }
 .nav.navbar-top-links > li > a:hover,
 .nav.navbar-top-links > li > a:focus {
@@ -2471,18 +2471,18 @@ label.error {
   font-size: 24px;
   line-height: 24px;
   float: left;
-  color: #FFF;
+  color: #f89406;
   padding-right: 0.5em;
   margin: auto 0.5em auto -1.5em;
 }
 #toast-container > .toast-warning:before {
-  content: "\f0e7";
+  content: "\f0f5";
 }
 #toast-container > .toast-error:before {
   content: "\f071";
 }
 #toast-container > .toast-info:before {
-  content: "\f005";
+  content: "\f2bd";
 }
 #toast-container > .toast-success:before {
   content: "\f00C";

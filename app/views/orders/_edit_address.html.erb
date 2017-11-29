@@ -3,7 +3,8 @@
         <div class="modal-content animated bounceInRight">
             <%= form_for current_user.user_addresses.last, remote: true do |f| %>
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
                     <h4 class="modal-title">User Address</h4>
                     <small class="font-bold">Where you want to deliver your order?</small>
                 </div>

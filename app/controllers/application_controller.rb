@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 	helper_method :current_order
   helper_method :current_location
   helper_method :admins_current_orders
+  helper_method :restos_current_orders
 
   def current_order
     if !session[:order_id].nil? && !session[:restaurant_id].nil?      
@@ -31,7 +32,11 @@ class ApplicationController < ActionController::Base
   end
 
   def admins_current_orders
-    @current_orders = Order.where(order_status_id: 3)
+    @current_orders = Order.where(order_status_id: 2)
+  end
+
+  def restos_current_orders
+    current_resto_orders = Order.where(order_status_id: 3, restaurant_id: current_resto.restaurant_id)
   end
 
   def render_404
