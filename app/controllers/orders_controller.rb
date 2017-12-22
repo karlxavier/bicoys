@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
 			@order = Order.find(current_order.id)
 			@user = current_user
 			@user_address = @user.user_addresses.last
+			@payment_type = PaymentType.all
 
 			format.html
 		end
@@ -43,7 +44,7 @@ class OrdersController < ApplicationController
 	private
 
 		def order_params
-			params.require(:order).permit(:delivery_notes)
+			params.require(:order).permit(:delivery_notes, :payment_type_id)
 		end
 
 		# def user_address_params

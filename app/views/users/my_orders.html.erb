@@ -73,7 +73,9 @@
 					                                        <div class="2">
 					                                            <h4>
 					                                                ₱ <%= number_with_precision(order.total, :precision => 2, :delimiter => ',') %>
+					                                                <br>
 					                                            </h4>
+
 					                                            <div class="m-t text-righ">
 								                                    <a href="#<%= order.id %>" data-toggle="collapse" class="btn btn-xs btn-outline btn-default collapsed" aria-expanded="false">Summary 
 								                                    	<i class="fa fa-long-arrow-right"></i> 
@@ -102,6 +104,7 @@
 						                                            <li class="list-group-item">
 						                                                <span class="pull-right"><h3> ₱ <%= number_with_precision(order.total, :precision => 2, :delimiter => ',') %></h3>  </span>
 						                                                <h4>Total</h4>
+						                                                <small>Paid by <strong><%= order.payment_type ? order.payment_type.PType : '' %></strong></small>
 						                                            </li>
 					                                    		</ul>
 					                                		</div>

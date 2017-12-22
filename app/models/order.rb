@@ -8,6 +8,8 @@ class Order < ApplicationRecord
 	has_many :order_items
 	has_many :menus, through: :order_items
 
+	has_many :identities, through: :user
+
 	before_create :set_order_status
 	before_create :set_order_service_charge
 	before_save :update_subtotal
@@ -19,6 +21,7 @@ class Order < ApplicationRecord
 	scope :user_finish_orders, -> (user_id) { includes(:restaurant, :order_status, :order_items).where(user_id: user_id).where("order_status_id != 1").order(created_at: :desc) }
 	scope :admin_current_orders, -> (status_id) { includes(:restaurant, order_items: :menu, user: [:user_addresses, :identities] ).where(order_status_id: status_id).order(created_at: :desc) }
 	scope :resto_current_orders, -> (status_id, restaurant_id) { includes(:restaurant, order_items: :menu, user: [:user_addresses, :identities] ).where(order_status_id: status_id, restaurant_id: restaurant_id).order(created_at: :desc) }
+	scope :last_order, -> { includes(:user, :identities).last }
 
 	def subtotal    
 	    order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum

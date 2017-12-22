@@ -182,7 +182,6 @@
                 toastr.warning('We are here to serve you better.', 'Welcome to takeout.ph');
 
             }, 1300);
-            // setTimeout(3000);
             setTimeout(function() {
                 toastr.options = {
                     closeButton: true,
@@ -191,8 +190,8 @@
                     positionClass: 'toast-bottom-left',
                     timeOut: 10000
                 };
-                toastr.info('Ordered 2 minutes ago.', 'Karl Xavier del Campo');
-
+                // API calls
+                toastr.info('Ordered <%= ((Time.now - @last_order.created_at) / 60).to_i > 80 ? '3 minutes' : time_ago_in_words(@last_order.created_at) %> ago', '<%= @last_order.user.fullname || @last_order.user.identities.first.name %>');
             }, 3300);
         });
     

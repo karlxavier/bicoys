@@ -23,49 +23,66 @@
 												</div>
 			                      			</div>
 	                                    <hr>
-	                                    <h4>Payment Details</h4>
+	                                    <h4>Payment Methods</h4>
 	                                    <div class="row">
 	                                    	<div class="col-lg-6">
 			                                    <div class="ibox">
 							                        <div class="ibox-content" style="border: 0; padding: 0;">
-
-							                            <div class="panel-group payments-method" id="accordion">
-							                                <div class="panel panel-default">
-							                                    <div class="panel-heading">
-							                                        <div class="pull-right">
-							                                            <i class="fa fa-money text-success"></i>
-							                                        </div>
-							                                        <h5 class="panel-title">
-							                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="" aria-expanded="true">Cash</a>
-							                                        </h5>
-							                                    </div>
-							                                    <div id="collapseOne" class="panel-collapse collapse in" aria-expanded="true">
-							                                     
-							                                    </div>
-							                                </div>
-							                                <div class="panel panel-default">
-							                                    <div class="panel-heading">
-							                                        <div class="pull-right">
-							                                            <i class="fa fa-cc-amex text-success"></i>
-							                                            <i class="fa fa-cc-mastercard text-warning"></i>
-							                                            <i class="fa fa-cc-discover text-danger"></i>
-							                                        </div>
-							                                        <h5 class="panel-title">
-							                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" class="collapsed">Credit Card</a>
-							                                        </h5>
-							                                    </div>
-							                                    <div id="collapseTwo" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-							                                        <div class="panel-body">
-							                                            <div class="row">
-							                                                <div class="col-md-12">
-
-							                                    
-
-							                                                </div>
-							                                            </div>
-							                                        </div>
-							                                    </div>
-							                                </div>
+							                        	<div class="panel-group payments-method" id="accordion">
+							                        		<% @payment_type.each do |ptype| %>
+								                            	<% if ptype.id == 1 %>
+									                                <div class="panel panel-default">
+									                                    <div class="panel-heading">
+									                                        <div class="pull-right">
+									                                            <i class="fa fa-money text-success"></i>
+									                                        </div>
+									                                        <h5 class="panel-title">
+								                                            	<div class="radio radio-warning radio-inline">
+								                                            		<%= f.radio_button :payment_type_id, ptype.id, checked: true, aria: { expanded: true }, data: { toggle: "collapse", parent: "#accordion", target: "#collapseOne" } %> 
+	  																				<%= f.label :payment_type_id_1, "Cash on Delivery" %>
+										                                        </div>
+									                                        </h5>
+									                                    </div>
+									                                    <div id="collapseOne" class="panel-collapse collapse in" aria-expanded="true">
+									                                    	<div class="panel-body">
+									                                            <div class="row">
+									                                                <div class="col-md-10">
+									                                                    <h2>Cash on Delivery</h2>
+									                                                    <p class="m-t">
+									                                                    	Pay through Cash upon receiving your order.
+									                                                    </p>
+									                                                </div>
+									                                            </div>
+									                                        </div>
+									                                    </div>
+									                                </div>
+								                                <% else %>
+									                                <div class="panel panel-default">
+									                                    <div class="panel-heading">
+									                                        <div class="pull-right">
+									                                            <i class="fa fa-cc-paypal text-success"></i>
+									                                            <i class="fa fa-cc-mastercard text-warning"></i>
+									                                            <i class="fa fa-cc-visa text-danger"></i>
+									                                        </div>
+									                                        <h5 class="panel-title">
+								                                            	<div class="radio radio-warning radio-inline">
+										                                            <%= f.radio_button :payment_type_id, ptype.id, checked: false, aria: { expanded: false }, data: { toggle: "collapse", parent: "#accordion", target: "#collapseTwo" }, class: "collapsed" %> 
+	  																				<%= f.label :payment_type_id_2, "Credit Card" %>
+										                                        </div>
+									                                        </h5>
+									                                    </div>
+									                                    <div id="collapseTwo" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+									                                        <div class="panel-body">
+									                                            <div class="row">
+									                                                <div class="col-md-12">
+									                                                	<small><strong>Note:</strong><cite> You can pay safely online through Paypal even you dont have an account.</cite></small>
+									                                                </div>
+									                                            </div>
+									                                        </div>
+									                                    </div>
+									                                </div>
+								                                <% end %>
+							                            	<% end %>
 							                            </div>
 													</div>
 							                    </div>
@@ -74,11 +91,12 @@
 							            		<div class="row">
 							            			<div class="col-lg-5">
 								            			<div class="input-group">
-										            		<button class="btn btn-outline btn-warning" type="submit">Redeem my discounts</button>
+										            		<button class="btn btn-outline btn-warning">Redeem my discounts</button>
 			                                        	</div>
 							            			</div>
-								            		<small style="margin-top: 10px;"><cite> 
-								            			* Redeem your discounts based on friends referrals.
+								            		<small style="margin-top: 10px;">
+								            			<cite> 
+								            				* Redeem your discounts based on friends referrals.
 								            			</cite>
 								            		</small>
 							            		</div>
@@ -98,7 +116,7 @@
 		                                                <h4>Total</h4>
 		                                            </li>
 	                                    		</ul>
-	                                    		<%= f.submit "Place My Order", class: "btn btn-primary btn-lg pull-right alert-success", controller: 'orders', action: 'update' %>
+	                                    		<%= f.submit "Place My Order", id: "submit-order", class: "btn btn-primary btn-lg pull-right alert-success", controller: 'orders', action: 'update' %>
 	                                    	</div>
 	                                    </div>
 	                                </div>
@@ -107,7 +125,7 @@
 	                    <% end %>
                         <div class="ibox-footer">
                             <span class="pull-right">
-                                Full stock - <i class="fa fa-clock-o"></i> 14.04.2016 10:04 pm
+                                Current Local Time - <i class="fa fa-clock-o"></i> <%= Time.now.strftime("%d-%b-%Y %l:%M%P") %>
                             </span>
                             The generated Lorem Ipsum is therefore always free
                         </div>
@@ -123,7 +141,7 @@
 
     $(document).ready(function () {
 
-        $('.alert-success').click(function(){
+        $('#submit-order').click(function(){
             swal({
                 title: "Thank you!",
                 text: "Your order is now confirmed.",
