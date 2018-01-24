@@ -10,7 +10,9 @@ class Restaurant < ApplicationRecord
 	has_many :menus
 	has_many :menu_categories
 	has_many :orders
+	has_many :restaurant_timings
 	accepts_nested_attributes_for :restaurant_images
+	accepts_nested_attributes_for :restaurant_timings
 
 	validates :name, :address, presence: true
 

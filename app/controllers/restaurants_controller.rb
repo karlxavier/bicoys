@@ -107,7 +107,6 @@ class RestaurantsController < ApplicationController
 
 	def set_resto
 		@restaurant = Restaurant.resto_wd_images(params[:id]).first
-		puts @restaurant.id
 		if @restaurant.blank?
 			redirect_to err_404_path
 		end	

@@ -5,6 +5,10 @@ class Admins::DriversController < ApplicationController
 		@drivers = Driver.all
 	end
 
+	def new
+		@driver = Driver.new
+	end
+
 	def edit
 	end
 
@@ -17,6 +21,6 @@ class Admins::DriversController < ApplicationController
 	private
 
 		def driver_params
-			params.require(:driver).permit(:name, :driver_license, :aka, :driver_image, :ddriver_status_id)
+			params.require(:driver).permit(:name, :driver_license, :aka, :driver_image, :driver_status_id)
 		end
 end

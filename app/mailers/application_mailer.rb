@@ -7,3 +7,4 @@ class ApplicationMailer < ActionMailer::Base
     mail(to: @user.email, subject: 'Welcome to takeout.ph')
   end
 end
+ 

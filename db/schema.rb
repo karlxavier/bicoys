@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121112619) do
+ActiveRecord::Schema.define(version: 20180122153614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -216,6 +216,19 @@ ActiveRecord::Schema.define(version: 20171121112619) do
     t.datetime "updated_at",    null: false
     t.integer  "restaurant_id"
     t.index ["restaurant_id"], name: "index_restaurant_images_on_restaurant_id", using: :btree
+  end
+
+  create_table "restaurant_timings", force: :cascade do |t|
+    t.integer  "restaurant_id"
+    t.time     "monday"
+    t.time     "tuesday"
+    t.time     "wednesday"
+    t.time     "thursday"
+    t.time     "friday"
+    t.time     "saturday"
+    t.time     "sunday"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "restaurant_types", force: :cascade do |t|
