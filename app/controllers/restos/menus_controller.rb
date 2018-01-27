@@ -38,7 +38,8 @@ class Restos::MenusController < ApplicationController
 	private
 
 		def set_restaurant
-			@restaurant = Restaurant.find(current_resto.restaurant_id)
+			@restaurant = Restaurant.where(slug: current_resto.restaurant.slug).first
+			# @restaurant = Restaurant.find(slug: current_resto.restaurant_id)
 		end
 
 		def menu_params

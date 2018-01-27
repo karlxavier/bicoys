@@ -60,10 +60,10 @@
                 <li>
                     <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Menus</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><%= link_to 'Menus', restos_restaurant_menus_path(current_resto.restaurant_id) %></li>
-                        <li><%= link_to 'Add New Menu', new_restos_restaurant_menu_path(current_resto.restaurant_id) %></li>
-                        <li><%= link_to 'Menu Categories', restos_restaurant_menu_categories_path(current_resto.restaurant_id) %></li>
-                        <li><%= link_to 'Add Category', new_restos_restaurant_menu_category_path(current_resto.restaurant_id) %></li>
+                        <li><%= link_to 'Menus', restos_restaurant_menus_path(current_resto.restaurant.slug) %></li>
+                        <li><%= link_to 'Add New Menu', new_restos_restaurant_menu_path(current_resto.restaurant.slug) %></li>
+                        <li><%= link_to 'Menu Categories', restos_restaurant_menu_categories_path(current_resto.restaurant.slug) %></li>
+                        <li><%= link_to 'Add Category', new_restos_restaurant_menu_category_path(current_resto.restaurant.slug) %></li>
                     </ul>
                 </li>
 			</ul>

@@ -4,6 +4,8 @@ class Restos::MenuCategoriesController < ApplicationController
 
 	def index
 		@menu_categories = @restaurant.menu_categories.all
+					puts '***********'
+			puts @menu_categories.count
 	end
 
 	def new
@@ -34,10 +36,19 @@ class Restos::MenuCategoriesController < ApplicationController
 		end
 	end
 
+	def destroy
+		menu_category = @restaurant.menu_categories.find(params[:id])
+		if menu_category.destroy
+			redirect_to restos_restaurant_menu_categories_path(@restaurant)
+		else
+			render :index
+		end
+	end
+
 	private
 
-		def set_restaurant
-			@restaurant = Restaurant.find(params[:restaurant_id])
+		def set_restaurant			
+			@restaurant = Restaurant.where(slug: params[:restaurant_id]).first
 		end
 
 		def menu_categories_params
