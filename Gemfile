@@ -41,6 +41,7 @@ gem 'authy'
 gem 'twilio-ruby'
 gem 'friendly_id', '~> 5.1.0'
 gem 'ratyrate'
+gem 'toastr-rails'
 gem 'webpacker'
 
 group :development, :test do
