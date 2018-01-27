@@ -47,6 +47,7 @@ Rails.application.routes.draw do
 	get 'user_location', :to => 'restaurant_types#user_location', :as => :user_location
 	get 'about_us', to: 'mains#about_us', as: :about_us
 	get 'faq', to: 'mains#faq', as: :faq
+	get 'rac', to: 'mains#tac', as: :tac
 	get 'timeline', to: 'mains#timeline', as: :timeline
 	get 'checkout', :to => 'orders#checkout', :as => :checkout
 	get 'user_verify_mobile', to: 'users#user_verify_mobile', as: :user_verify_mobile

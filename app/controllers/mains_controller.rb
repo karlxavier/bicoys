@@ -6,4 +6,7 @@ class MainsController < ApplicationController
 	def faq
 	end
 
+	def tac
+	end
+
 end
