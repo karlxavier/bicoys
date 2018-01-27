@@ -64,7 +64,7 @@
 	                <%= button_tag(type: 'Submit', class: "col-lg-3 btn btn-primary") do %>
 				        <i class="icon-ok icon-white"></i> Save
 				    <% end %> 
-				    <%= link_to 'Cancel', restos_restaurant_menus_path(@restaurant), class: 'col-lg-3 btn btn-default', style: 'margin-left: 10px;' %>
+				    <%= link_to 'Cancel', restos_restaurant_menus_path(@restaurant.slug), class: 'col-lg-3 btn btn-default', style: 'margin-left: 10px;' %>
 			</div>
 		</div>
 	<% end %>
