@@ -19,6 +19,7 @@ class Restaurant < ApplicationRecord
 	mount_uploader :profile_image, ProfileImageUploader
 
 	scope :most_recent, -> (limited, resto_type) { where( restaurant_type_id: resto_type ).order( created_at: :desc).limit(limited) }
+	scope :most_orders, -> (limited, resto_type) { joins(:orders).where(restaurant_type_id: resto_type).group("restaurants.id").order("count(orders.id) DESC").limit(limited) }
 	scope :resto_wd_images, -> (resto_id) { includes(:restaurant_images).where(slug: resto_id) }
 	scope :resto_search, -> (type_id, resto_like) { includes(:menus).references(:menus).where("restaurants.restaurant_type_id = ? AND restaurants.active = ? AND restaurants.name ILIKE ? OR menus.name ILIKE ?", type_id, true, "%#{resto_like}%", "%#{resto_like}%") }
 

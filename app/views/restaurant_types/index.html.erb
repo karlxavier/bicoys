@@ -19,8 +19,7 @@
                 <div class="tabCommon" style="padding-top: 40px;">
                     <ul class="nav nav-tabs">
                         <li class="active"><a data-toggle="tab" href="#menu1" aria-expanded="true">New</a></li>
-                        <li class=""><a data-toggle="tab" href="#menu2" aria-expanded="false">Top Rated</a></li>
-                        <li class=""><a data-toggle="tab" href="#menu3" aria-expanded="false">Sale</a></li>
+                        <li class=""><a data-toggle="tab" href="#menu2" aria-expanded="false">Most Orders</a></li>
                     </ul>
                     <div class="tab-bottom"></div>
                     <div class="tab-content">
@@ -92,46 +91,70 @@
                             </div>
                         </div>
                         <div id="menu2" class="tab-pane fade">
+                            <h3 class="font-bold m-b-xs">Restaurants</h3>
                             <div class="row">
-                                <div class="col-sm-3 col-xs-12">
-                                    <div class="imageBox">
-                                        <a href="single-product.html">
-                                            <div class="productImage clearfix" style="background-image: url('<%= image_path 'restos/resto8.jpg' %>');"></div>
-                                        </a>
-                                        <div class="productCaption clearfix">
-                                            <h5><a href="single-product.html">Dencios Restaurant</a></h5>
+                                <div class="col-lg-12">
+                                    <% @resto_orders.each do |resto| %>
+                                        <div class="file-box">
+                                            <div class="file">
+                                                <%= link_to restaurant_path(resto) do %>
+                                                    <span class="corner"></span>
+                                                    <div class="image">
+                                                        <%= image_tag resto.profile_image.url(:web) || asset_path('default_menu.png'), class: "img-responsive" %>
+                                                    </div>
+                                                    <div class="file-name">
+                                                        <h5 style="margin-bottom: 5px;"><%= link_to truncate(resto.name.html_safe, length: 25), restaurant_path(resto) %></h5>
+                                                        <small><%= resto.address %></small>
+                                                    </div>
+                                                <% end %>
+
+                                            </div>
                                         </div>
-                                    </div>
+                                    <% end %>
                                 </div>
-                                <div class="col-sm-3 col-xs-12">
-                                    <div class="imageBox">
-                                        <a href="single-product.html">
-                                            <div class="productImage clearfix" style="background-image: url('<%= image_path 'restos/resto5.jpg' %>');"></div>
-                                        </a>
-                                        <div class="productCaption clearfix">
-                                            <h5><a href="single-product.html">Luz Kinilaw</a></h5>
+                            </div>
+                            <h3 class="font-bold m-b-xs">Bakeries</h3>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <% @bake_orders.each do |resto| %>
+                                        <div class="file-box">
+                                            <div class="file">
+                                                <%= link_to restaurant_path(resto) do %>
+                                                    <span class="corner"></span>
+                                                    <div class="image">
+                                                        <%= image_tag resto.profile_image.url(:web) || asset_path('default_menu.png'), class: "img-responsive" %>
+                                                    </div>
+                                                    <div class="file-name">
+                                                        <h5 style="margin-bottom: 5px;"><%= link_to truncate(resto.name.html_safe, length: 25), restaurant_path(resto) %></h5>
+                                                        <small><%= resto.address %></small>
+                                                    </div>
+                                                <% end %>
+
+                                            </div>
                                         </div>
-                                    </div>
+                                    <% end %>
                                 </div>
-                                <div class="col-sm-3 col-xs-12">
-                                    <div class="imageBox">
-                                        <a href="single-product.html">
-                                            <div class="productImage clearfix" style="background-image: url('<%= image_path 'restos/resto6.jpg' %>');"></div>
-                                        </a>
-                                        <div class="productCaption clearfix">
-                                            <h5><a href="single-product.html">Rhea's Resto</a></h5>
+                            </div>
+                            <h3 class="font-bold m-b-xs">Caterings</h3>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <% @cater_orders.each do |resto| %>
+                                        <div class="file-box">
+                                            <div class="file">
+                                                <%= link_to restaurant_path(resto) do %>
+                                                    <span class="corner"></span>
+                                                    <div class="image">
+                                                        <%= image_tag resto.profile_image.url(:web) || asset_path('default_menu.png'), class: "img-responsive" %>
+                                                    </div>
+                                                    <div class="file-name">
+                                                        <h5 style="margin-bottom: 5px;"><%= link_to truncate(resto.name.html_safe, length: 25), restaurant_path(resto) %></h5>
+                                                        <small><%= resto.address %></small>
+                                                    </div>
+                                                <% end %>
+
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3 col-xs-12">
-                                    <div class="imageBox">
-                                        <a href="single-product.html">
-                                            <div class="productImage clearfix" style="background-image: url('<%= image_path 'restos/resto7.jpg' %>');"></div>
-                                        </a>
-                                        <div class="productCaption clearfix">
-                                            <h5><a href="single-product.html">Silver Bucket</a></h5>
-                                        </div>
-                                    </div>
+                                    <% end %>
                                 </div>
                             </div>
                         </div>

@@ -6,6 +6,10 @@ class RestaurantTypesController < ApplicationController
 		@bake_recent = Restaurant.most_recent(5,2)
 		@cater_recent = Restaurant.most_recent(5,3)
 
+		@resto_orders = Restaurant.most_orders(5,1)
+		@bake_orders = Restaurant.most_orders(5,2)
+		@cater_orders = Restaurant.most_orders(5,3)
+
 		@user_address = UserAddress.where(id: session[:user_address_id]).first
 		@last_order = Order.last_order
 
