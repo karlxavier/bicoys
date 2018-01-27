@@ -10,10 +10,10 @@
 	        <h2 style="margin-top: 20px;">Add New Menu</h2>
 	        <ol class="breadcrumb">
 	            <li>
-	                <a href="index.html">Dashboard</a>
+	                <%= link_to "Dashboard", restos_restodb_path %>
 	            </li>
 	            <li>
-	                <a>Menus</a>
+	                <%= link_to "Menus", restos_restaurant_menus_path(current_resto.restaurant.slug) %>
 	            </li>
 	            <li class="active">
 	                <strong>New Menu</strong>
