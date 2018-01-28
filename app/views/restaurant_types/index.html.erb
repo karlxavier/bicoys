@@ -205,7 +205,17 @@
                 toastr.warning('We are here to serve you better.', 'Welcome to takeout.ph');
 
             }, 1300);
-
+            setTimeout(function() {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    positionClass: 'toast-bottom-left',
+                    timeOut: 10000
+                };
+                // API calls
+                toastr.info('Ordered <%= ((Time.now - @last_order.created_at) / 60).to_i > 80 ? '3 minutes' : time_ago_in_words(@last_order.created_at) %> ago', '<%= @last_order.user.fullname || @last_order.user.identities.first.name %>');
+            }, 3300);
         });
     
 </script>
