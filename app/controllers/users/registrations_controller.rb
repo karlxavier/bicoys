@@ -15,4 +15,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def create
+    super
+    
+    user_address = current_location
+    user_address.update_attribute(:user_id, current_user.id)
+  end
+
 end

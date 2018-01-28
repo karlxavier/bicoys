@@ -18,6 +18,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if @user.nil?
       @user = User.create( email: @identity.email || "" )
       @identity.update_attribute( :user_id, @user.id )
+
+      user_address = current_location
       user_address.update_attribute(:user_id, @user.id)
     end
 
@@ -27,6 +29,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if @user.persisted?
       @identity.update_attribute( :user_id, @user.id )
+
+      user_address = current_location
       user_address.update_attribute(:user_id, @user.id)
       # This is because we've created the user manually, and Device expects a
       # FormUser class (with the validations)

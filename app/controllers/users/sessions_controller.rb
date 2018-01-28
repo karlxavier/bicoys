@@ -7,9 +7,12 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    super
+
+    user_address = current_location
+    user_address.update_attribute(:user_id, current_user.id)
+  end
 
   # DELETE /resource/sign_out
   # def destroy
