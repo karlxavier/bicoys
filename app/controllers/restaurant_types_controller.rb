@@ -47,10 +47,12 @@ class RestaurantTypesController < ApplicationController
 	end
 
 	def user_location
+		puts '***********USER LOCATION**********'
 		if !params[:lat].nil? && !params[:lng].nil?
-			distance = Geocoder::Calculations.distance_between([7.065547,125.608295], [params[:lat],params[:lng]]).round(1) * 1.609
-			distance = distance.round(1) 
-			if distance > 16
+			distance_from_user = Geocoder::Calculations.distance_between([7.065547,125.608295], [params[:lat],params[:lng]]).round(1) * 1.609
+			distance_from_user = distance_from_user.round(1) 
+			if distance_from_user > 16
+				puts '***********DISTANCE > 16************'
 				params[:lat] = nil
 				params[:lng] = nil
 
@@ -63,24 +65,33 @@ class RestaurantTypesController < ApplicationController
 					format.js { render 'error_msg' }
 				end	
 			else
+				puts '***********ELSE************'
 				address = params[:add]
 				address.gsub! /"/, ''
 
 				@user_address = current_location
-				@user_address.user = current_user
+				# @user_address.user = current_user
 				@user_address.full_address = address
 				@user_address.latitude = params[:lat]
 				@user_address.longitude = params[:lng]
-				@user_address.distance_from_user = distance
+				@user_address.distance_from_user = distance_from_user
 
 				respond_to do |format|
 					if !@user_address.persisted?
+						puts 'Ooooooooooooooooooooo'
 						if @user_address.save
 							session[:user_address_id] = @user_address.id
+							puts '*********** user_address.persisted ************'
 							format.js
 						end
 					else
-						if @user_address.update(user: current_user,full_address: @address, latitude: params[:lat], longitude: params[:lng],distance_from_user: @distance)
+						puts '+++++++++++++++++++++++'
+						puts @user_address.full_address
+						puts @user_address.latitude
+						puts @user_address.longitude
+						puts @user_address.distance_from_user
+						if @user_address.update_attributes(full_address: address, latitude: params[:lat], longitude: params[:lng],distance_from_user: distance_from_user)
+							puts '*********** else ************'
 							session[:user_address_id] = @user_address.id
 							format.js
 						end
