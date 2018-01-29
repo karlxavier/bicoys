@@ -34,16 +34,16 @@
           <% end %>
           
           <div class="form-group">
-            <%= f.text_field :fullname, autofocus: true, class: 'form-control', placeholder: 'Fullname' %>
+            <%= f.text_field :fullname, autofocus: true, class: 'form-control', placeholder: 'Fullname', required: true %>
           </div>
           <div class="form-group">
-            <%= f.email_field :email, class: 'form-control', placeholder: 'Email' %>
+            <%= f.email_field :email, class: 'form-control', placeholder: 'Email', required: true %>
           </div>
           <div class="form-group">
             <% if @minimum_password_length %>
               <p class="m-t"> <small>(<%= @minimum_password_length %> characters minimum)</small> </p>
             <% end %>
-            <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password' %>
+            <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password', required: true %>
           </div>
 
           <div class="form-group">

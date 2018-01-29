@@ -7,6 +7,7 @@ class User < ApplicationRecord
 	has_many :suggest_restos 
 
   validates :email, presence: true, format: { with: /\A.+@.+$\Z/ }, uniqueness: true
+  validates :fullname, presence: true
 	
   	devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :omniauthable#, :validatable, :omniauth_providers => [:facebook]
