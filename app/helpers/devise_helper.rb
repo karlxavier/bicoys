@@ -13,19 +13,3 @@ module DeviseHelper
     html.html_safe
   end
 end
-
-          # <% flash.each do |name, msg| %>
-          #     <% if msg.class == Array %>
-          #         <% msg.each do |message| %>
-          #             <div class="alert alert-danger alert-dismissable">
-          #                 <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-          #                 <%= content_tag :div, message, :id => "flash_#{name}" %>
-          #             </div>
-          #         <% end %>
-          #     <% else %>
-          #         <div class="alert alert-danger alert-dismissable">
-          #             <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-          #             <%= content_tag :div, msg, :id => "flash_#{name}" %>
-          #         </div>
-          #     <% end %>
-          # <% end %>
